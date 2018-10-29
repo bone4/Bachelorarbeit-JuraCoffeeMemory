@@ -1,5 +1,5 @@
 # JuraCoffee
-This C++ project is designed to read read and analyse the memory of a Jura Impressa S9 coffee maker.
+This C++ project is designed to read and analyse the memory of a Jura Impressa S9 coffee maker.
 
 ## Requirements
 libserial and libjsoncpp:
@@ -24,7 +24,7 @@ If you have problems to enable a serial connection, run the programm twice or tr
 screen /dev/ttyACM0 9600
 exit
 ```
-You can quit with <Ctrl>+D or kill the screen with <Ctrl>+A, k, y.
+You can quit with \<Ctrl\>+D or kill the screen with \<Ctrl\>+A, k, y.
 
 Unfortunately this not the same as
 ```sh
@@ -33,7 +33,7 @@ ignbrk -brkint -icrnl -imaxbel \
 -opost -onlcr \
 -isig -icanon -iexten -echo -echoe -echok -echoctl -echoke
 ```
-it's sometimes a bit magical. But with the used libserial library the data are reliably send and received.
+it's sometimes a bit magically. But with the used libserial library the data are reliably send and received.
 
 ## Remarks
 The Arduino file is used from [E-17 CoffeeMachine](https://collaborating.tuhh.de/e-17/General/CoffeeMachine/tree/master/arduino).
