@@ -1,0 +1,15 @@
+*
+
+!arduino/
+!*.ino
+
+!data/
+!*.json
+!*.txt
+
+!*.cpp
+!*.hpp
+
+!.gitignore
+!Makefile
+!Readme.md
