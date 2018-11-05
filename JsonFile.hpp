@@ -18,8 +18,8 @@ class JsonFile
 
         virtual ~JsonFile();
 
-        void eepromData(int i, string s);
-        void eepromLog(string rawOld, string rawNew, string comment);
+        void eepromData(string filePath, int i, string s);
+        void eepromLog(string filePath, string rawOld, string rawNew, string comment);
 
     protected:
 
@@ -37,7 +37,7 @@ class JsonFile
         Json::Value eepromJson;
         Json::StyledStreamWriter styledStream;
 
-        void saveChanges();
+        void saveChanges(string filePath);
 };
 
 #endif // JSONFILE_H

@@ -24,17 +24,17 @@ JsonFile::~JsonFile()
     //dtor
 }
 
-void JsonFile::eepromData(int i, string s) {
+void JsonFile::eepromData(string filePath, int i, string s) {
     stringstream ss, data;
     ss << setw(3) << setfill('0') << i;
 
     data << eepromJson["data"][ss.str()].asString() << s << "###";
     eepromJson["data"][ss.str()] = data.str();
 
-    this->saveChanges();
+    this->saveChanges(filePath);
 }
 
-void JsonFile::eepromLog(string rawOld, string rawNew, string comment) {
+void JsonFile::eepromLog(string filePath, string rawOld, string rawNew, string comment) {
     auto t = time(nullptr);
     auto tm = *localtime(&t);
     stringstream ss;
@@ -43,10 +43,10 @@ void JsonFile::eepromLog(string rawOld, string rawNew, string comment) {
     eepromJson[ss.str()]["rawNew"] = rawNew;
     eepromJson[ss.str()]["comment"] = comment;
 
-    this->saveChanges();
+    this->saveChanges(filePath);
 }
 
-void JsonFile::saveChanges() {
-    ofstream jsonFileStreamWrite("data/eeprom.json", ios::out);
+void JsonFile::saveChanges(string filePath) {
+    ofstream jsonFileStreamWrite(filePath, ios::out);
     styledStream.write(jsonFileStreamWrite, eepromJson);
 }

@@ -4,10 +4,9 @@ using namespace std;
 
 int EEPROM::run = 0;
 
-EEPROM::EEPROM(bool offline) :
-    // TODO:
-    // string device = "/dev/ttyACM0"; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Main function call!
-    Storage("RT:", EEPROM_row_length) // read 1 row EEPROM wich consits of 64 hex chars
+EEPROM::EEPROM(bool offline, string filePath) :
+    Storage("RT:", EEPROM_row_length), // read 1 row EEPROM wich consits of 64 hex chars
+    logFilePath(filePath)
 {
     //ctor
     work_offline = offline;
@@ -97,8 +96,8 @@ void EEPROM::diffBytesWith(EEPROM* last) {
 
             stringstream info;
             info << *(first+i) << " -> " << *(second+i) << ": " << note;
-            jf.eepromData(i, info.str());
-            jf.eepromLog(last->getRawData(), this->getRawData(), note);
+            jf.eepromData(logFilePath, i, info.str());
+            jf.eepromLog(logFilePath, last->getRawData(), this->getRawData(), note);
         }
     }
     if (!hit) {

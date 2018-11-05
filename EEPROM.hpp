@@ -8,7 +8,7 @@
 class EEPROM : public Storage
 {
     public:
-        EEPROM(bool offline);
+        EEPROM(bool offline, string filePath);
         virtual ~EEPROM();
 
         void diffBytesWith(EEPROM* last);
@@ -19,6 +19,8 @@ class EEPROM : public Storage
         const int EEPROM_row_length = 64; // 64 hex chars in 1 row
         const int EEPROM_rows = 16; // 16 rows for whole EEPROM content
         static int run; // Run number
+
+        string logFilePath;
 };
 
 #endif // EEPROM_H
