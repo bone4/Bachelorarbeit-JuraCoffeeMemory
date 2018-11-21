@@ -39,8 +39,9 @@ it's sometimes a bit magically. But with the used libserial library the data are
 The Arduino file is used from [E-17 CoffeeMachine](https://collaborating.tuhh.de/e-17/General/CoffeeMachine/tree/master/arduino).
 
 More usefull links:
-[libserial Github](https://github.com/crayzeewulf/libserial), [libserial documentation](https://libserial.readthedocs.io/en/latest/index.html)
-[libjsoncpp](https://en.wikibooks.org/wiki/JsonCpp)
+[libserial Github](https://github.com/crayzeewulf/libserial), [libserial documentation](https://libserial.readthedocs.io/en/latest/index.html);
+[libjsoncpp](https://en.wikibooks.org/wiki/JsonCpp);
+[gitlab-markdown](https://collaborating.tuhh.de/help/user/markdown.md), [online-markdown](https://dillinger.io/)
 
 ### Command endings (important if you need the expacted length)
 | Arduino -> Jura CoffeeMachine | Jura CoffeeMachine -> Arduino |
