@@ -3,7 +3,6 @@
 
 #include <string>
 #include "Storage.hpp"
-#include "JsonFile.hpp"
 
 class EEPROM : public Storage
 {
@@ -11,16 +10,13 @@ class EEPROM : public Storage
         EEPROM(bool offline, string filePath);
         virtual ~EEPROM();
 
-        void diffBytesWith(EEPROM* last);
-
     protected:
 
     private:
+        const std::string EEPROM_command = "RT:";
         const int EEPROM_row_length = 64; // 64 hex chars in 1 row
         const int EEPROM_rows = 16; // 16 rows for whole EEPROM content
         static int run; // Run number
-
-        string logFilePath;
 };
 
 #endif // EEPROM_H

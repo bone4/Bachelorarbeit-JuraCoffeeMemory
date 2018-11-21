@@ -7,8 +7,28 @@
 #include <sstream> // stringstream
 #include <iomanip> // setw(), leading zeros in int->string
 #include <ctime>
+#include <vector>
 
 using namespace std;
+
+// A Dump consists of a timestamp, comment, raw-data at begin and raw-data at the end
+struct dump {
+    string timestamp;
+    string comment;
+    string rawOld;
+    string rawNew;
+    dump(string t, string c, string rOld, string rNew) :
+        timestamp(t), comment(c), rawOld(rOld), rawNew(rNew)
+        {}
+};
+// A data entry has an index byte number and a list of comments
+struct data {
+    int byte;
+    vector<string> comments;
+    data(int b, vector<string> c) :
+        byte(b), comments(c)
+        {}
+};
 
 class JsonFile
 {
@@ -18,8 +38,13 @@ class JsonFile
 
         virtual ~JsonFile();
 
-        void eepromData(string filePath, int i, string s);
-        void eepromLog(string filePath, string rawOld, string rawNew, string comment);
+        Json::Value readJson(string filePath);
+
+        void logData(string filePath, int i, string s);
+        void logRawData(string filePath, string rawOld, string rawNew, string comment);
+
+        vector<dump> getDumps();
+        vector<data> getData();
 
     protected:
 
@@ -32,9 +57,8 @@ class JsonFile
         // Assignment operator forbidden
         JsonFile operator=(JsonFile& other);
 
-        ifstream jsonFileStreamReadEEPROM;
         Json::Reader reader;
-        Json::Value eepromJson;
+        Json::Value jsonObj;
         Json::StyledStreamWriter styledStream;
 
         void saveChanges(string filePath);

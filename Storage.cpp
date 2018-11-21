@@ -2,11 +2,16 @@
 
 using namespace std;
 
-Storage::Storage(string c, int l) :
-    command(c),
-    length(c.size() + l) // response = command + data
-{
+Storage::Storage() {
     //ctor
+}
+
+void Storage::setParams(string cmd, int row_length, int rows, string filePath) {
+    command = cmd;
+    storage_row_length = row_length;
+    storage_rows = rows;
+    length = cmd.size() + row_length;
+    logFilePath = filePath;
 }
 
 Storage::~Storage()
@@ -88,6 +93,22 @@ void Storage::hexString2int(string src, vector<int> &target) {
 */
 }
 
+void Storage::readStorage() {
+    // Optimize and search at the right place: RE:xx
+/*
+    readStorage(0);
+    readStorage(16);
+    readStorage(32);
+    readStorage(48);
+*/
+    cout << "Scanning";
+    for (int i = 0; i < 256; i+=storage_rows) { // from 0x00 to 0xFF
+        cout << "." << flush;
+        readStorage(i);
+    }
+    cout << endl;
+}
+
 void Storage::readStorage(int i) {
     SerialConnection& s = SerialConnection::getInstance();
 
@@ -129,6 +150,48 @@ void Storage::readStorage(int i) {
 
     f.close();
 */
+}
+
+void Storage::diffBytesWith(Storage* last, vector<int> excludeBytes, bool writeIntoJsonFile) {
+    JsonFile& jf = JsonFile::getInstance();
+
+    bool hit = false;
+
+    std::string note;
+    if (writeIntoJsonFile) {
+        cout << "Say what you've changed: ";
+        getline(cin, note);
+    }
+
+    auto first = last->bytes.begin();
+    auto second = this->bytes.begin();
+    for (int i = 0; i < (storage_rows*storage_row_length/2); i++) { // rows * (colums/2), 2 hex = 1 Byte
+        // int i is not in the array of excudeBytes[]! (after find, the iterator is at the end)
+        if (find(excludeBytes.begin(), excludeBytes.end(), i) == excludeBytes.end()) {
+            // difference between last and this at position i detected
+            if (*(first+i) != *(second+i)) {
+                // difference detected
+                hit = true;
+                cout << "old value: " << *(first+i) << "\t new value:" << *(second+i) << "\t at position: " << i;
+                printf(" / %02X", i);
+                int group = floor(i/2);
+                cout << "\t in 2 byte word no.: " << group;
+                printf(" / %02X\n", group);
+
+                if (writeIntoJsonFile) {
+                    stringstream info;
+                    info << *(first+i) << " -> " << *(second+i) << ": " << note;
+                    jf.logData(logFilePath, i, info.str());
+                    jf.logRawData(logFilePath, last->getRawData(), this->getRawData(), note);
+                }
+            }
+        }
+    }
+    if (!hit) {
+        cout << "Sorry, no Bytes are changed ;(" << endl;
+        last->printByteVectorShort();
+        this->printByteVectorShort();
+    }
 }
 
 string Storage::removeSpecialCharFromString(string& txt) {

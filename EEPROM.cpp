@@ -4,27 +4,15 @@ using namespace std;
 
 int EEPROM::run = 0;
 
-EEPROM::EEPROM(bool offline, string filePath) :
-    Storage("RT:", EEPROM_row_length), // read 1 row EEPROM wich consits of 64 hex chars
-    logFilePath(filePath)
+EEPROM::EEPROM(bool offline, string filePath)
 {
     //ctor
+    setParams(EEPROM_command, EEPROM_row_length, EEPROM_rows, filePath); // read 1 row EEPROM wich consits of 64 hex chars
+
     work_offline = offline;
 
     if (!work_offline) { // ONLINE
-        // Optimize and search at the right place: RE:xx
-/*
-        readStorage(0);
-        readStorage(16);
-        readStorage(32);
-        readStorage(48);
-*/
-        cout << "Scanning";
-        for (int i = 0; i < 256; i+=EEPROM_rows) {
-            cout << "." << flush;
-            readStorage(i);
-        }
-        cout << endl;
+        readStorage();
     } else { // OFFLINE
         run+=1;
         cout << endl << "Run: " << run << endl;
@@ -55,54 +43,12 @@ EEPROM::EEPROM(bool offline, string filePath) :
 
 
 
-
-
-
-
     for (auto &row : raw) {
         hexString2int(row, bytes);
     }
-
-
-
-
 }
 
 EEPROM::~EEPROM()
 {
     //dtor
-}
-
-void EEPROM::diffBytesWith(EEPROM* last) {
-    JsonFile& jf = JsonFile::getInstance();
-
-    bool hit = false;
-
-    cout << "Say what you've changed: ";
-    std::string note;
-    getline(cin, note);
-
-    auto first = last->bytes.begin();
-    auto second = this->bytes.begin();
-    for (int i = 0; i < (EEPROM_rows*EEPROM_row_length/2); i++) { // rows * (colums/2), 2 hex = 1 Byte
-        if (*(first+i) != *(second+i)) {
-            // difference detected
-            hit = true;
-            cout << "old value: " << *(first+i) << "\t new value:" << *(second+i) << "\t at position: " << i;
-            printf(" / %02X", i);
-            int group = floor(i/2);
-            cout << "\t in 2 byte word no.: " << group;
-            printf(" / %02X\n", group);
-
-            stringstream info;
-            info << *(first+i) << " -> " << *(second+i) << ": " << note;
-            jf.eepromData(logFilePath, i, info.str());
-            jf.eepromLog(logFilePath, last->getRawData(), this->getRawData(), note);
-        }
-    }
-    if (!hit) {
-        cout << "Sorry, no Bytes are changed ;(" << endl;
-        last->printByteVectorShort();
-        this->printByteVectorShort();
-    }
 }
