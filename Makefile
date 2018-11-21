@@ -1,6 +1,6 @@
 CC      = g++
 CFLAGS  = -Wall -Wextra
-LDFLAGS = -lserial -lpthread -ljsoncpp
+LDFLAGS = -lserial -lpthread -ljsoncpp -lstdc++fs
 
 OBJS = EEPROM.o JsonFile.o RAM.o SerialConnection.o Storage.o
 
