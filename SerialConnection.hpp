@@ -3,6 +3,10 @@
 
 #include <iostream>
 #include <string>
+
+#include <signal.h>
+#include <unistd.h> // alarm()
+
 #include <SerialStream.h> // to communicate with a serial device
 #include <algorithm>    /* std::remove() */
 

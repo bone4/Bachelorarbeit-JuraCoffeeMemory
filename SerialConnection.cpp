@@ -68,9 +68,6 @@ void SerialConnection::connect() {
     }
 
     if (!testConnection()) {
-        std::cerr << "[" << __FILE__ << ":" << __LINE__ << "] "
-            << "Test command failed, try:" << std::endl
-            << "$ screen " << getPort() << " 9600" << std::endl;
         exit(5);
     }
 }
@@ -85,6 +82,7 @@ bool SerialConnection::testConnection() {
     string answer = receive();
 
     if (testAnswer != answer) {
+        cerr << "[" << __FILE__ << ":" << __LINE__ << "] Test command failed:" << endl;
         cerr << answer << endl << "is not" << endl << testAnswer << endl;
         return false;
     } else {
@@ -109,22 +107,34 @@ void SerialConnection::send(string txt) {
     serial_stream << removeSpecialCharFromString(txt) << commandSuffix;
 }
 
+void ALARMhandler(int sig) {
+    (void)sig;
+
+    SerialConnection& s = SerialConnection::getInstance();
+
+    cerr << "[" << __FILE__ << ":" << __LINE__ << "] "
+         << "Timeout: No response within 3 seconds. If the last command was right, try:" << endl
+         << "$ screen " << s.getPort() << " 9600" << endl
+         << "or run this script again." << endl;
+    exit(2);
+}
+
 string SerialConnection::receive() {
     // Wait max 3 secounds
     alarm(3);
+    signal(SIGALRM, ALARMhandler);
 
     // Receive data
     string input_string;
-    std::getline(serial_stream, input_string);
+    getline(serial_stream, input_string);
 
     // Cancel alarm
     alarm(0);
 
-    return input_string;
-
 //    serial_stream.read( input_buffer,
 //                        BUFFER_SIZE ) ;
 //    return input_buffer;
+    return input_string;
 }
 
 string SerialConnection::removeSpecialCharFromString(string& txt) {
