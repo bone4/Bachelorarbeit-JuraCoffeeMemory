@@ -1,0 +1,65 @@
+{
+	"2018-11-23 17-26-43" : 
+	{
+		"comment" : "Display \"rinse unit\", started rinsing",
+		"rawNew" : "00027B5404E00000000A00001304005C00000A0A00000302000003802901020039AD0000000000191005040505020000000008000000001A041B0B1B0000002000000000010000000000400001000001000800000000000010000000000002000290028E0000030A40014830380000000000161C1064003400000400050000000077000000008000012C003B0000FE000696000006C301DA000200000D95007100382400000F00E6010A01BE022217D40BEA0898073A05DC044C03E8000000000010000000000C1403C00000001E000000DC00B406720640019050321000080480A0645D285F080D02000400069700000157030000083224001B00090B2708F9",
+		"rawOld" : "0002081404E0000000A300090F00005800000A0000000300000003801002030E0F7900000000001A1506050600010300000008000000000000000000000000200000000001000000000000000100000100080000000000001000000000000200029000EB000006073101383038000000000000000000000000000400980000000077000000008000011B00000000FE000695000006E001D700020000070E007100380300000F00E6010A01BE022217D40BEA0898073A05DC044C03E8000000000010000000000C1403C00000001E000000DC00B406720640019050321000080480A0645D285F080D02000400069700000000030000083224001B00000B030573"
+	},
+	"2018-11-23 17-27-21" : 
+	{
+		"comment" : "rinsing finished, display \"coffee ready\"",
+		"rawNew" : "00027F0404E0000000D500090700005600000A0000000300000003001F04000C2F6F0000000000191605050501010300000008000000000000000000A200002000D300A201000000000040000100000100080000000000001000000000000200029000ED00000401320106301400000000A2000000A200A200000400830000000077000000008000012C00A20000FE000695000006F301E50002000030EE007100381200000F00E6010A01BE022217D40BEA0898073A05DC044C03E8000000000010000000000C1403C00000001E000000DC00B406720640019050321000080480A0645D285F080D0200040006970000013F030000093224001B00000B6E0445",
+		"rawOld" : "00027B5404E00000000A00001304005C00000A0A00000302000003802901020039AD0000000000191005040505020000000008000000001A041B0B1B0000002000000000010000000000400001000001000800000000000010000000000002000290028E0000030A40014830380000000000161C1064003400000400050000000077000000008000012C003B0000FE000696000006C301DA000200000D95007100382400000F00E6010A01BE022217D40BEA0898073A05DC044C03E8000000000010000000000C1403C00000001E000000DC00B406720640019050321000080480A0645D285F080D02000400069700000157030000083224001B00090B2708F9"
+	},
+	"2018-11-23 17-27-43" : 
+	{
+		"comment" : "nothing",
+		"rawNew" : "00027F0404E0000000D600090200005600000A0000000300000003000F0304141FD80000000000190C05030504010200000008000000000000000000A2000020008600A201000000000040000100000100080000000000001000000000000200029000ED0000020131010D301400000000000000000000A200000400090000000077000000008000012C00A20000FE000696000006E101E90002000006BB007100381A00000F00E6010A01BE022217D40BEA0898073A05DC044C03E8000000000010000000000C1403C00000001E000000DC00B406720640019050321000080480A0645D285F080D020004000697000000F2030000093224001B00000BBA0018",
+		"rawOld" : "00027F0404E0000000D500090700005600000A0000000300000003001F04000C2F6F0000000000191605050501010300000008000000000000000000A200002000D300A201000000000040000100000100080000000000001000000000000200029000ED00000401320106301400000000A2000000A200A200000400830000000077000000008000012C00A20000FE000695000006F301E50002000030EE007100381200000F00E6010A01BE022217D40BEA0898073A05DC044C03E8000000000010000000000C1403C00000001E000000DC00B406720640019050321000080480A0645D285F080D0200040006970000013F030000093224001B00000B6E0445"
+	},
+	"data" : 
+	{
+		"001" : "",
+		"002" : "",
+		"003" : "20 -> 84: Display \"rinse unit\", started rinsing###84 -> 4: rinsing finished, display \"coffee ready\"###",
+		"011" : "9 -> 0: Display \"rinse unit\", started rinsing###0 -> 9: rinsing finished, display \"coffee ready\"###",
+		"013" : "0 -> 4: Display \"rinse unit\", started rinsing###4 -> 0: rinsing finished, display \"coffee ready\"###",
+		"015" : "88 -> 92: Display \"rinse unit\", started rinsing###92 -> 86: rinsing finished, display \"coffee ready\"###",
+		"019" : "0 -> 10: Display \"rinse unit\", started rinsing###10 -> 0: rinsing finished, display \"coffee ready\"###",
+		"023" : "0 -> 2: Display \"rinse unit\", started rinsing###2 -> 0: rinsing finished, display \"coffee ready\"###",
+		"027" : "128 -> 0: rinsing finished, display \"coffee ready\"###",
+		"041" : "6 -> 5: Display \"rinse unit\", started rinsing###",
+		"043" : "6 -> 5: Display \"rinse unit\", started rinsing###",
+		"045" : "1 -> 2: Display \"rinse unit\", started rinsing###2 -> 1: rinsing finished, display \"coffee ready\"###",
+		"055" : "0 -> 26: Display \"rinse unit\", started rinsing###26 -> 0: rinsing finished, display \"coffee ready\"###",
+		"056" : "0 -> 4: Display \"rinse unit\", started rinsing###4 -> 0: rinsing finished, display \"coffee ready\"###",
+		"057" : "0 -> 27: Display \"rinse unit\", started rinsing###27 -> 0: rinsing finished, display \"coffee ready\"###",
+		"058" : "0 -> 11: Display \"rinse unit\", started rinsing###11 -> 0: rinsing finished, display \"coffee ready\"###",
+		"059" : "0 -> 27: Display \"rinse unit\", started rinsing###27 -> 0: rinsing finished, display \"coffee ready\"###",
+		"060" : "0 -> 162: rinsing finished, display \"coffee ready\"###",
+		"067" : "0 -> 162: rinsing finished, display \"coffee ready\"###",
+		"074" : "0 -> 64: Display \"rinse unit\", started rinsing###",
+		"098" : "0 -> 2: Display \"rinse unit\", started rinsing###2 -> 0: rinsing finished, display \"coffee ready\"###",
+		"099" : "235 -> 142: Display \"rinse unit\", started rinsing###142 -> 237: rinsing finished, display \"coffee ready\"###",
+		"104" : "49 -> 64: Display \"rinse unit\", started rinsing###64 -> 50: rinsing finished, display \"coffee ready\"###50 -> 49: nothing###",
+		"113" : "0 -> 162: rinsing finished, display \"coffee ready\"###162 -> 0: nothing###",
+		"114" : "0 -> 22: Display \"rinse unit\", started rinsing###22 -> 0: rinsing finished, display \"coffee ready\"###",
+		"115" : "0 -> 28: Display \"rinse unit\", started rinsing###28 -> 0: rinsing finished, display \"coffee ready\"###",
+		"116" : "0 -> 16: Display \"rinse unit\", started rinsing###16 -> 0: rinsing finished, display \"coffee ready\"###",
+		"117" : "0 -> 100: Display \"rinse unit\", started rinsing###100 -> 162: rinsing finished, display \"coffee ready\"###162 -> 0: nothing###",
+		"119" : "0 -> 52: Display \"rinse unit\", started rinsing###52 -> 162: rinsing finished, display \"coffee ready\"###",
+		"137" : "27 -> 44: Display \"rinse unit\", started rinsing###",
+		"139" : "0 -> 59: Display \"rinse unit\", started rinsing###59 -> 162: rinsing finished, display \"coffee ready\"###",
+		"145" : "149 -> 150: Display \"rinse unit\", started rinsing###150 -> 149: rinsing finished, display \"coffee ready\"###149 -> 150: nothing###",
+		"240" : "0 -> 1: Display \"rinse unit\", started rinsing###1 -> 0: nothing###",
+		"245" : "8 -> 9: rinsing finished, display \"coffee ready\"###",
+		"251" : "0 -> 9: Display \"rinse unit\", started rinsing###9 -> 0: rinsing finished, display \"coffee ready\"###",
+		"255" : ""
+	},
+	"timestamp" : 
+	{
+		"comment" : "",
+		"rawNew" : "",
+		"rawOld" : ""
+	}
+}
