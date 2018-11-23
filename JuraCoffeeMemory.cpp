@@ -105,24 +105,28 @@ void ram(string& ramPath) {
 }
 
 void DisplayMainMenu() {
-    cout << "Main Menu\n";
-    cout << "Please make your selection\n";
-    cout << "1 - EEPROM\n";
-    cout << "2 - Ram\n";
-    cout << "3 - Send a command\n";
-    cout << "4 - Quit\n";
-    cout << "9 - Options\n";
-    cout << "0 - Analyse existing dumps\n";
-    cout << "Q / q / quit / exit - To leave\n";
-    cout << "Selection: ";
+    cout << "Main Menu" << endl
+         << "Please make your selection" << endl
+         << "1 - EEPROM Skript" << endl
+         << "2 - Ram Skript" << endl
+         << "3 - " << endl
+         << "4 - Send a command" << endl
+         << "5 - " << endl
+         << "6 - Dump EEPROM" << endl
+         << "7 - Dump RAM" << endl
+         << "8 - " << endl
+         << "9 - Options" << endl
+         << "0 - Analyse existing dumps" << endl
+         << "Q / q / quit / exit - To leave" << endl
+         << "Selection: ";
 }
 void DisplayOptionsMenu(string& devicePath, string& eepromPath, string& ramPath) {
-    cout << "Options Menu\n";
-    cout << "1 - Device path (" << devicePath << ")\n";
-    cout << "2 - EEPROM log file path (" << eepromPath << ")\n";
-    cout << "3 - Ram log file path (" << ramPath << ")\n";
-    cout << "4 - Back\n";
-    cout << "Selection: ";
+    cout << "Options Menu" << endl
+         << "1 - Device path (" << devicePath << ")" << endl
+         << "2 - EEPROM log file path (" << eepromPath << ")" << endl
+         << "3 - Ram log file path (" << ramPath << ")" << endl
+         << "4 - Back" << endl
+         << "Enter the number or <Q> to quit: ";
 }
 void AnalyseFileDumpsMenu(string filename) {
     // load JSON file
@@ -262,10 +266,11 @@ void OptionsMenu(string& devicePath, string& eepromPath, string& ramPath) {
             cout << "Ram log file path: ";
             getline(cin, ramPath);
         }
-    } while(choice!="4");
+    } while(choice!="4" && choice == "Q" && choice == "q" && choice == "quit" && choice == "exit");
 }
 void MainMenu(string& devicePath, string& path, string eepromPath, string ramPath) {
     string choice = "";
+    string input; // input in a sub menu
     do {
         system("clear");
         DisplayMainMenu();
@@ -274,11 +279,9 @@ void MainMenu(string& devicePath, string& path, string eepromPath, string ramPat
             eeprom(eepromPath);
         } else if (choice == "2") { // RAM
             ram(ramPath);
-        } else if (choice == "3") {
+        } else if (choice == "4") { // Commands
             SerialConnection& s = SerialConnection::getInstance();
             s.connect();
-
-            string input;
 
             while (true) {
                cout << endl << "Enter a command to the coffee maschine or <Q> to quit: ";
@@ -294,12 +297,46 @@ void MainMenu(string& devicePath, string& path, string eepromPath, string ramPat
             }
 
             s.disconnect();
+        } else if (choice == "6") { // Dump EEPROM
+            SerialConnection& s = SerialConnection::getInstance();
+            s.connect();
+
+            while (true) {
+                EEPROM* newEEPROM = new EEPROM(OFFLINE, eepromPath);
+                newEEPROM->printRawVector();
+                delete newEEPROM;
+
+                cout << endl << "Hit <Enter> for a new EEPROM dump or press <Q> to quit: ";
+                getline(cin, input);
+                if (input == "Q" || input == "q" || input == "quit" || input == "exit") {
+                    break;
+                }
+            }
+
+            s.disconnect();
+        } else if (choice == "7") { // Dump RAM
+            SerialConnection& s = SerialConnection::getInstance();
+            s.connect();
+
+            while (true) {
+                RAM* newRAM = new RAM(OFFLINE, ramPath);
+                newRAM->printRawVector();
+                delete newRAM;
+
+                cout << endl << "Hit <Enter> for a new RAM dump or press <Q> to quit: ";
+                getline(cin, input);
+                if (input == "Q" || input == "q" || input == "quit" || input == "exit") {
+                    break;
+                }
+            }
+
+            s.disconnect();
         } else if (choice == "9") { // Options
             OptionsMenu(devicePath, eepromPath, ramPath);
         } else if (choice == "0") { // Analyse existing dumps
             AnalyseFilesMenu(path);
         }
-    } while(choice!="4" && choice!="Q" && choice!="q" && choice!="quit" && choice!="exit");
+    } while(choice!="Q" && choice!="q" && choice!="quit" && choice!="exit");
     cout << "Bye." << endl;
 }
 

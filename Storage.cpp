@@ -189,7 +189,7 @@ void Storage::diffBytesWith(Storage* last, vector<int> excludeBytes, bool writeI
     }
     if (!hit) {
         cout << "Sorry, no Bytes are changed ;(" << endl;
-        last->printByteVectorShort();
+        //last->printByteVectorShort();
         this->printByteVectorShort();
     }
 }
