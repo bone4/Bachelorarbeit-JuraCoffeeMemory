@@ -6,10 +6,11 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <unistd.h>
+#include <unistd.h>     /* usleep() */
 #include <iomanip>
 #include <math.h>       /* floor */
 #include <algorithm>    /* std::remove(), std::find() */
+#include <sys/ioctl.h>  /* Terminal settings: ioctl() */
 #include "SerialConnection.hpp"
 #include "JsonFile.hpp"
 
@@ -40,6 +41,8 @@ class Storage
         void diffBytesWith(Storage* last, vector<int> excludeBytes = vector<int>(), bool writeIntoJsonFile = true);
 
     protected:
+        // This function prints the progress bar for the real reading and the offline reading (EEPROM or RAM)
+        void progressBar(int num, int end, std::string txt);
 
     private:
         std::string command;

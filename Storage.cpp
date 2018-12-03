@@ -101,12 +101,12 @@ void Storage::readStorage() {
     readStorage(32);
     readStorage(48);
 */
-    cout << "Scanning";
-    for (int i = 0; i < 256; i+=storage_rows) { // from 0x00 to 0xFF
-        cout << "." << flush;
+    int ende = 256; int i;
+    for (i = 0; i < ende; i+=storage_rows) { // from 0x00 to 0xFF
+        progressBar(i, ende, "Scanning");
         readStorage(i);
     }
-    cout << endl;
+    progressBar(i, ende, "Scanning");
 }
 
 void Storage::readStorage(int i) {
@@ -199,4 +199,23 @@ string Storage::removeSpecialCharFromString(string& txt) {
     txt.erase( remove(txt.begin(), txt.end(), '\r'), txt.end() );
     txt.erase( remove(txt.begin(), txt.end(), '\n'), txt.end() );
     return txt;
+}
+
+void Storage::progressBar(int num, int ende, std::string txt){
+	struct winsize w;
+	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+	int width = w.ws_col; // Zeilen: w.ws_row; Spalten: w.ws_col
+	width -= 8; // konstanter Text, sowie die Prozentausgabe
+	width -= txt.length(); // Text
+
+	float progress = (float)num / (float)ende;
+
+	cout << "\r" << txt << " [";
+	for (float i=1; i<=width; i++) {
+		if ((i/width) <= progress) cout << "#";
+		else cout << "-";
+	}
+	int progress_percent = (int)(progress*100);
+	cout << "] " << progress_percent << "%" << flush;
+//	cout << "\r" << num << " / " << end << " = " << progress_percent << flush;
 }
