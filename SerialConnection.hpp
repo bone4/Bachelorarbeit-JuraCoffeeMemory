@@ -9,6 +9,7 @@
 
 #include <SerialStream.h> // to communicate with a serial device
 #include <algorithm>    /* std::remove() */
+#include "color-definitions.h"
 
 using namespace std;
 

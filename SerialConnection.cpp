@@ -45,9 +45,11 @@ void SerialConnection::connect() {
     // Open the hardware serial stream.
     serial_stream.Open( serialPort );
     if (!serial_stream.good()) {
-        std::cerr << "[" << __FILE__ << ":" << __LINE__ << "] "
-            << "Error: Could not open serial port: "
+        std::cerr << COLOR_BG_red << "[" << __FILE__ << ":" << __LINE__ << "]" << COLOR_reset
+            << COLOR_FG_red
+            << " Error: Could not open serial port: "
             << serialPort
+            << COLOR_reset
             << std::endl;
         exit(3);
     }
@@ -61,8 +63,10 @@ void SerialConnection::connect() {
     serial_stream.SetVMin(BUFFER_SIZE);
     serial_stream.SetVTime(1);
     if (!serial_stream.good()) {
-        std::cerr << "[" << __FILE__ << ":" << __LINE__ << "] "
-            << "Error: Could not configure serial port."
+        std::cerr << COLOR_BG_red << "[" << __FILE__ << ":" << __LINE__ << "]" << COLOR_reset
+            << COLOR_FG_red
+            << " Error: Could not configure serial port."
+            << COLOR_reset
             << std::endl;
         exit(4);
     }
@@ -82,8 +86,10 @@ bool SerialConnection::testConnection() {
     string answer = receive();
 
     if (testAnswer != answer) {
-        cerr << "[" << __FILE__ << ":" << __LINE__ << "] Test command failed:" << endl;
-        cerr << answer << endl << "is not" << endl << testAnswer << endl;
+        cerr << COLOR_BG_red << "[" << __FILE__ << ":" << __LINE__ << "] Test command failed:" << COLOR_reset << endl;
+        cerr << COLOR_FG_red << answer << COLOR_reset << endl
+             << COLOR_BG_red << "is not" << COLOR_reset << endl
+             << COLOR_FG_red << testAnswer << COLOR_reset << endl;
         return false;
     } else {
         return true;
@@ -112,10 +118,10 @@ void ALARMhandler(int sig) {
 
     SerialConnection& s = SerialConnection::getInstance();
 
-    cerr << "[" << __FILE__ << ":" << __LINE__ << "] "
-         << "Timeout: No response within 3 seconds. If the last command was right, try:" << endl
-         << "$ screen " << s.getPort() << " 9600" << endl
-         << "or run this script again." << endl;
+    cerr << COLOR_BG_red << "[" << __FILE__ << ":" << __LINE__ << "]" << COLOR_reset
+         << COLOR_FG_red << "Timeout: No response within 3 seconds. If the last command was right, try:" << COLOR_reset << endl
+         << "$ " << COLOR_FG_blue << "screen " << s.getPort() << " 9600" << COLOR_reset << endl
+         << COLOR_FG_red << "or run this script again." << COLOR_reset << endl;
     exit(2);
 }
 
