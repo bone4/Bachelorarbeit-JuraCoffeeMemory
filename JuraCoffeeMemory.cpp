@@ -18,10 +18,11 @@ namespace fs = std::experimental::filesystem;
 #include <sstream>
 
 #define OFFLINE false
+// #define OFFLINE true
 
 void eeprom(string& eepromPath) {
     SerialConnection& s = SerialConnection::getInstance();
-    s.connect();
+    if (!OFFLINE) s.connect();
 
     string input;
 
@@ -42,9 +43,10 @@ void eeprom(string& eepromPath) {
             //cout << "Anzahl an Bytes: " << oldEEPROM->bytes.size() << endl;
         } else {
             if (input.length() > 1) {
-                s.send(input);
-                string resp = s.receive();
-                cout << resp << endl;
+                if (!OFFLINE) s.send(input);
+                string resp;
+                if (!OFFLINE) resp = s.receive();
+                if (!OFFLINE) cout << resp << endl;
 
                 unsigned int microseconds = 2000000; // corresponds to 2s
                 usleep(microseconds);
@@ -63,7 +65,7 @@ void eeprom(string& eepromPath) {
 
 void ram(string& ramPath) {
     SerialConnection& s = SerialConnection::getInstance();
-    s.connect();
+    if (!OFFLINE) s.connect();
 
     string input;
 
@@ -84,9 +86,10 @@ void ram(string& ramPath) {
             //cout << "Anzahl an Bytes: " << oldRAM->bytes.size() << endl;
         } else {
             if (input.length() > 1) {
-                s.send(input);
-                string resp = s.receive();
-                cout << resp << endl;
+                if (!OFFLINE) s.send(input);
+                string resp;
+                if (!OFFLINE) resp = s.receive();
+                if (!OFFLINE) cout << resp << endl;
 
                 unsigned int microseconds = 2000000; // corresponds to 2s
                 usleep(microseconds);
@@ -175,8 +178,9 @@ void AnalyseFileDumpsMenu(string filename) {
                 sOld->hexString2int(DumpIterator->rawOld, sOld->bytes);
                 sNew->hexString2int(DumpIterator->rawNew, sNew->bytes);
                 // compare the Bytes
-                //vector<int>()
-                vector<int> excludeBytes {2, 9, 12, 28, 29, 30, 31, 32, 33, 39, 40, 42, 44, 46, 65, 102, 103, 106, 108, 112, 124, 148, 149, 151, 156, 157, 162, 241, 252, 253, 254, 255};
+                vector<int> excludeBytes;
+                // Excluded Bytes for the RAM:
+                //vector<int> excludeBytes {2, 9, 12, 28, 29, 30, 31, 32, 33, 39, 40, 42, 44, 46, 65, 102, 103, 106, 108, 112, 124, 148, 149, 151, 156, 157, 162, 241, 252, 253, 254, 255};
                 sNew->diffBytesWith(sOld, excludeBytes, false);
                 // clean up
                 delete sOld;
@@ -281,7 +285,7 @@ void MainMenu(string& devicePath, string& path, string eepromPath, string ramPat
             ram(ramPath);
         } else if (choice == "4") { // Commands
             SerialConnection& s = SerialConnection::getInstance();
-            s.connect();
+            if (!OFFLINE) s.connect();
 
             while (true) {
                cout << endl << "Enter a command to the coffee maschine or <Q> to quit: ";
@@ -290,16 +294,17 @@ void MainMenu(string& devicePath, string& path, string eepromPath, string ramPat
                     break;
                 }
                 if (input.length() > 1) {
-                    s.send(input);
-                    string resp = s.receive();
-                    cout << resp << endl;
+                    if (!OFFLINE) s.send(input);
+                    string resp;
+                    if (!OFFLINE) resp = s.receive();
+                    if (!OFFLINE) cout << resp << endl;
                 }
             }
 
             s.disconnect();
         } else if (choice == "6") { // Dump EEPROM
             SerialConnection& s = SerialConnection::getInstance();
-            s.connect();
+            if (!OFFLINE) s.connect();
 
             while (true) {
                 EEPROM* newEEPROM = new EEPROM(OFFLINE, eepromPath);
@@ -316,7 +321,7 @@ void MainMenu(string& devicePath, string& path, string eepromPath, string ramPat
             s.disconnect();
         } else if (choice == "7") { // Dump RAM
             SerialConnection& s = SerialConnection::getInstance();
-            s.connect();
+            if (!OFFLINE) s.connect();
 
             while (true) {
                 RAM* newRAM = new RAM(OFFLINE, ramPath);
