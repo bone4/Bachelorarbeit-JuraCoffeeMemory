@@ -13,6 +13,7 @@
 #include <sys/ioctl.h>  /* Terminal settings: ioctl() */
 #include "SerialConnection.hpp"
 #include "JsonFile.hpp"
+#include "color-definitions.h"
 
 class Storage
 {

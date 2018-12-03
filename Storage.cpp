@@ -159,7 +159,7 @@ void Storage::diffBytesWith(Storage* last, vector<int> excludeBytes, bool writeI
 
     std::string note;
     if (writeIntoJsonFile) {
-        cout << "Say what you've changed: ";
+        cout << COLOR_FG_green << "Say what you've changed:" << COLOR_reset << " ";
         getline(cin, note);
     }
 

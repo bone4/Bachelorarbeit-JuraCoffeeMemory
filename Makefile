@@ -2,7 +2,7 @@ CC      = g++
 CFLAGS  = -Wall -Wextra
 LDFLAGS = -lserial -lpthread -ljsoncpp -lstdc++fs
 
-OBJS = EEPROM.o JsonFile.o RAM.o SerialConnection.o Storage.o
+OBJS = EEPROM.o JsonFile.o RAM.o SerialConnection.o Storage.o color-definitions.h
 
 .PHONY: clean dist-clean
 
@@ -14,7 +14,7 @@ clean:
 dist-clean: clean
 	rm -f JuraCoffee
 
-%.o: %.cpp
+%.o: %.cpp color-definitions.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 JuraCoffeeMemory: $(OBJS) JuraCoffeeMemory.cpp

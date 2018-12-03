@@ -10,6 +10,7 @@
 #include "RAM.hpp"
 #include "SerialConnection.hpp"
 #include "JsonFile.hpp"
+#include "color-definitions.h"
 
 using namespace std;
 
@@ -29,7 +30,7 @@ void eeprom(string& eepromPath) {
     EEPROM* oldEEPROM = new EEPROM(OFFLINE, eepromPath);
 
     while (true) {
-        cout << endl << "EEPROM: Enter a command to the coffee maschine, press only <Enter> to continue, <S> to print the last dump or <Q> to quit: ";
+        cout << endl << COLOR_FG_green << "EEPROM: Enter a command to the coffee maschine, press only <Enter> to continue, <S> to print the last dump or <Q> to quit:" << COLOR_reset << " ";
         getline(cin, input);
         if (input == "Q" || input == "q" || input == "quit" || input == "exit") {
             cout << "Bye." << endl;
@@ -72,7 +73,7 @@ void ram(string& ramPath) {
     RAM* oldRAM = new RAM(OFFLINE, ramPath);
 
     while (true) {
-        cout << endl << "RAM: Enter a command to the coffee maschine, press only <Enter> to continue, <S> to print the last dump or <Q> to quit: ";
+        cout << endl << COLOR_FG_green << "RAM: Enter a command to the coffee maschine, press only <Enter> to continue, <S> to print the last dump or <Q> to quit:" << COLOR_reset << " ";
         getline(cin, input);
         if (input == "Q" || input == "q" || input == "quit" || input == "exit") {
             cout << "Bye." << endl;
@@ -108,7 +109,8 @@ void ram(string& ramPath) {
 }
 
 void DisplayMainMenu() {
-    cout << "Main Menu" << endl
+    cout << COLOR_BG_blue << "Main Menu" << COLOR_reset << endl
+         << COLOR_FG_blue
          << "Please make your selection" << endl
          << "1 - EEPROM Skript" << endl
          << "2 - Ram Skript" << endl
@@ -121,15 +123,18 @@ void DisplayMainMenu() {
          << "9 - Options" << endl
          << "0 - Analyse existing dumps" << endl
          << "Q / q / quit / exit - To leave" << endl
-         << "Selection: ";
+         << COLOR_reset
+         << COLOR_FG_green << "Selection:" << COLOR_reset << " ";
 }
 void DisplayOptionsMenu(string& devicePath, string& eepromPath, string& ramPath) {
-    cout << "Options Menu" << endl
+    cout << COLOR_BG_blue << "Options Menu" << COLOR_reset << endl
+         << COLOR_FG_blue
          << "1 - Device path (" << devicePath << ")" << endl
          << "2 - EEPROM log file path (" << eepromPath << ")" << endl
          << "3 - Ram log file path (" << ramPath << ")" << endl
          << "4 - Back" << endl
-         << "Enter the number or <Q> to quit: ";
+         << COLOR_reset
+         << COLOR_FG_green "Enter the number or <Q> to quit:" << COLOR_reset << " ";
 }
 void AnalyseFileDumpsMenu(string filename) {
     // load JSON file
@@ -140,7 +145,8 @@ void AnalyseFileDumpsMenu(string filename) {
     while(true) {
         // Output
         system("clear");
-        cout << "Analyse Dumps Menu -> " << filename << endl;
+        cout << COLOR_BG_blue << "Analyse Dumps Menu -> " << COLOR_BG_cyan << filename << COLOR_reset << endl
+             << COLOR_FG_blue;
         cout << "Please select a concrete dump\n";
         // Format Json-"timestamp" data
         int n=0;
@@ -149,8 +155,9 @@ void AnalyseFileDumpsMenu(string filename) {
             cout << to_string(n) << " - " << it->timestamp << ": " << it->comment << endl;
             n++;
         }
+        cout << COLOR_reset;
         while(true) {
-            cout << "Enter the number, <C> to clear or <Q> to quit: ";
+            cout << COLOR_FG_green << "Enter the number, <C> to clear or <Q> to quit:" << COLOR_reset << " ";
             // Input from the user
             getline(cin, choice);
             if (choice == "Q" || choice == "q" || choice == "quit" || choice == "exit") {
@@ -231,10 +238,11 @@ void AnalyseFilesMenu(string& path) {
     while(true) {
         // Output
         system("clear");
-        cout << "Analyse Dumps Menu\n";
-        cout << "Please select a dump file\n";
+        cout << COLOR_BG_blue << "Analyse Dumps Menu" << COLOR_reset << endl;
+        cout << COLOR_FG_blue << "Please select a dump file\n";
         vector<string> FileNames = AnalyseFilesListAll(path);
-        cout << "Enter the number or <Q> to quit: ";
+        cout << COLOR_reset;
+        cout << COLOR_FG_green << "Enter the number or <Q> to quit:" << COLOR_reset << " ";
         // Input from the user
         getline(cin, choice);
         if (choice == "Q" || choice == "q" || choice == "quit" || choice == "exit") {
@@ -259,18 +267,18 @@ void OptionsMenu(string& devicePath, string& eepromPath, string& ramPath) {
         DisplayOptionsMenu(devicePath, eepromPath, ramPath);
         getline(cin, choice);
         if (choice == "1") {
-            cout << "Device path: ";
+            cout << COLOR_FG_magenta << "Device path:" << COLOR_reset << " ";
             getline(cin, devicePath);
             SerialConnection& s = SerialConnection::getInstance();
             s.setPort(devicePath);
         } else if (choice == "2") {
-            cout << "EEPROM log file path: ";
+            cout << COLOR_FG_magenta << "EEPROM log file path:" << COLOR_reset << " ";
             getline(cin, eepromPath);
         } else if (choice == "3") {
-            cout << "Ram log file path: ";
+            cout << COLOR_FG_magenta << "Ram log file path:" << COLOR_reset << " ";
             getline(cin, ramPath);
         }
-    } while(choice!="4" && choice == "Q" && choice == "q" && choice == "quit" && choice == "exit");
+    } while(choice!="4" && choice != "Q" && choice != "q" && choice != "quit" && choice != "exit");
 }
 void MainMenu(string& devicePath, string& path, string eepromPath, string ramPath) {
     string choice = "";
@@ -288,7 +296,7 @@ void MainMenu(string& devicePath, string& path, string eepromPath, string ramPat
             if (!OFFLINE) s.connect();
 
             while (true) {
-               cout << endl << "Enter a command to the coffee maschine or <Q> to quit: ";
+               cout << endl << COLOR_FG_green << "Enter a command to the coffee maschine or <Q> to quit:" << COLOR_reset << " ";
                 getline(cin, input);
                 if (input == "Q" || input == "q" || input == "quit" || input == "exit") {
                     break;
@@ -311,7 +319,7 @@ void MainMenu(string& devicePath, string& path, string eepromPath, string ramPat
                 newEEPROM->printRawVector();
                 delete newEEPROM;
 
-                cout << endl << "Hit <Enter> for a new EEPROM dump or press <Q> to quit: ";
+                cout << endl << COLOR_FG_green << "Hit <Enter> for a new EEPROM dump or press <Q> to quit:" << COLOR_reset << " ";
                 getline(cin, input);
                 if (input == "Q" || input == "q" || input == "quit" || input == "exit") {
                     break;
@@ -328,7 +336,7 @@ void MainMenu(string& devicePath, string& path, string eepromPath, string ramPat
                 newRAM->printRawVector();
                 delete newRAM;
 
-                cout << endl << "Hit <Enter> for a new RAM dump or press <Q> to quit: ";
+                cout << endl << COLOR_FG_green << "Hit <Enter> for a new RAM dump or press <Q> to quit:" << COLOR_reset << " ";
                 getline(cin, input);
                 if (input == "Q" || input == "q" || input == "quit" || input == "exit") {
                     break;
