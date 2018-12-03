@@ -39,7 +39,7 @@ class Storage
         void hexString2int(std::string src, std::vector<int> &target);
         int char2int(char input);
 
-        void diffBytesWith(Storage* last, vector<int> excludeBytes = vector<int>(), bool writeIntoJsonFile = true);
+        void diffBytesWith(Storage* last, vector<int> excludeBytes = vector<int>(), bool writeIntoJsonFile = true, std::string comment="");
 
     protected:
         // This function prints the progress bar for the real reading and the offline reading (EEPROM or RAM)

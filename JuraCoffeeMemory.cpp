@@ -178,8 +178,8 @@ void AnalyseFileDumpsMenu(string filename) {
                 // Create instances with the RAW data
                 Storage* sOld = new Storage;
                 Storage* sNew = new Storage;
-                sOld->setParams("", DumpIterator->rawOld.length()/16, 16, ""); // x,64,16,x = EEPROM
-                sNew->setParams("", DumpIterator->rawNew.length()/16, 16, ""); // x,32,16,x = RAM
+                sOld->setParams("", DumpIterator->rawOld.length()/16, 16, filename); // x,64,16,x = EEPROM
+                sNew->setParams("", DumpIterator->rawNew.length()/16, 16, filename); // x,32,16,x = RAM
                 sOld->raw.push_back(DumpIterator->rawOld);
                 sNew->raw.push_back(DumpIterator->rawNew);
                 sOld->hexString2int(DumpIterator->rawOld, sOld->bytes);
@@ -188,7 +188,7 @@ void AnalyseFileDumpsMenu(string filename) {
                 vector<int> excludeBytes;
                 // Excluded Bytes for the RAM:
                 //vector<int> excludeBytes {2, 9, 12, 28, 29, 30, 31, 32, 33, 39, 40, 42, 44, 46, 65, 102, 103, 106, 108, 112, 124, 148, 149, 151, 156, 157, 162, 241, 252, 253, 254, 255};
-                sNew->diffBytesWith(sOld, excludeBytes, false);
+                sNew->diffBytesWith(sOld, excludeBytes, false, DumpIterator->comment);
                 // clean up
                 delete sOld;
                 delete sNew;

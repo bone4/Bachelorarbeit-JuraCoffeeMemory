@@ -152,15 +152,17 @@ void Storage::readStorage(int i) {
 */
 }
 
-void Storage::diffBytesWith(Storage* last, vector<int> excludeBytes, bool writeIntoJsonFile) {
+void Storage::diffBytesWith(Storage* last, vector<int> excludeBytes, bool writeIntoJsonFile, string comment) {
     JsonFile& jf = JsonFile::getInstance();
 
     bool hit = false;
 
     std::string note;
-    if (writeIntoJsonFile) {
+    if (comment == "") {
         cout << COLOR_FG_green << "Say what you've changed:" << COLOR_reset << " ";
         getline(cin, note);
+    } else {
+        note = comment;
     }
 
     auto first = last->bytes.begin();
@@ -178,11 +180,14 @@ void Storage::diffBytesWith(Storage* last, vector<int> excludeBytes, bool writeI
                 cout << "\t in 2 byte word no.: " << group;
                 printf(" / %02X\n", group);
 
+                stringstream info;
+                info << *(first+i) << " -> " << *(second+i) << ": " << note;
                 if (writeIntoJsonFile) {
-                    stringstream info;
-                    info << *(first+i) << " -> " << *(second+i) << ": " << note;
                     jf.logData(logFilePath, i, info.str());
                     jf.logRawData(logFilePath, last->getRawData(), this->getRawData(), note);
+                } else {
+                    // Write the evaluation to the end of the JSON files (-> data)
+                    //jf.logData(logFilePath, i, info.str());
                 }
             }
         }
