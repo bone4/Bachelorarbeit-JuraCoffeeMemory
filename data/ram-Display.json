@@ -59,8 +59,7 @@
 		"104" : "49 -> 48: Display Zeile 1: \"XXXXXXXX\" -> \"TRY AND   \"###48 -> 49: q###49 -> 48: nothing###49 -> 48: Display geändert ohne sichtbare Änderung2###49 -> 48: Display Text Zeile 1 von ABCDEFGH auf AAAAAAAAAAA geändert###",
 		"107" : "48 -> 49: Display Zeile 1 geändert auf I LOVE###49 -> 48: Display Zeile 2 geändert auf TURAU###49 -> 48: q###49 -> 48: Display Text Zeile 1 von ABCDEFGH auf AAAAAAAAAAA geändert###",
 		"137" : "218 -> 217: Display Zeile 1: \"XXXXXXXX\" -> \"TRY AND   \"###39 -> 38: Display Zeile 1 geändert auf I LOVE###38 -> 37: Display Zeile 2 geändert auf TURAU###36 -> 35: Display geändert ohne sichtbare Änderung###35 -> 34: Display geändert ohne sichtbare Änderung2###43 -> 42: Display Text Zeile 1 von ABCDEFGH auf AAAAAAAAAAA geändert###",
-		"145" : "150 -> 149: q###149 -> 150: Display geändert ohne sichtbare Änderung###151 -> 152: Display Text Zeile 1 von ABCDEFGH auf AAAAAAAAAAA geändert###",
-		"255" : ""
+		"145" : "150 -> 149: q###149 -> 150: Display geändert ohne sichtbare Änderung###151 -> 152: Display Text Zeile 1 von ABCDEFGH auf AAAAAAAAAAA geändert###"
 	},
 	"timestamp" : 
 	{

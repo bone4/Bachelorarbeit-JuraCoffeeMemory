@@ -90,8 +90,7 @@
 		"138" : "23 -> 24: started steam portion###",
 		"139" : "222 -> 240: started steam portion###240 -> 245: finished steam portion###245 -> 6: started steam portion###6 -> 12: finished steam portion###12 -> 30: started steam portion###30 -> 36: finished steam portion###",
 		"145" : "149 -> 150: nothing###150 -> 149: nothing###149 -> 150: started steam portion###150 -> 149: finished steam portion###149 -> 150: nothing###150 -> 149: started steam portion###149 -> 150: finished steam portion###150 -> 149: nothing###",
-		"240" : "0 -> 1: started steam portion###",
-		"255" : ""
+		"240" : "0 -> 1: started steam portion###"
 	},
 	"timestamp" : 
 	{

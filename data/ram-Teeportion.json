@@ -60,8 +60,7 @@
 		"137" : "43 -> 44: finished tea portion, close tap###44 -> 43: closed tap###",
 		"139" : "71 -> 133: started tea portion###133 -> 222: finished tea portion, close tap###",
 		"145" : "150 -> 149: started tea portion###149 -> 150: closed tap###150 -> 149: nothing###",
-		"240" : "1 -> 0: nothing###",
-		"255" : ""
+		"240" : "1 -> 0: nothing###"
 	},
 	"timestamp" : 
 	{
