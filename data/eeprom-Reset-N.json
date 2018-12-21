@@ -1,0 +1,29 @@
+{
+	"2018-12-07 19-19-57" : 
+	{
+		"comment" : "Reset: Kaffee bereit -> [N], u.d.V. dass alle Einstellungen schön verstellt waren, wurden diese auf die ursprünglich eingestellten Standardwerte zurückgestellt (Pulvermenge, Temp. Kaffee, Wassermenge. Dampfportion, Teeportion)",
+		"rawNew" : "000700060028000500430003001B004000010000000000010008002F000000330081001A0000000001B8009800000000000000000000000100080000000000000000000000000000040180000A0A00710038000000000C1400000697000000000000000100000000000003C00000001E000000DC080480A00414012C00640276000F00E6010A01BE0222073A08980BEA17D403E8044C05DC0BEA070807D00BB8645D285F050502BC080D1000004C00B43C00371E015050320190057802580000000000000000000000000000000000000000000000003C781E0F08050A004B00017C00060200000000080000050A0672064001900200017C009D007D0000000002410000050508080B0B000000B40154017C00B40154017C000C0672083406D6101A121100BE06060A060640076C06720226028A0384089809C40BB8177002BC3C0A0404040414063C040000010005053214140AF014000000000000000000000300000F32240028070803E801F4012C000020050014141401C201C203E800001234000000000000000000000000000000000000000000000000000000000000F00E7800463C040B0000001E00C8012C0190019000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+		"rawOld" : "000700060028000500430003001B004000010000000000010008002F000000330081001A0000000001B8009800000000000000000000000100080000000000000000000000000000040180000A0A00710038000000000C1400000697000000000000000100000000000003C00000001E000000DC080480A00414012C00640276000F00E6010A01BE0222073A08980BEA17D403E8044C05DC0BEA070807D00BB8645D285F050502BC080D1000004C00B43C00371E015050320190057802580000000000000000000000000000000000000000000000003C781E0F08050A004B00017C00060200000000080000050A0672064001900200017C009D007D0000000002410000050008000B00000000640064006400B40154017C000C0672083406D6101A121100BE06060A060640076C06720226028A0384089809C40BB8177002BC3C0A0404040414063C040000010005053214140AF014000000000000000000000300000F32240028070803E801F4012C000020050014141401C201C203E800001234000000000000000000000000000000000000000000000000000000000000F00E7800463C040B0000001E00C8012C0190019000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+	},
+	"data" : 
+	{
+		"001" : "",
+		"002" : "",
+		"003" : "",
+		"255" : "",
+		"261" : "0 -> 5: Reset: Kaffee bereit -> [N], u.d.V. dass alle Einstellungen schön verstellt waren, wurden diese auf die ursprünglich eingestellten Standardwerte zurückgestellt (Pulvermenge, Temp. Kaffee, Wassermenge. Dampfportion, Teeportion)###",
+		"263" : "0 -> 8: Reset: Kaffee bereit -> [N], u.d.V. dass alle Einstellungen schön verstellt waren, wurden diese auf die ursprünglich eingestellten Standardwerte zurückgestellt (Pulvermenge, Temp. Kaffee, Wassermenge. Dampfportion, Teeportion)###",
+		"265" : "0 -> 11: Reset: Kaffee bereit -> [N], u.d.V. dass alle Einstellungen schön verstellt waren, wurden diese auf die ursprünglich eingestellten Standardwerte zurückgestellt (Pulvermenge, Temp. Kaffee, Wassermenge. Dampfportion, Teeportion)###",
+		"269" : "100 -> 180: Reset: Kaffee bereit -> [N], u.d.V. dass alle Einstellungen schön verstellt waren, wurden diese auf die ursprünglich eingestellten Standardwerte zurückgestellt (Pulvermenge, Temp. Kaffee, Wassermenge. Dampfportion, Teeportion)###",
+		"270" : "0 -> 1: Reset: Kaffee bereit -> [N], u.d.V. dass alle Einstellungen schön verstellt waren, wurden diese auf die ursprünglich eingestellten Standardwerte zurückgestellt (Pulvermenge, Temp. Kaffee, Wassermenge. Dampfportion, Teeportion)###",
+		"271" : "100 -> 84: Reset: Kaffee bereit -> [N], u.d.V. dass alle Einstellungen schön verstellt waren, wurden diese auf die ursprünglich eingestellten Standardwerte zurückgestellt (Pulvermenge, Temp. Kaffee, Wassermenge. Dampfportion, Teeportion)###",
+		"272" : "0 -> 1: Reset: Kaffee bereit -> [N], u.d.V. dass alle Einstellungen schön verstellt waren, wurden diese auf die ursprünglich eingestellten Standardwerte zurückgestellt (Pulvermenge, Temp. Kaffee, Wassermenge. Dampfportion, Teeportion)###",
+		"273" : "100 -> 124: Reset: Kaffee bereit -> [N], u.d.V. dass alle Einstellungen schön verstellt waren, wurden diese auf die ursprünglich eingestellten Standardwerte zurückgestellt (Pulvermenge, Temp. Kaffee, Wassermenge. Dampfportion, Teeportion)###"
+	},
+	"timestamp" : 
+	{
+		"comment" : "",
+		"rawNew" : "",
+		"rawOld" : ""
+	}
+}
