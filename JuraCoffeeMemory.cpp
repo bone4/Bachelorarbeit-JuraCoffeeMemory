@@ -31,7 +31,7 @@ void eeprom(string& eepromPath) {
 
     while (true) {
         cout << endl << COLOR_FG_green << "EEPROM: Enter a command to the coffee maschine, press only <Enter> to continue, <S> to print the last dump or <Q> to quit:" << COLOR_reset << " ";
-        getline(cin, input);
+        if (!getline(cin, input)) { input="q"; } // check for error flag in cin and break if so
         if (input == "Q" || input == "q" || input == "quit" || input == "exit") {
             cout << "Bye." << endl;
             delete oldEEPROM;
@@ -74,7 +74,7 @@ void ram(string& ramPath) {
 
     while (true) {
         cout << endl << COLOR_FG_green << "RAM: Enter a command to the coffee maschine, press only <Enter> to continue, <S> to print the last dump or <Q> to quit:" << COLOR_reset << " ";
-        getline(cin, input);
+        if (!getline(cin, input)) { input="q"; } // check for error flag in cin and break if so
         if (input == "Q" || input == "q" || input == "quit" || input == "exit") {
             cout << "Bye." << endl;
             delete oldRAM;
@@ -159,7 +159,7 @@ void AnalyseFileDumpsMenu(string filename) {
         while(true) {
             cout << COLOR_FG_green << "Enter the number, <C> to clear or <Q> to quit:" << COLOR_reset << " ";
             // Input from the user
-            getline(cin, choice);
+            if (!getline(cin, choice)) { choice="q"; } // check for error flag in cin and break if so
             if (choice == "Q" || choice == "q" || choice == "quit" || choice == "exit") {
                 return;
             }
@@ -172,7 +172,7 @@ void AnalyseFileDumpsMenu(string filename) {
                     continue;
                 }
                 vector<dump>::iterator DumpIterator = dumps.begin() + choiceInt;
-                cout << "Your choice is: " << DumpIterator->timestamp << ": " << DumpIterator->comment << endl;
+                cout << "Your choice is: " << COLOR_FG_blue << DumpIterator->timestamp << ": " << DumpIterator->comment << COLOR_reset << endl;
 
                 //cout << DumpIterator->timestamp << "; " << DumpIterator->comment << "; " << DumpIterator->rawOld << "; " << DumpIterator->rawNew << "; " << endl;
                 // Create instances with the RAW data
@@ -208,7 +208,7 @@ void AnalyseFileDumpsMenu(string filename) {
 
     cout << "Press <Enter> to continue." << endl;
     string input;
-    getline(cin, input);
+    if (!getline(cin, input)) { input="q"; } // check for error flag in cin and break if so
     */
 }
 vector<string> AnalyseFilesListAll(string path) {
@@ -244,7 +244,7 @@ void AnalyseFilesMenu(string& path) {
         cout << COLOR_reset;
         cout << COLOR_FG_green << "Enter the number or <Q> to quit:" << COLOR_reset << " ";
         // Input from the user
-        getline(cin, choice);
+        if (!getline(cin, choice)) { choice="q"; } // check for error flag in cin and break if so
         if (choice == "Q" || choice == "q" || choice == "quit" || choice == "exit") {
             return;
         }
@@ -265,12 +265,13 @@ void OptionsMenu(string& devicePath, string& eepromPath, string& ramPath) {
     do {
         system("clear");
         DisplayOptionsMenu(devicePath, eepromPath, ramPath);
-        getline(cin, choice);
+        if (!getline(cin, choice)) { choice="q"; } // check for error flag in cin and break if so
         if (choice == "1") {
             cout << COLOR_FG_magenta << "Device path:" << COLOR_reset << " ";
-            getline(cin, devicePath);
-            SerialConnection& s = SerialConnection::getInstance();
-            s.setPort(devicePath);
+            if (getline(cin, devicePath)) { // check for error flag in cin and continue only if not
+                SerialConnection& s = SerialConnection::getInstance();
+                s.setPort(devicePath);
+            }
         } else if (choice == "2") {
             cout << COLOR_FG_magenta << "EEPROM log file path:" << COLOR_reset << " ";
             getline(cin, eepromPath);
@@ -286,7 +287,7 @@ void MainMenu(string& devicePath, string& path, string eepromPath, string ramPat
     do {
         system("clear");
         DisplayMainMenu();
-        getline(cin, choice);
+        if (!getline(cin, choice)) { choice="q"; } // check for error flag in cin and break if so
         if (choice == "1") { // EEPROM
             eeprom(eepromPath);
         } else if (choice == "2") { // RAM
@@ -297,7 +298,7 @@ void MainMenu(string& devicePath, string& path, string eepromPath, string ramPat
 
             while (true) {
                cout << endl << COLOR_FG_green << "Enter a command to the coffee maschine or <Q> to quit:" << COLOR_reset << " ";
-                getline(cin, input);
+                if (!getline(cin, input)) { input="q"; } // check for error flag in cin and break if so
                 if (input == "Q" || input == "q" || input == "quit" || input == "exit") {
                     break;
                 }
@@ -320,7 +321,7 @@ void MainMenu(string& devicePath, string& path, string eepromPath, string ramPat
                 delete newEEPROM;
 
                 cout << endl << COLOR_FG_green << "Hit <Enter> for a new EEPROM dump or press <Q> to quit:" << COLOR_reset << " ";
-                getline(cin, input);
+                if (!getline(cin, input)) { input="q"; } // check for error flag in cin and break if so
                 if (input == "Q" || input == "q" || input == "quit" || input == "exit") {
                     break;
                 }
@@ -337,7 +338,7 @@ void MainMenu(string& devicePath, string& path, string eepromPath, string ramPat
                 delete newRAM;
 
                 cout << endl << COLOR_FG_green << "Hit <Enter> for a new RAM dump or press <Q> to quit:" << COLOR_reset << " ";
-                getline(cin, input);
+                if (!getline(cin, input)) { input="q"; } // check for error flag in cin and break if so
                 if (input == "Q" || input == "q" || input == "quit" || input == "exit") {
                     break;
                 }
