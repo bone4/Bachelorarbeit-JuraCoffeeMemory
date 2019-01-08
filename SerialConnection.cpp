@@ -42,6 +42,14 @@ string SerialConnection::getCommandSuffix() {
 }
 
 void SerialConnection::connect() {
+    // lock device file to this process
+    int fd = open(serialPort.c_str(), O_RDWR, 0666); // open devicefile/lockfile
+    int rc = flock(fd, LOCK_EX | LOCK_NB); // grab exclusive lock, fail if can't obtain.
+    if (rc) {
+        cerr << "You must wait! Another process is using " << serialPort << ", or it doesn't exist." << endl;
+		exit(255);
+    }
+
     // Open the hardware serial stream.
     serial_stream.Open( serialPort );
     if (!serial_stream.good()) {
@@ -79,6 +87,10 @@ void SerialConnection::connect() {
 void SerialConnection::disconnect() {
     // Close the hardware serial stream.
     serial_stream.Close();
+
+    // unlock device file to other processes
+    int fd = open(serialPort.c_str(), O_RDWR, 0666); // open devicefile/lockfile
+    flock(fd, LOCK_UN); // Remove an existing lock held by this process.
 }
 
 bool SerialConnection::testConnection() {

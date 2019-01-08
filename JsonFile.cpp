@@ -23,7 +23,7 @@ Json::Value JsonFile::readJson(string filePath) {
     bool b = reader.parse(jsonFileStreamRead, jsonObj);
     if (!b) {
         cerr << "Error: " << reader.getFormattedErrorMessages();
-        exit(9);
+        exit(1);
     } else {
         return jsonObj;
     }

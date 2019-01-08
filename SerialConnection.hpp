@@ -1,11 +1,19 @@
 #ifndef SERIALCONNECTION_H
 #define SERIALCONNECTION_H
 
+#include <stdio.h>
 #include <iostream>
 #include <string>
 
 #include <signal.h>
 #include <unistd.h> // alarm()
+
+// lock file
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <sys/file.h>
 
 #include <SerialStream.h> // to communicate with a serial device
 #include <algorithm>    /* std::remove() */
