@@ -1,0 +1,23 @@
+{
+	"brew_coffee_type" : 0,
+	"brew_step1_grinder_on" : false,
+	"brew_step2_pumping_coffee" : false,
+	"clean_machine" : false,
+	"coffee_is_made" : false,
+	"cup_illumination" : false,
+	"empty_drip_tray" : false,
+	"empty_grounds" : false,
+	"empty_grounds_reason_only_0x34_>_0x03C0" : false,
+	"fill_beans" : false,
+	"fill_powder" : false,
+	"fill_water" : false,
+	"on" : false,
+	"replacing_filter" : false,
+	"rinsing_before_switching_off" : 0,
+	"rinsing_unit" : false,
+	"steam_portion" : false,
+	"tap_closed" : true,
+	"tea_portion" : false,
+	"tray_missing" : false
+}
+

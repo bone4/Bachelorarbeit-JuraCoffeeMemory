@@ -7,6 +7,20 @@
 !*.json
 !*.txt
 
+!website/
+!website/favicon/
+!website/img/
+!*.php
+!*.html
+!*.css
+!*.js
+!*.gif
+!*.png
+!*.svg
+!*.xcf
+!*.xml
+!*.ico
+
 !*.cpp
 !*.hpp
 !*.h

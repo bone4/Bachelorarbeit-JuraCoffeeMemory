@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<title>Jura Kaffee Maschine - Telematik</title>
+	<meta name="author" content="" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+	<meta name="apple-mobile-web-app-title" content="mtec" />
+	<meta name="msapplication-TileColor" content="#c17d11" />
+	<meta name="msapplication-TileImage" content="" />
+	<meta name="application-name" content="coffee" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+	<!-- color of header bar and address bar -->
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#c17d11">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#c17d11">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#c17d11">
+
+	<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+	<link rel="manifest" href="favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+	<!-- Intro JS -->
+	<link rel="stylesheet" type="text/css" href="introjs.min.css" media="all">
+
+	<link rel="stylesheet" type="text/css" href="style.css" media="all">
+	<script src="script.js" type="text/javascript"></script>
+</head>
+<body onload="start();">
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<form onsubmit="if($('#myModalNewValue').val()) { writeEEPROM(); }; return false;">
+					<div class="modal-header">
+						<h5 class="modal-title" id="myModalLabel">Change EEPROM</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body" id="myModalContent">
+						<input type="hidden" id="myModalKey">
+						<div class="row">
+							<div class="col">
+								<h4 id="myModalTitle" data-intro="As a reminder, here is the label whose value can be changed." data-step="5"></h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								Old value:
+							</div>
+							<div class="col">
+								<input type="number" class="form-control" id="myModalOldValue" disabled="disabled" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								New value:
+							</div>
+							<div class="col">
+								<input type="number" min="" max="" class="form-control" id="myModalNewValue" required data-intro="Now it's your turn to enter a new value, or ..." data-step="6" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								&nbsp;
+							</div>
+							<div class="col">
+								<span class="badge badge-primary" id="myModalDefault" onclick="setNewValue(this);" txt="" style="cursor: pointer;" data-intro="Click here to auto-fill the default value like [N] on the coffee machine." data-step="7"><!-- Default value --></span>
+								<span class="badge badge-secondary" id="myModalDisable" onclick="setNewValue(this);" txt="" style="cursor: pointer;" data-intro="Click here to auto-fill the value to disable this function." data-step="8"><!-- Disable --></span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<p id="myModalNotes"></p>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer" data-intro="'Default value' and 'Disable' are not always available. Select 'Cancel' or click on the background to discard changes. To write a new value to the EEPROM select 'Write'." data-step="9">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						<button type="submit" class="btn btn-primary" id="myModalOkButton">Write</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Main Container -->
+	<div class="container" style="margin-bottom: 5%;">
+		<div id="logo" class="text-center my-5" style="position: relative;">
+			<h1>Coffee Manager</h1>
+			<h2 style="font-style: italic; font-variant: small-caps;">Jura Impressia S9 - Telematik</h2>
+		</div>
+
+		<main role="main" data-intro="Welcome! You will see all information about your coffee machine here." data-step="1">
+			<div class="jumbotron">
+				<noscript>
+					<div class="alert alert-warning" role="alert">
+						<h4 class="alert-heading">JavaScript is deactivated:</h4>
+						<p>Please enable JavaScript to use this website.</p>
+					</div>
+				</noscript>
+
+				<div id="connectionMSG" class="alert alert-danger" role="alert" data-intro="Connect the cables and test the connection e.g. directly in the C++ program via: ./JuraCoffeeMemory -> 4 - Send a command" data-step="2">
+					<h4 class="alert-heading">Connection</h4>
+					Please establish a working connection between the server (Raspberry Pi) and the coffee machine.<br>
+					<button type="button" class="btn btn-danger mt-2" onclick="start();">Try again!</button>
+					<button type="button" class="btn btn-light mt-2 mx-2" onclick="offline=true; start();">Offline?</button>
+				</div>
+
+				<div id="content" style="display:none;">
+					<div class="row">
+						<div class="col-md-6"><div class="alert alert-warning" role="alert">
+							<h4 class="alert-heading">Warning</h4>
+							This website is not yet designed for multi-user operation, but should not crash.
+						</div></div>
+						<div class="col-md-6"><div class="alert alert-info" role="alert">
+							<h4 class="alert-heading">ToDo</h4>
+							<ul>
+								<li>Units to the numbers</li>
+								<li>Icon to multi bit messages: <u>Cup illumination</u>, <u>Rinsing before switching off</u></li>
+							</ul>
+						</div></div>
+					</div>
+
+					<!-- Card boxes -->
+					<div class="row" data-intro="You will see EEPROM settings in these boxes, grouped by rubrics." data-step="3">
+						<!-- Small Coffee -->
+						<div class="col-md-6 col-lg-4">
+							<div class="card mb-3">
+								<div class="card-header coffee-bg coffee-small">Small Coffee</div>
+								<div class="card-body">
+									<table style="width: 100%;"><col width="80%"><col width="20%">
+									<tr>
+										<td scope="row" id="powder_quantity_small_coffee-txt"></td>
+										<td id="powder_quantity_small_coffee" txt="Powder quantity" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr><tr>
+										<td scope="row" id="water_quantity_small_coffee-txt"></td>
+										<td id="water_quantity_small_coffee" txt="Water quantity" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr><tr>
+										<td scope="row" id="temperature-txt"></td>
+										<td id="temperature" txt="Temperature (+1)" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<!-- Big Coffee -->
+						<div class="col-md-6 col-lg-4">
+							<div class="card mb-3">
+								<div class="card-header coffee-bg coffee-big">Big Coffee</div>
+								<div class="card-body">
+									<table style="width: 100%;"><col width="80%"><col width="20%">
+									<tr>
+										<td scope="row" id="powder_quantity_big_coffee-txt"></td>
+										<td id="powder_quantity_big_coffee" txt="Powder quantity" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr><tr>
+										<td scope="row" id="water_quantity_big_coffee-txt"></td>
+										<td id="water_quantity_big_coffee" txt="Water quantity" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr><tr>
+										<td scope="row" id="temperatureA-txt">Temperature (+2)</td>
+										<td id="temperatureA" txt="Temperature (+2)" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<!-- Special Coffee -->
+						<div class="col-md-6 col-lg-4">
+							<div class="card mb-3">
+								<div class="card-header coffee-bg coffee-special">Special Coffee</div>
+								<div class="card-body">
+									<table style="width: 100%;"><col width="80%"><col width="20%">
+									<tr>
+										<td scope="row" id="powder_quantity_special_coffee-txt"></td>
+										<td id="powder_quantity_special_coffee" txt="Powder quantity" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr><tr>
+										<td scope="row" id="water_quantity_special_coffee-txt"></td>
+										<td id="water_quantity_special_coffee" txt="Water quantity" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr><tr>
+										<td scope="row" id="temperatureB-txt">Temperature (+4)</td>
+										<td id="temperatureB" txt="Temperature (+4)" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<!-- Water and Steam -->
+						<div class="col-md-6 col-lg-4">
+							<div class="card mb-3">
+								<div class="card-header coffee-bg steam">Water and Steam</div>
+								<div class="card-body">
+									<table style="width: 100%;"><col width="80%"><col width="20%">
+									<tr>
+										<td scope="row" id="water_hardness-txt"></td>
+										<td id="water_hardness" txt="Water hardness" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr><tr>
+										<td scope="row" id="filter-txt"></td>
+										<td id="filter" txt="Filter" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr><tr>
+										<td scope="row" id="steam_portion_quantity-txt"></td>
+										<td id="steam_portion_quantity" txt="Steam portion" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr><tr>
+										<td scope="row" id="tea_portion_quantity-txt"></td>
+										<td id="tea_portion_quantity" txt="Tea portion" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<!-- Machine -->
+						<div class="col-md-6 col-lg-4">
+							<div class="card mb-3">
+								<div class="card-header coffee-bg">Machine</div>
+								<div class="card-body">
+									<table style="width: 100%;"><col width="80%"><col width="20%">
+									<tr>
+										<td scope="row" id="machine_type-txt"></td>
+										<td id="machine_type" txt="Machine type" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr><tr>
+										<td scope="row" id="language-txt"></td>
+										<td id="language" txt="Language" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr><tr>
+										<td scope="row" id="economy_mode-txt"></td>
+										<td id="economy_mode" txt="Economy mode" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr><tr>
+										<td scope="row" id="incasso_mode-txt"></td>
+										<td id="incasso_mode" txt="Incasso mode" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<!-- Time switches -->
+						<div class="col-md-6 col-lg-4">
+							<div class="card mb-3" data-intro="Whenever the mouse pointer becomes a pointer, the displayed value can be changed. Please click on 'Autom. off in [h]'" data-step="4">
+								<div class="card-header coffee-bg">Time switches</div>
+								<div class="card-body">
+									<table style="width: 100%;"><col width="80%"><col width="20%">
+									<tr>
+										<td scope="row" id="automatic_switch_off_interval-txt"></td>
+										<td id="automatic_switch_off_interval" txt="Autom. off in [h]" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr><tr>
+										<td scope="row" id="automatic_switch_on_time_hours-txt"></td>
+										<td id="automatic_switch_on_time_hours" txt="Autom. on at [h]" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr><tr>
+										<td scope="row" id="automatic_switch_on_time_minutes-txt"></td>
+										<td id="automatic_switch_on_time_minutes" txt="Autom. on at [m]" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+									</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- RAM status -->
+					<div class="row" data-intro="You will find here many status flags of the RAM." data-step="10">
+						<div class="col-md-4">
+						<b>Messages</b>
+						<table class="mb-3" style="width: 100%;"><col width="80%"><col width="20%">
+						<tr>
+							<td scope="row" id="clean_machine-txt"></td>
+							<td id="clean_machine" txt="Clean machine" style="text-align: right;"></td>
+						</tr><tr>
+							<td scope="row" id="cup_illumination-txt"></td>
+							<td id="cup_illumination" txt="Cup illumination" style="text-align: right;"></td>
+						</tr><tr>
+							<td scope="row" id="empty_drip_tray-txt"></td>
+							<td id="empty_drip_tray" txt="Empty drip tray" style="text-align: right;"></td>
+						</tr><tr>
+							<td scope="row" id="empty_grounds-txt"></td>
+							<td id="empty_grounds" txt="Empty grounds" style="text-align: right;"></td>
+						</tr><tr>
+							<td scope="row" id="fill_beans-txt"></td>
+							<td id="fill_beans" txt="Fill beans" style="text-align: right;"></td>
+						</tr><tr>
+							<td scope="row" id="fill_powder-txt"></td>
+							<td id="fill_powder" txt="Fill powder" style="text-align: right;"></td>
+						</tr><tr>
+							<td scope="row" id="fill_water-txt"></td>
+							<td id="fill_water" txt="Fill water" style="text-align: right;"></td>
+						</tr><tr>
+							<td scope="row" id="on-txt"></td>
+							<td id="on" txt="On" style="text-align: right;"></td>
+						</tr><tr>
+							<td scope="row" id="replacing_filter-txt"></td>
+							<td id="replacing_filter" txt="Replacing filter" style="text-align: right;"></td>
+						</tr><tr>
+							<td scope="row" id="rinsing_before_switching_off-txt"></td>
+							<td id="rinsing_before_switching_off" txt="Rinsing before switching off" style="text-align: right;"></td>
+						</tr><tr>
+							<td scope="row" id="tap_closed-txt"></td>
+							<td id="tap_closed" txt="Tap closed" style="text-align: right;"></td>
+						</tr><tr>
+							<td scope="row" id="tray_missing-txt"></td>
+							<td id="tray_missing" txt="Tray missing" style="text-align: right;"></td>
+						</tr>
+						</table>
+
+						<b>Working</b>
+						<table class="mb-3" style="width: 100%;"><col width="80%"><col width="20%">
+						<tr>
+							<td scope="row" id="coffee_is_made-txt"></td>
+							<td id="coffee_is_made" txt="Coffee is made" style="text-align: right;"></td>
+						</tr><tr>
+							<td scope="row" id="brew_coffee_type-txt"></td>
+							<td id="brew_coffee_type" txt="Brew coffee type" style="text-align: right;"></td>
+						</tr><tr>
+							<td scope="row" id="brew_step1_grinder_on-txt"></td>
+							<td id="brew_step1_grinder_on" txt="Brew step1: grinder" style="text-align: right;"></td>
+						</tr><tr class="pb-3">
+							<td scope="row" id="brew_step2_pumping_coffee-txt"></td>
+							<td id="brew_step2_pumping_coffee" txt="Brew step2: pumping coffee" style="text-align: right;"></td>
+						</tr>
+
+						<tr>
+							<td scope="row" id="rinsing_unit-txt"></td>
+							<td id="rinsing_unit" txt="Rinsing unit" style="text-align: right;"></td>
+						</tr><tr>
+							<td scope="row" id="steam_portion-txt"></td>
+							<td id="steam_portion" txt="Steam portion" style="text-align: right;"></td>
+						</tr><tr>
+							<td scope="row" id="tea_portion-txt"></td>
+							<td id="tea_portion" txt="Tea portion" style="text-align: right;"></td>
+						</tr>
+						</table>
+						</div>
+						<div class="col-md-8">
+							<div class="machine-bg" id="machine">
+								<img src="img/animation_beans.gif" alt="" id="animation_beans" class="machine-animation" />
+								<img src="img/animation_water.gif" alt="" id="animation_water" class="machine-animation" />
+								<img src="img/animation_drip-tray.gif" alt="" id="animation_drip-tray" class="machine-animation" />
+							</div>
+						</div>
+					</div>
+
+					<!-- Counting states -->
+					<div class="row" data-intro="The the last values of the EEPROM. You can change them like at the top." data-step="11">
+						<div class="col-sm-12">
+							<h3>Counting states</h3>
+							<table class="table">
+								<col width="50%">
+								<col width="50%">
+								<tr>
+									<th scope="col" style="width=50%;">Coffee</th>
+									<th scope="col" style="text-align: right;">#</th>
+								</tr>
+								<tr>
+									<td scope="row" id="amount_1_small_coffee_with_beans-txt"></td>
+									<td id="amount_1_small_coffee_with_beans" txt="
+										1 small coffee
+										<img src='img/coffee_small.png' alt='' width='23' height='23' />
+										" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+								</tr>
+								<tr>
+									<td scope="row" id="amount_2_small_coffees_with_beans-txt"></td>
+									<td id="amount_2_small_coffees_with_beans" txt="
+										2 small coffees
+										<img src='img/coffee_small.png' alt='' width='23' height='23' />
+										<img src='img/coffee_small.png' alt='' width='23' height='23' />
+										" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+								</tr>
+								<tr>
+									<td scope="row" id="amount_1_big_coffee_with_beans-txt"></td>
+									<td id="amount_1_big_coffee_with_beans" txt="
+										1 big coffee
+										<img src='img/coffee_big.png' alt='' width='23' height='23' />
+										" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+								</tr>
+								<tr>
+									<td scope="row" id="amount_2_big_coffees_with_beans-txt"></td>
+									<td id="amount_2_big_coffees_with_beans" txt="
+										2 big coffees
+										<img src='img/coffee_big.png' alt='' width='23' height='23' />
+										<img src='img/coffee_big.png' alt='' width='23' height='23' />
+										" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+								</tr>
+								<tr>
+									<td scope="row" id="amount_special_coffee_with_beans-txt"></td>
+									<td id="amount_special_coffee_with_beans" txt="
+										1 special coffee
+										<img src='img/coffee_special.png' alt='' width='23' height='23' />
+										" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+								</tr>
+								<tr>
+									<td scope="row" id="amount_pulver_coffees-txt"></td>
+									<td id="amount_pulver_coffees" txt="pulver coffees
+										<img src='img/coffee_small.png' alt='' width='23' height='23' />
+										<img src='img/coffee_big.png' alt='' width='23' height='23' />
+										<img src='img/coffee_special.png' alt='' width='23' height='23' />
+										" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+								</tr>
+
+								<tr>
+									<th scope="col">Machine</th>
+									<th scope="col" style="text-align: right;">#</th>
+								</tr>
+								<tr>
+									<td scope="row" id="amount_machine_starts-txt"></td>
+									<td id="amount_machine_starts" txt="Starts" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+								</tr>
+								<tr>
+									<td scope="row" id="amount_filter_replacements-txt"></td>
+									<td id="amount_filter_replacements" txt="Filter replacements" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+								</tr>
+								<tr>
+									<td scope="row" id="amount_rinsings-txt"></td>
+									<td id="amount_rinsings" txt="Rinsings" onclick="changeEEPROM(this);" style="text-align: right; cursor: pointer;"></td>
+								</tr>
+
+								<tr>
+									<th scope="col">Using</th>
+									<th scope="col" style="text-align: right;">%</th>
+								</tr>
+								<tr>
+									<td scope="row" id="amount_ground_1-txt"></td>
+									<td id="amount_ground_1" txt="Amount of ground" style="text-align: right;">
+										<div class="progress mb-3">
+											<div id="amount_ground_1-bar" txt="Amount of ground (1)" onclick="changeEEPROM(this);" class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+										</div>
+										<div class="progress">
+											<div id="amount_ground_2-bar" txt="Amount of ground (2)" onclick="changeEEPROM(this);" class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td scope="row" id="amount_coffee_preparations_until_next_cleaning-txt"></td>
+									<td id="amount_coffee_preparations_until_next_cleaning" txt="Coffee preparations until next cleaning" style="text-align: right;">
+										<div class="progress">
+											<div id="amount_coffee_preparations_until_next_cleaning-bar" txt="Coffee preparations until next cleaning" onclick="changeEEPROM(this);" class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td scope="row" id="amount_rinsings_until_next_cleaning-txt"></td>
+									<td id="amount_rinsings_until_next_cleaning" txt="Rinsings until next cleaning" style="text-align: right;">
+										<div class="progress">
+											<div id="amount_rinsings_until_next_cleaning-bar" txt="Rinsings until next cleaning" onclick="changeEEPROM(this);" class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td scope="row" id="amount_water-txt"></td>
+									<td id="amount_water" txt="Water consumption until the next filter change" style="text-align: right;">
+										<div class="progress">
+											<div id="amount_water-bar" txt="Water consumption until the next filter change" onclick="changeEEPROM(this);" class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</main>
+
+	</div>
+
+	<!-- Help -->
+	<div style="position:fixed; right:1rem; bottom:1rem;">
+		<button type="button" class="btn btn-primary mr-2" onclick="loadRAM();" data-intro="Click here to refresh the RAM information in the parts 'Messages' and 'Working'." data-step="12">Refresh</button>
+		<button type="button" class="btn btn-dark" onclick="introJs().start();">Help</button>
+	</div>
+
+	<!-- loading -->
+	<div id="loading" style="position:fixed; top:0; left:0; width:100%; height:100%; display:none; text-align: center; z-index:1000;">
+		<div style="position:absolute; width:100%; height:100%; background-color:#000000; opacity: 0.3; filter: alpha(opacity=30);">&nbsp;</div>
+		<div style="position:relative; top:30%; margin:auto;">
+			<img src="img/Spinner-1.5s-200px-light.gif" alt="loading ..." width="200" height="200" />
+			<h1 style="font-variant: small-caps;">Loading ...</h1>
+		</div>
+	</div>
+
+	<!-- Intro JS -->
+	<script src="intro.min.js" type="text/javascript"></script>
+</body>
+</html>
+
+
+

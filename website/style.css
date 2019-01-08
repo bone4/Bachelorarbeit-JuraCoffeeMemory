@@ -1,0 +1,47 @@
+@media (max-width: 992px) {
+	.container {
+		max-width: 100%;
+	}
+}
+.coffee-bg {
+	height: 3rem;
+	background-position: 2% 50%; /* left center */
+	background-repeat: no-repeat;
+	background-size:2rem;
+	padding-left: 3rem;
+}
+.coffee-small {
+	background-image: url("img/coffee_small.png");
+}
+.coffee-big {
+	background-image: url("img/coffee_big.png");
+}
+.coffee-special {
+	background-image: url("img/coffee_special.png");
+}
+.steam {
+	background-image: url("img/steam.png");
+}
+
+.machine-bg {
+	width: 100%;
+	height: 500px;
+	background-image: url("img/Jura-Impressa-S9-small.png");
+	background-repeat: no-repeat;
+	background-size:contain;
+	background-position: left top;
+}
+.machine-animation {
+	height: 500px;
+	position: absolute;
+	display: none;
+}
+
+.progress {
+	background-color: rgba(0,0,0,.2);
+}
+
+.modal-backdrop { z-index: 1;}
+.introjs-fixParent { z-index: 2050 !important; }
+.introjs-overlay { z-index: 2051 !important; }
+
