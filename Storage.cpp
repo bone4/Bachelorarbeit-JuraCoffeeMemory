@@ -199,13 +199,6 @@ void Storage::diffBytesWith(Storage* last, vector<int> excludeBytes, bool writeI
     }
 }
 
-string Storage::removeSpecialCharFromString(string& txt) {
-    // removes the characters '\r' and '\n' from the given string
-    txt.erase( remove(txt.begin(), txt.end(), '\r'), txt.end() );
-    txt.erase( remove(txt.begin(), txt.end(), '\n'), txt.end() );
-    return txt;
-}
-
 void Storage::progressBar(int num, int ende, std::string txt){
 	struct winsize w;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
@@ -223,4 +216,15 @@ void Storage::progressBar(int num, int ende, std::string txt){
 	int progress_percent = (int)(progress*100);
 	cout << "] " << progress_percent << "%" << flush;
 //	cout << "\r" << num << " / " << end << " = " << progress_percent << flush;
+}
+
+string Storage::removeSpecialCharFromString(string& txt) {
+    // removes the characters '\r' and '\n' from the given string
+    txt.erase( remove(txt.begin(), txt.end(), '\r'), txt.end() );
+    txt.erase( remove(txt.begin(), txt.end(), '\n'), txt.end() );
+    return txt;
+}
+
+bool Storage::getBit(unsigned char byte, int position) {
+    return (byte >> position) & 0x1;
 }

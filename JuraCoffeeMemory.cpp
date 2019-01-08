@@ -8,6 +8,8 @@
 #include "Storage.hpp"
 #include "EEPROM.hpp"
 #include "RAM.hpp"
+#include "EEPROM_Status.hpp"
+#include "RAM_Status.hpp"
 #include "SerialConnection.hpp"
 #include "JsonFile.hpp"
 #include "color-definitions.h"
@@ -354,8 +356,12 @@ void MainMenu(string& devicePath, string& path, string eepromPath, string ramPat
     cout << "Bye." << endl;
 }
 
-// int main(int argc, char* argv[]) {
-int main() {
+bool cmdOptionExists(char** begin, char** end, const std::string& option)
+{
+    return std::find(begin, end, option) != end;
+}
+
+int main(int argc, char* argv[]) {
     string devicePath = "/dev/ttyACM0";
 
     string path = "data/";
@@ -364,7 +370,43 @@ int main() {
     stringstream ramPath;
     ramPath << path << "ram.json";
 
-    MainMenu(devicePath, path, eepromPath.str(), ramPath.str());
+    if (cmdOptionExists(argv, argv+argc, "eepromWrite")) {
+        EEPROM_Status* e = new EEPROM_Status();
+
+        e->write_EEPROM();
+
+        delete e;
+    } else if (cmdOptionExists(argv, argv+argc, "eeprom")) {
+        //time_t start = time(0);
+
+        EEPROM_Status* e = new EEPROM_Status();
+
+        cout << e->get_EEPROM_Status();
+        //e->pretty_print_json();
+
+        delete e;
+
+        //time_t end = time(0);
+        //double time = difftime(end, start) * 1000.0;
+        //cout << endl << endl << time << endl;
+        // => ~5s
+    } else if (cmdOptionExists(argv, argv+argc, "ram")) {
+        //time_t start = time(0);
+
+        RAM_Status* r = new RAM_Status();
+
+        cout << r->get_RAM_Status();
+        //r->pretty_print_json();
+
+        delete r;
+
+        //time_t end = time(0);
+        //double time = difftime(end, start) * 1000.0;
+        //cout << endl << endl << time << endl;
+        // => ~3.5s
+    } else {
+        MainMenu(devicePath, path, eepromPath.str(), ramPath.str());
+    }
 
     // system("PAUSE");
     return 0;

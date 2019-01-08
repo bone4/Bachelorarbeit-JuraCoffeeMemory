@@ -16,7 +16,7 @@ with these linker flags to compile:
 Run:
 ```sh
 make
-./JuraCoffee
+./JuraCoffeeMemory
 ```
 
 If you have problems to enable a serial connection, run the programm twice or try this:
@@ -34,6 +34,36 @@ ignbrk -brkint -icrnl -imaxbel \
 -isig -icanon -iexten -echo -echoe -echok -echoctl -echoke
 ```
 it's sometimes a bit magically. But with the used libserial library the data are reliably send and received.
+
+Call one of the following commands to get a JSON string to stdout, send a JSON string to update the EEPROM or send a command to the coffee machine:
+```sh
+./JuraCoffeeMemory ram
+./JuraCoffeeMemory eeprom
+./JuraCoffeeMemory eepromWrite
+./JuraCoffeeMemory command
+```
+The last two commands expect input from stdin.
+
+### Return codes
+| No. | Message | Recommended action |
+| ---: | --- | --- |
+|   0 | Ok, every thing is fine | nothing |
+|   1 | JSON string could not be processed | Check your input or the mentioned file. |
+|   2 | Alarm, no answer within 3 seconds. | Check your input using the commands file. Ignore this message if you tried a display test AN:03 |
+|   3 | Could not open serial port | Check the arduino device path and enter the actual one in the option menu (-> 9 -> 1) |
+|   4 | Could not configure serial port. | Run the arduino script inside the Arduino IDE and use the serial monitor to communicate with the coffee machine. |
+|   5 | The test command failed. | Enter the result of the test command "TY:" in line 5 of SerialConnection.cpp, compile and run again. |
+|   6 | Information of 256 bytes RAM are needed. | Debug the answer of the coffee machine in RAM_Status.cpp |
+|   7 | Unknown byte in RAM_Status::getEntriesRAM() | Enter only byte numbers between 0-255. Have a look on the thesis results and enter only known and existing positions. The valiable known_bytes should have an entry at each position where the variable raw has queried non empty values. |
+|   8 | Information of 512 bytes EEPROM are needed | Debug the answer of the coffee machine in EEPROM_Status.cpp |
+|   9 | Unknown byte in RAM_Status::getEntriesRAM() | see 7. |
+|  10 | JSON parsing error. | Check your JSON input on valid syntax. |
+|  11 | The answer of the coffe machine didn't the expected one. | Debug the communication, fix a misspelled command or update the eypected answer in line 7 of EEPROM_Status.cpp |
+|  12 | Wrong byte position in the second field of EEPROM_Status::getEntriesEEPROM() | A word consists of two bytes. Enter only 0, 1 or both. |
+|  13 | The new EEPROM value for a whole word is out of range. | The JSON input value has to be between 0 and 65535 for a two bytes word. |
+|  14 | The new EEPROM value for a single byte inside a word is out of range. | The JSON input value has to be between 0 and 255. |
+| 225 | Device file couldn't be locked. | Check the connection to the arduino and terminate existing processes. |
+
 
 ## Remarks
 The Arduino file is used from [E-17 CoffeeMachine](https://collaborating.tuhh.de/e-17/General/CoffeeMachine/tree/master/arduino).

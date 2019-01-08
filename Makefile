@@ -2,7 +2,7 @@ CC      = g++
 CFLAGS  = -Wall -Wextra
 LDFLAGS = -lserial -lpthread -ljsoncpp -lstdc++fs
 
-OBJS = EEPROM.o JsonFile.o RAM.o SerialConnection.o Storage.o color-definitions.h
+OBJS = EEPROM.o EEPROM_Status.o JsonFile.o RAM.o RAM_Status.o SerialConnection.o Storage.o color-definitions.h
 
 .PHONY: clean dist-clean
 
