@@ -69,6 +69,8 @@ class SerialConnection
         const int BUFFER_SIZE = 255; // see connect() params
 //        char* input_buffer;
 
+        int fd_lock_device_file;
+
         string serialPort;
         string commandSuffix;
 

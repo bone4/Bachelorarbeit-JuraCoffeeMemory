@@ -43,8 +43,8 @@ string SerialConnection::getCommandSuffix() {
 
 void SerialConnection::connect() {
     // lock device file to this process
-    int fd = open(serialPort.c_str(), O_RDWR, 0666); // open devicefile/lockfile
-    int rc = flock(fd, LOCK_EX | LOCK_NB); // grab exclusive lock, fail if can't obtain.
+    fd_lock_device_file = open(serialPort.c_str(), O_RDWR, 0666); // open devicefile/lockfile
+    int rc = flock(fd_lock_device_file, LOCK_EX | LOCK_NB); // grab exclusive lock, fail if can't obtain.
     if (rc) {
         cerr << "You must wait! Another process is using " << serialPort << ", or it doesn't exist." << endl;
 		exit(255);
@@ -89,8 +89,8 @@ void SerialConnection::disconnect() {
     serial_stream.Close();
 
     // unlock device file to other processes
-    int fd = open(serialPort.c_str(), O_RDWR, 0666); // open devicefile/lockfile
-    flock(fd, LOCK_UN); // Remove an existing lock held by this process.
+    flock(fd_lock_device_file, LOCK_UN); // Remove an existing lock held by this process.
+    close(fd_lock_device_file);
 }
 
 bool SerialConnection::testConnection() {
