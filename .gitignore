@@ -7,6 +7,11 @@
 !*.json
 !*.txt
 
+!manual_jura/
+!*.pdf
+!*.jpg
+!*.jpeg
+
 !website/
 !website/favicon/
 !website/img/
