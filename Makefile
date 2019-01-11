@@ -12,7 +12,7 @@ clean:
 	rm -f *.o
 
 dist-clean: clean
-	rm -f JuraCoffee formate-dump
+	rm -f JuraCoffee formate-dump tools/display tools/formate-dump
 
 %.o: %.cpp color-definitions.h
 	$(CC) $(CFLAGS) -c $< -o $@
