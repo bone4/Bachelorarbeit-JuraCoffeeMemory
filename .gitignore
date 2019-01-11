@@ -12,6 +12,8 @@
 !*.jpg
 !*.jpeg
 
+!tools/
+
 !website/
 !website/favicon/
 !website/img/

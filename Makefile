@@ -6,7 +6,7 @@ OBJS = EEPROM.o EEPROM_Status.o JsonFile.o RAM.o RAM_Status.o SerialConnection.o
 
 .PHONY: clean dist-clean
 
-all: JuraCoffeeMemory formate-dump
+all: JuraCoffeeMemory display formate-dump
 
 clean:
 	rm -f *.o
@@ -17,8 +17,12 @@ dist-clean: clean
 %.o: %.cpp color-definitions.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
+display: SerialConnection.o tools/display.cpp
+	$(CC) $(CFLAGS) SerialConnection.o tools/display.cpp -o tools/display $(LDFLAGS)
+
+formate-dump: tools/formate-dump.cpp
+	$(CC) $(CFLAGS) tools/formate-dump.cpp -o tools/formate-dump
+
 JuraCoffeeMemory: $(OBJS) JuraCoffeeMemory.cpp
 	$(CC) $(CFLAGS) $(OBJS) JuraCoffeeMemory.cpp -o JuraCoffeeMemory $(LDFLAGS)
 
-formate-dump: formate-dump.cpp
-	$(CC) $(CFLAGS) formate-dump.cpp -o formate-dump
