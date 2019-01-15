@@ -7,17 +7,22 @@ if (isset($_GET['getEEPROM'])) {
 	passthru('../JuraCoffeeMemory eeprom 2>&1', $err);
 } elseif (isset($_GET['getRAM'])) {
 	passthru('../JuraCoffeeMemory ram 2>&1', $err);
-} elseif (isset($_GET['writeEEPROM']) && isset($_GET['key']) && isset($_GET['value'])) {
-	$cmd = 'echo \'{"'.escapeshellarg($_GET['key']).'":{"value":'.escapeshellarg($_GET['value']).'}}\' | ../JuraCoffeeMemory eepromWrite 2>&1';
-	#echo $cmd."\n";
+} elseif (isset($_GET['writeEEPROM'])) {
+	$cmd = 'echo '.escapeshellarg(urldecode($_GET['writeEEPROM'])).' | ../JuraCoffeeMemory eepromWrite 2>&1';
 	echo '{"msg":"';
 	passthru($cmd, $err);
 	echo '"}';
 } elseif (isset($_GET['command'])) {
-	// TODO
+	$cmd = 'echo '.escapeshellarg(urldecode($_GET['command'])).' | ../JuraCoffeeMemory command 2>&1';
+	echo '{"msg":"';
+	passthru($cmd, $err);
+	echo '"}';
 }
 
 $output = ob_get_clean();
+
+# remove special chars
+$output = str_replace(array("\r","\n"), "", $output);
 
 if (!empty($err)) {
 	$data["error"]["msg"] = $output;
@@ -26,9 +31,5 @@ if (!empty($err)) {
 } else {
 	echo $output;
 }
-
-# Notes for C++ to ensure only 1 serial connection for multiple process instances:
-# https://www.google.com/search?q=c%2B%2B+lock+file
-# https://www.linuxquestions.org/questions/programming-9/locking-files-with-c-751872/
 
 ?>

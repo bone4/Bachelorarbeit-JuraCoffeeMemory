@@ -62,6 +62,7 @@ The last two commands expect input from stdin.
 |  12 | Wrong byte position in the second field of EEPROM_Status::getEntriesEEPROM() | A word consists of two bytes. Enter only 0, 1 or both. |
 |  13 | The new EEPROM value for a whole word is out of range. | The JSON input value has to be between 0 and 65535 for a two bytes word. |
 |  14 | The new EEPROM value for a single byte inside a word is out of range. | The JSON input value has to be between 0 and 255. |
+|  15 | No valid input was made as command to the coffee machine. | Pass a valid input to stdin. |
 | 225 | Device file couldn't be locked. | Check the connection to the arduino and terminate existing processes. |
 
 

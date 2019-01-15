@@ -370,7 +370,17 @@ int main(int argc, char* argv[]) {
     stringstream ramPath;
     ramPath << path << "ram.json";
 
-    if (cmdOptionExists(argv, argv+argc, "eepromWrite")) {
+    if (cmdOptionExists(argv, argv+argc, "command")) {
+        string input;
+        if (!getline(cin, input)) { exit(15); } // check for error flag in cin and break if so
+        SerialConnection& s = SerialConnection::getInstance();
+        s.connect();
+        s.send(input);
+        string resp;
+        resp = s.receive();
+        cout << resp << endl;
+        s.disconnect();
+    } else if (cmdOptionExists(argv, argv+argc, "eepromWrite")) {
         EEPROM_Status* e = new EEPROM_Status();
 
         e->write_EEPROM();

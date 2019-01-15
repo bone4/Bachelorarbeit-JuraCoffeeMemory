@@ -90,6 +90,11 @@ function updateRAM(data) {
 		// show website
 		document.getElementById("content").style.display = "block";
 		document.getElementById("connectionMSG").style.display = "none";
+
+		// enable bottom right buttons
+		$('#commandButton').removeClass("disabled");
+		$('#loadRAMbutton').removeClass("disabled");
+		
 	}
 
 	$.each( data, function( key, val ) {
@@ -200,7 +205,7 @@ function writeEEPROM() {
 				return;
 			}
 		}
-		$.ajax({url: "data.php", data: {"writeEEPROM":"", "key":key, "value":value}, success: function(result){ // , async: false
+		$.ajax({url: "data.php", data: {"writeEEPROM":"{\""+key+"\":{\"value\":"+value+"}}"}, success: function(result){ // , async: false
 			if (result["error"] != undefined) {
 				console.error("Error writeEEPROM(), error number: "+result["error"]["number"]+", error msg: "+result["error"]["msg"]);
 				alert("Error writeEEPROM(), AJAX result see JS-Console!");
@@ -231,6 +236,114 @@ function writeEEPROM() {
 				}
 			}
 		}}).fail(function() { alert( "Error writing EEPROM data." ); });
+	}
+}
+
+function configureIndividualCoffee(coffeeType) {
+	$('#myModal2CoffeeType').val( coffeeType );
+	$('#myModal2Title').html( "Configure your "+$('#'+coffeeType).text() );
+	$('#myModal2NewValue').val( Cookies.get(coffeeType) );
+
+	$('#myModal2').modal('show');
+}
+function defaultCookieText() {
+	coffeeType = $('#myModal2CoffeeType').val();
+	if (coffeeType == "small_coffee") {
+		$('#myModal2NewValue').val('{"powder_quantity_small_coffee":{"value":5},"water_quantity_small_coffee":{"value":180},"temperature":{"value":0}}');
+	} else if (coffeeType == "big_coffee") {
+		$('#myModal2NewValue').val('{"powder_quantity_big_coffee":{"value":8},"water_quantity_big_coffee":{"value":340},"temperature":{"value":0}}');
+	} else if (coffeeType == "special_coffee") {
+		$('#myModal2NewValue').val('{"powder_quantity_special_coffee":{"value":11},"water_quantity_special_coffee":{"value":380},"temperature":{"value":0}}');
+	}
+}
+function removeCookie() {
+	coffeeType = $('#myModal2CoffeeType').val();
+	Cookies.remove(coffeeType);
+
+	$('#myModal2').modal('hide');
+}
+function setCookie() {
+	coffeeType = $('#myModal2CoffeeType').val();
+	Cookies.set(coffeeType, $('#myModal2NewValue').val(), {expires: 365*10});
+	$('#myModal2').modal('hide');
+}
+function writeCookieToEEPROM() {
+	coffeeType = $('#myModal2CoffeeType').val();
+	var txt = Cookies.get(coffeeType);
+	var obj = JSON.parse( txt );
+
+	$.ajax({url: "data.php", data: { "writeEEPROM":txt }, success: function(result){ // , async: false
+		if (result["error"] != undefined) {
+			console.error("Error writeCookieToEEPROM(), error number: "+result["error"]["number"]+", error msg: "+result["error"]["msg"]);
+			alert("Error writeEEPROM(), AJAX result see JS-Console!");
+		} else {
+			$.each(result["msg"].split("###"), function (i, val) {
+				var ret = val.split(": ");
+				if (ret[0] == "ok") {
+					var key = ret[1];
+					var value = obj[key]["value"];
+					$('#'+key).text(value);
+					if (key == "temperature") {
+						$('#temperatureA').text(value);
+						$('#temperatureB').text(value);
+					}
+					console.log(val);
+				} else {
+					if (val != "") {
+						console.log("Unknown return value in writeCookieToEEPROM(): "+val);
+					}
+				}
+			});
+
+			$('#myModal2').modal('hide');
+		}
+	}}).fail(function() { alert( "Error writing EEPROM data from cookie." ); });
+}
+
+$(function() {
+	$('#commandButton')
+	.mouseenter(function() {
+		if (!$('#commandButton').hasClass("disabled")) {
+			$('#commandButton').hide();
+			$('#commandBox').css("display","inline-block");
+			$('#command').focus();
+		}
+	});
+	$('#commandPreFill')
+	.change(function() {
+		$('#command').val( $(this).val() );
+		$('#command').focus();
+	});
+	$('#commandBox')
+	.mouseleave(function() {
+		$('#commandButton').show();
+		$('#commandBox').hide();
+	});
+
+	$('#commandForm').submit(function( event ) {
+		command();
+		event.preventDefault();
+	});
+});
+
+function command() {
+	if (!offline) {
+		var cmd = $('#command').val();
+		if ((cmd.length >= 3) && (cmd.includes(":"))) {
+			$('#command').removeClass("is-invalid");
+
+			$.ajax({url: "data.php", data: {"command":cmd}, success: function(result){ // , async: false
+				if (result["error"] != undefined) {
+					console.error("Error command(), error number: "+result["error"]["number"]+", error msg: "+result["error"]["msg"]);
+					alert("Error command(), AJAX result see JS-Console!");
+				} else {
+					$('#command').val("");
+					$('#commandResponse').text("Response: "+result["msg"]).show().fadeOut( 3000 ); // show response 3s
+				}
+			}}).fail(function() { alert( "Error sending your command to the machine." ); });
+		} else {
+			$('#command').addClass("is-invalid");
+		}
 	}
 }
 
