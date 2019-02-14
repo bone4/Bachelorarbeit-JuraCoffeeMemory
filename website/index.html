@@ -544,7 +544,7 @@
 	</div>
 
 	<!-- Help -->
-	<div style="position:fixed; right:1rem; bottom:1rem;">
+	<div style="position:fixed; right:1rem; bottom:1rem;" id="helperButtons">
 		<div style="background-color:#e9ecef; display:none;" id="commandBox" class="text-right p-3 border border-dark rounded"><form id="commandForm">
 			<input type="text" id="command" placeholder="Your command, e.g. TY:" class="mb-3 form-control" style="width:100%;" />
 			<div id="commandResponse"class="mb-3 text-success font-weight-bold text-left" style="display: none;"></div>
@@ -587,7 +587,7 @@
 		</form></div>
 		<button type="button" class="btn btn-warning align-bottom disabled" style="display:inline-block;" id="commandButton" data-intro="Move your mouse on this button to send a command to the coffee machine." data-step="12">Command</button>
 		<button type="button" class="btn btn-primary d-inline-block align-bottom disabled mx-2" id="loadRAMbutton" onclick="loadRAM();" data-intro="Click here to refresh the RAM information in the parts 'Messages' and 'Working'." data-step="13">Refresh</button>
-		<button type="button" class="btn btn-dark d-inline-block align-bottom" onclick="introJs().start();">Help</button>
+		<button type="button" class="btn btn-dark d-inline-block align-bottom" onclick="introJs().setOptions({'exitOnOverlayClick': false, 'skipLabel': 'Quit'}).onbeforechange(function(targetElement){ handleIntroJS(targetElement); }).onexit(function(){ location.reload(); }).start();">Help</button>
 	</div>
 
 	<!-- loading -->

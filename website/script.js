@@ -5,6 +5,73 @@ var lastRAMdump = '';
 var valueTrue = '<span class="badge badge-success">on</span>';
 var valueFalse = '<span class="badge badge-danger">off</span>';
 
+function handleIntroJS(e) {
+	$('.introjs-overlay, .introjs-helpLayer, .introjs-tooltipReferenceLayer, .introjs-fixedTooltip').appendTo('body');
+	// enable bottom right buttons
+	$('#commandButton').removeClass("disabled");
+	$('#loadRAMbutton').removeClass("disabled");
+	$('#helperButtons').css("position", "absolute");
+	// show Command button instead of Send box
+	$('#commandButton').show();
+	$('#commandBox').hide();
+	
+	switch ($(e).attr('data-step')) {
+	case "1": // console.log("step1");
+		$('#myModal').modal('hide');
+		break;
+	case "2": // console.log("step2");
+		$('#myModal').modal('hide');
+		// un-show website
+		document.getElementById("content").style.display = "none";
+		document.getElementById("connectionMSG").style.display = "block";
+		break;
+	case "3": // console.log("step3");
+		$('#myModal').modal('hide');
+		// show website
+		document.getElementById("content").style.display = "block";
+		document.getElementById("connectionMSG").style.display = "none";
+		// and show example values
+		offline = true;
+		start();
+		break;
+	case "4": // console.log("step4");
+		$('#myModal').modal('hide');
+		break;
+	case "5": // console.log("step5");
+		$('.introjs-overlay, .introjs-helpLayer, .introjs-tooltipReferenceLayer, .introjs-fixedTooltip').appendTo('#myModal');
+		changeEEPROM($('#automatic_switch_off_interval'));
+		break;
+	case "6": // console.log("step6");
+		$('.introjs-overlay, .introjs-helpLayer, .introjs-tooltipReferenceLayer, .introjs-fixedTooltip').appendTo('#myModal');
+		changeEEPROM($('#automatic_switch_off_interval'));
+		break;
+	case "7": // console.log("step7");
+		$('.introjs-overlay, .introjs-helpLayer, .introjs-tooltipReferenceLayer, .introjs-fixedTooltip').appendTo('#myModal');
+		changeEEPROM($('#automatic_switch_off_interval'));
+		break;
+	case "8": // console.log("step8");
+		$('.introjs-overlay, .introjs-helpLayer, .introjs-tooltipReferenceLayer, .introjs-fixedTooltip').appendTo('#myModal');
+		changeEEPROM($('#automatic_switch_off_interval'));
+		break;
+	case "9": // console.log("step9");
+		$('.introjs-overlay, .introjs-helpLayer, .introjs-tooltipReferenceLayer, .introjs-fixedTooltip').appendTo('#myModal');
+		changeEEPROM($('#automatic_switch_off_interval'));
+		break;
+	case "10": // console.log("step10");
+		$('#myModal').modal('hide');
+		break;
+	case "11": // console.log("step11");
+		$('#myModal').modal('hide');
+		break;
+	case "12": // console.log("step12");
+		$('#myModal').modal('hide');
+		break;
+	case "13": // console.log("step13");
+		$('#myModal').modal('hide');
+		break;
+	}
+}
+
 function start() {
 	$("#loading").show();
 	if (!offline) {

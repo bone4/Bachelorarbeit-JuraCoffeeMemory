@@ -40,8 +40,12 @@
 .progress {
 	background-color: rgba(0,0,0,.2);
 }
-
+/*
 .modal-backdrop { z-index: 1;}
 .introjs-fixParent { z-index: 2050 !important; }
 .introjs-overlay { z-index: 2051 !important; }
+*/
+.modal { z-index: 999999997 !important; }
+.modal .introjs-fixedTooltip { z-index: 999999998 !important; }
+.modal .introjs-showElement {z-index: 999999999 !important; }
 

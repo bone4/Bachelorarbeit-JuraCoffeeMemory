@@ -12,6 +12,14 @@ with these linker flags to compile:
 -lserial -lpthread -ljsoncpp
 ```
 
+A webserver and PHP for the website:
+```sh
+sudo apt-get install php php-cli apache2
+nano /etc/apache2/sites-enabled/000-default.conf
+# Change: "DocumentRoot" to pathToThisProject/JuraCoffeeMemory/website/
+service apache2 restart
+```
+
 ## Usage
 Run:
 ```sh
@@ -44,6 +52,15 @@ Call one of the following commands to get a JSON string to stdout, send a JSON s
 ```
 The last two commands expect input from stdin.
 
+To test the website call:
+```http
+http://localhost/phpinfo.php
+```
+and finally:
+```http
+http://localhost/
+```
+
 ### Return codes
 | No. | Message | Recommended action |
 | ---: | --- | --- |
@@ -72,6 +89,7 @@ The Arduino file is used from [E-17 CoffeeMachine](https://collaborating.tuhh.de
 More usefull links:
 [libserial Github](https://github.com/crayzeewulf/libserial), [libserial documentation](https://libserial.readthedocs.io/en/latest/index.html);
 [libjsoncpp](https://en.wikibooks.org/wiki/JsonCpp);
+Website: [Twitter Bootstrap](https://getbootstrap.com/); [jQuery](https://jquery.com/); [JavaScript Cookie](https://github.com/js-cookie/js-cookie); [Intro.js](https://introjs.com/); 
 [gitlab-markdown](https://collaborating.tuhh.de/help/user/markdown.md), [online-markdown](https://dillinger.io/)
 
 ### Command endings (important if you need the expacted length)
