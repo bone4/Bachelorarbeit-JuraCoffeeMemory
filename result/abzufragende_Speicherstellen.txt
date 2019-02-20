@@ -1,0 +1,96 @@
+EEPROM
+Wort	Bedeutung (Zahlen hier als Dezimalzahlen)
+0x00	Zähler für 1 große Tasse übers Bohnenfach
+0x01	Zähler für 2 große Tasse übers Bohnenfach
+0x02	Zähler für 1 kleine Tasse übers Bohnenfach
+0x03	Zähler für 2 kleine Tasse übers Bohnenfach
+0x04	Zähler für Spezial-Tasse übers Bohnenfach
+0x05	Zähler für jeden neu eingesetzten Filter
+0x06	Zähler für alle Zubereitungen mit Pulver (egal ob 1 oder 2, Zähler wird immer inkrementiert)
+0x07	Spülen Gesammtzähler (wird in der Reinigung nicht zurück auf 0 gesetzt)
+0x0E	Zähler für Trester; (Schale min 8 Sekunden entnehmen setzt den Zähler auf 0 zurück); (0x000F = 15: Kaffee bereit; 0x0010 = 16: Trester leeren)
+0x0F	Zähler für alle Zubereitungen (Pulver und Bohnen) (egal ob 1 oder 2, Zähler wird immer inkrementiert); Zähler für Reinigungsankündigung nach Bezügen (bis 0x00DB (219) OK, Meldung ab 0x00DC (220))
+0x11	Spülen / Rinsing; bei jeder Spülung +=1; Zähler für Reinigungsankündigung nach Spülungen (bis 0x00B3 (179) OK, Meldung ab 0x00B4 (180))
+0x24	Byte 72: Wasserhärte --,1,2,3,4
+	Byte 73: Economy Mode off (0) oder on (1)
+0x25	Byte 74: automatische Einschaltzeit, die Stunde 0-23 deaktiviert (reset mit <N>) setzt die Stunde auf 128 => re:8000 (hex)
+	Byte 75: automatische Einschaltzeit, die Minute 0-59 deaktiviert (reset mit <N>) setzt die Minute auf 0
+0x26	!!! NUR BYTE 77 !!! automatische Ausschaltzeit, 0 deaktiviert, 1 0,5h, 2 1h, 4 2h, 6 3h, 8 4h, 10 5h, 12 6h, 14 7h, 16 8h, 18 9h; Reset [N] stellt auf den Standardwert: 10 (5h)
+0x31	machine type, siehe commands.txt
+0x34	Zähler für Trester; (Schale min 8 Sekunden entnehmen setzt den Zähler auf 0 zurück); (0x03BF = 959: Kaffee bereit; 0x03C0 = 960: Trester leeren)
+0x74	!!! NUR BYTE 233 !!! 0: Filter nein; 1: Filter ja
+0x7D	Zähler Einschaltvorgänge
+0x81	!!! NUR BYTE 259 !!! Sprache; 0 Deutsch, 16 Italienisch, 32 Niederländisch, 48 Spanisch, 64 Englisch, 80 Französisch, 96 Portugisisch
+0x82	!!! NUR BYTE 261 !!! Pulvermenge einer kleinen Tasse: 0=min, 28=max; in Bit weisen Stufen einstellbar; Reset [N] stellt auf den Standardwert: 5
+0x83	!!! NUR BYTE 263 !!! Pulvermenge einer großen Tasse: 0=min, 28=max; in Bit weisen Stufen einstellbar; Reset [N] stellt auf den Standardwert: 8
+0x84	!!! NUR BYTE 265 !!! Pulvermenge einer Spezialtasse: 0=min, 28=max; in Bit weisen Stufen einstellbar; Reset [N] stellt auf den Standardwert: 11
+0x85	!!! NUR BYTE 267 !!! 0 Temperatur normal; 1 Temperatur hoch große Tasse; 2 Temperatur hoch kleine Tasse; 4 Temperatur hoch Spezialtasse => 0-7; Standardwert wahrscheinlich: 0 (alle drei Bitts auf 0)
+0x86	Wassermenge einer kleinen Tasse; anschließende manuelle Korrektur, 5 Bit Schritte in 29 Stufen einstellbar (+-14 Stufen von der Mitte aus => +- 70 Nachjustierung möglich)
+	Reset [N] stellt auf den Standardwert: Byte 268: 0; Byte 269: 180
+0x87	Wassermenge eienr großen Tasse; anschließende manuelle Korrektur, 5 Bit Schritte in 29 Stufen einstellbar (+-14 Stufen von der Mitte aus => +- 70 Nachjustierung möglich)
+	Reset [N] stellt auf den Standardwert: Byte 270: 1; Byte 271: 84
+0x88	Wassermenge einer Spezialtasse; anschließende manuelle Korrektur, 5 Bit Schritte in 29 Stufen einstellbar (+-14 Stufen von der Mitte aus => +- 70 Nachjustierung möglich)
+	Reset [N] stellt auf den Standardwert: Byte 272: 1; Byte 273: 124
+0xB0	!!! NUR BYTE 353 !!! 0: Incasso Modus off; 16: Incasso Modus on
+0xB3	Spülungen; Beim Filter einlegen auf 0 zurück gesetzt; zählt nur bei eingelegtem Filter; Zähler für Wassermenge => Filter wechseln; (0x01F3 = 499: Kaffee bereit; 0x01F4 = 500: Filter wechseln)
+0xBB	!!! NUR BYTE 375 !!! Dampfportion in Sekunden
+0xBC	Tee Portion, ggf. Zeit in 0,1s?!
+
+RT:00
+RE:11
+RT:24
+RE:34
+RE:74
+RT:7D
+RT:B0
+
+
+
+RAM
+	Wasser füllen = Wassertank entnommen
+	Schale fehlt = Schale entnommen
+Byte	Bit	Rubrik	Prior.	Bedeutung
+0x03	7	B		Schritt 1: Mahlwerk an während der Zubereitung eines Kaffees, leider nicht über FN:07 oder FN:09 
+0x03	2	A	xx	Maschine an
+0x04	5	A	x	Trester leeren !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! doppelt
+0x04	0	A/B	x	Pulver füllen
+0x05	5	A	xx	Maschine an !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! doppelt
+0x0A	6	B		1 bei der Zubereitung eines Kaffees, während des Mahlens und beim Ausschenken
+0x0A	2,1,0	B	x	Zubereiteter Kaffee, 1=1kleiner Kaffee, 2=2 kleine Kaffees, 3=1großer Kaffee, 4=2große Kaffees, 5=spezial Kaffee
+0x0D	3 or 2	A	x	Maschine spült vor dem Ausschalten, wird bei einer Zubereitung gesetzt, wenn Gerät spült zurück auf 0?!
+0x0E	7	A	x	Bohnen füllen
+0x0E	6	A	xx	Wassertank entnommen
+0x0E	5	A	x	Trester leeren
+0x0E	4	A	xx	Schale leeren
+0x0E	2	A	xx	Schale entnommen
+0x0F	6	A	xx	Hahn NICHT offen
+0x0F	5	A	xx	Teeportion => Bit 6 = 0, Hahn offen
+0x0F	4	A	xx	Wassertank NICHT entnommen !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! doppelt
+0x0F	2	A	xx	Tassenbeleuchtung
+0x10	7	A	x	Gerät reinigen, zuviele Spülungen im EEPROM
+0x10	5	A	x	Filter wechseln, 50 Lieter erreicht
+0x16	1	A	xx	Maschine an !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! doppelt
+0x17	3	B		Schritt 2: Zubereitung eines Kaffees, nach dem Bohnen mahlen
+0x17	1	B	x	Maschine spült
+0x1A	2	A		Maschine NICHT an !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! doppelt
+0x1B	1	A	xx	Schale leeren !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! doppelt
+0x22	4	A	x	Gerät reinigen, zuviele Spülungen im EEPROM !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! doppelt
+0x22	3	A	x	Filter wechseln, 50 Liter erreicht !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! doppelt
+0x29	2	A	xx	Schale NICHT entnommen !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! doppelt
+0x44	0	A	xx	Maschine an !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! doppelt
+0x49	0	B	x	Dampfbezug / Wasserdampfportion
+0x4C	0	A		NICHT Schale/Wassertank entnommen/Hahn offen/Teeportion/Dampfbezug/Wasserdampfportion !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! doppelt
+0x4D	3,1	B		Hahn offen !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! doppelt
+0x4D	0	A/B		Teeportion Zubereitung,0: Kaffee bereit !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! doppelt
+0x62	2	B		Schritt 2: Maschine spült / Zubereitung eines Kaffees, nach dem Bohnen mahlen !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! doppelt
+0x80	1,0	A	xx	Trester leeren, ABER NUR durch 0x34 >= 0x03C0
+0xF8	0	A	xx	Filter wechseln, 50 Lieter erreicht !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! doppelt
+0xF9	7,6,5,4,2    A	xx	0->244 Filter wechseln, 50 Lieter erreicht !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! doppelt
+
+RR:01
+RR:16
+RR:44
+(RR:62)
+RR:80
+(RR:F0)
+
