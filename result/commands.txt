@@ -1,0 +1,160 @@
+Command	Description		Observed Output	Works	New Description
+AN:01	machine on		ok:	YES	
+AN:02	machine off		ok:	YES	
+AN:03	test display		ok:	YES	
+AN:05	key test			YES	Waits for all keys to be pressed
+AN:06	tests via keys on coffeemaker			
+AN:0A	ERASE EEPROM (NEVER DO THIS!!!)			
+AN:0C	test UCHI			
+AN:0D	Date?	ok:		YES	Displays Date
+FA:01	make product 1		ok:		
+FA:02	make product 2		ok:	YES	Gerät Spült
+FA:03	make product 3		ok:		Pulver füllen
+FA:04	make product 4		ok:	YES	Eine kleine Tasse
+FA:05	make product 5		ok:	YES	Zwei kleine Tassen
+FA:06	make product 6		ok:	YES	Eine große Tasse
+FA:07	make product 7		ok:	YES	Zwei große Tassen
+FA:08	make steam portion	ok:	YES	Dampf Portion (an / aus)
+FA:09	make steam		ok:	?	Dampfbezug
+FA:0A				ok:	?	
+FA:0B	flushing		NONE	NO	
+FA:0C				ok:	YES	Spezial Kaffee
+FN:01	pump coffee on		ok:	YES	Pumpe an
+FN:02	pump coffee off		ok:	YES	Pumpe aus
+FN:03	coffee heating on	ok:		
+FN:04	coffee heating off	ok:		
+FN:05	steam heating on	ok:		
+FN:06	steam heating off	ok:		
+FN:07	grinder left on		ok: (delayed)	YES	Mahlwerk an
+FN:08	grinder left off			
+FN:09	grinder right on	ok: (delayed)	YES	Mahlwerk an
+FN:0A	grinder right off			
+FN:0B	pump steam on			
+FN:0C	pump steam off			
+FN:0D	init brewgroup		ok:	YES	Brühgruppe initialisieren
+FN:0E	brewgroup put trester of			
+FN:0F	brewgroup in grinding position			
+FN:11	brewgroup?			
+FN:12	brewgroup?			
+FN:13	brewgroup in brewing position			
+FN:14	product 1 grind			
+FN:15	product 1 pump			YES	?
+FN:16	product 3 grind			
+FN:17	product 3 pump			
+FN:1A				NONE	NO	
+FN:1B				NONE	NO	
+FN:1C				NONE	NO	
+FN:1D	drainage valve on	ok:		
+FN:1E	drainage valve off	ok:		
+FN:1F				NONE	NO	
+FN:22	brewgroup?		ok:		
+FN:23				ok:		
+FN:24	emptying of steam valve on	ok:		
+FN:25	emptying of steam valve off	ok:		
+FN:26	steam valve on		ok:		
+FN:27	steam valve off		ok:		
+FN:28	cappuuccino valve on	ok:		
+FN:29	cappuuccino valve of	ok:		
+FN:30				ok:		
+FN:31				ok:		
+RE:	read word in EEPROM	re:XX{2}	YES	Reads 2 byte word from EEPROM, parameter: offset in words [00-FF]
+RT:	read line in EEPROM	rt:XX{32}	YES	Reads 32 byte row from EEPROM, parameter: offset in words [00-F0]
+TY:	type of machine?	ty:E1300 CAPU 3	YES	
+WE:	write word in EEPROM				WE:address,value -> ok:		Write a single word to EEPROM at address, see RE	
+RE:31	read machine type	re:0005	UNKNOWN	
+WE:31	set machine type			
+IC:	read inputs		NONE	NO	
+RR:	read RAM		re:XX{16}		Reads 16 byte row from RAM, parameter: offset in bytes [0000-00F0]
+
+
+
+activates incasso mode
+?M3\r\n
+?ok\r
+
+deactivates incasso mode
+?M1\r\n
+?ok\r
+
+write to the display
+?D1xxxxxxxx\r\n
+?ok\r
+?D2xxxxxxxx\r\n
+?ok\r
+
+?D1 I LOVE   
+?D2 TURAU %  
+! = _  (Unterstrich)
+" = || (volles Kästchen)
+? = 7
+[\]^_` (Fortschreitende Balkenanzeige)
++ - , . : ; / 1 2 3 4 5 6 7 8 9 0 < = > A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 
+
+Reset the display text
+?D0
+
+
+
+Schreib Befehl (Bsp.):
+Sprache lesen
+ RE:81
+Sprache auf Deutsch stellen
+ WE:81,0000
+
+
+
+Commands to press a button (not working):
+?PA
+// Key 1: ...
+?PB
+// Key 2: ...
+?PC
+// Key 3: ...
+?PD
+// Key 4: ...
+?PE
+// Key 5: ...
+?PF
+// Key 6: ...
+?PG
+// Key 7: ...
+?PH
+// Key 8: ...
+?PI
+// Key 9: ...
+?PJ
+// Key 10: ...
+?PK
+// Key 11: ...
+
+
+
+Answer from the coffee machine, when a product button is pressed:
+?PAE\r\n
+// product 1 (small cup)
+
+?PAF\r\n
+// product 2 (2 small cups)
+
+?PAA\r\n
+// product 3 (large cup)
+
+?PAB\r\n
+// product 4 (2 large cups)
+
+?PAJ\r\n
+// product 5 (steam portion)
+
+?PAI\r\n
+// product 6 (steam)
+
+?PAG\r\n
+// product 7 (special coffee; extra large cup)
+
+?PAK\r\n
+// (cup hot water for tea; Drehrad -> rechts)
+
+see
+http://protocoljura.wiki-site.com/index.php/Commands_for_coffeemaker
+https://github.com/PromyLOPh/juramote
+
