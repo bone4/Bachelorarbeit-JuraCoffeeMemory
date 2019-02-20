@@ -1,0 +1,12 @@
+<map id="EEPROM_Status::scan" name="EEPROM_Status::scan">
+<area shape="rect" id="node2" href="$class_serial_connection.html#ac98b98a509727eb43dd4e09a9bc47eb8" title="SerialConnection::getInstance" alt="" coords="692,49,889,76"/>
+<area shape="rect" id="node3" href="$class_serial_connection.html#a6b1e786b3d6cc46d744f780284f24402" title="SerialConnection::connect" alt="" coords="223,49,398,76"/>
+<area shape="rect" id="node4" href="$class_serial_connection.html#a31a09de5479fb612aac94ade315d6f0e" title="SerialConnection::send" alt="" coords="232,100,389,126"/>
+<area shape="rect" id="node6" href="$class_serial_connection.html#a6419c43953bb392053479353420a1f8e" title="SerialConnection::receive" alt="" coords="225,150,396,177"/>
+<area shape="rect" id="node9" href="$class_serial_connection.html#a395259938f38535125f070b8ac00719d" title="SerialConnection::disconnect" alt="" coords="215,201,407,228"/>
+<area shape="rect" id="node10" href="$formate-dump_8cpp.html#aeae18ebdde4bce2e14c349a623f286f7" title="hexString2int" alt="" coords="261,252,360,278"/>
+<area shape="rect" id="node5" href="$class_storage.html#ad0b9a18790e8a1c56b349c1997ba4315" title="Storage::removeSpecialChar\lFromString" alt="" coords="455,84,644,126"/>
+<area shape="rect" id="node7" href="$_serial_connection_8cpp.html#a1e8896b6fa0aa733d2fdb7a3a3891a3b" title="ALARMhandler" alt="" coords="494,150,605,177"/>
+<area shape="rect" id="node8" href="$class_serial_connection.html#a2ecb1ba029fefbc9697262e9f9cb5e5b" title="SerialConnection::getPort" alt="" coords="705,150,876,177"/>
+<area shape="rect" id="node11" href="$formate-dump_8cpp.html#abe92b9df929b37f25b0e7d321dcc00fb" title="char2int" alt="" coords="515,252,583,278"/>
+</map>

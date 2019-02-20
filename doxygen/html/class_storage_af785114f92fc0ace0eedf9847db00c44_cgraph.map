@@ -1,0 +1,7 @@
+<map id="Storage::diffBytesWith" name="Storage::diffBytesWith">
+<area shape="rect" id="node2" href="$class_json_file.html#a70ea731be6e00b083190c011e0ee4392" title="JsonFile::getInstance" alt="" coords="210,5,357,32"/>
+<area shape="rect" id="node3" href="$class_json_file.html#a69c66d052ccb40a11396f537787a6343" title="JsonFile::logData" alt="" coords="221,56,345,83"/>
+<area shape="rect" id="node5" href="$class_json_file.html#a8361a5de646f07365b7baeae80f6d3eb" title="JsonFile::logRawData" alt="" coords="208,107,359,133"/>
+<area shape="rect" id="node6" href="$class_storage.html#af3ccaf7489cfef2e9cb610989dcd4817" title="Storage::getRawData" alt="" coords="209,157,357,184"/>
+<area shape="rect" id="node4" href="$class_json_file.html#a0b7eb46810847ba22ea137a4ce4757ae" title="JsonFile::readJson" alt="" coords="407,81,539,108"/>
+</map>

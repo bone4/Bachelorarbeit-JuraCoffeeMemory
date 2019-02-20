@@ -1,0 +1,180 @@
+\section{Serial\+Connection Klassenreferenz}
+\label{class_serial_connection}\index{Serial\+Connection@{Serial\+Connection}}
+
+
+{\ttfamily \#include $<$Serial\+Connection.\+hpp$>$}
+
+\subsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+virtual \textbf{ $\sim$\+Serial\+Connection} ()
+\item 
+void \textbf{ set\+Port} (string port)
+\item 
+string \textbf{ get\+Port} ()
+\item 
+void \textbf{ set\+Command\+Suffix} (string suffix)
+\item 
+string \textbf{ get\+Command\+Suffix} ()
+\item 
+void \textbf{ connect} ()
+\item 
+void \textbf{ disconnect} ()
+\item 
+bool \textbf{ test\+Connection} ()
+\item 
+void \textbf{ set\+Test\+Command} (string command)
+\item 
+string \textbf{ get\+Test\+Command} ()
+\item 
+void \textbf{ set\+Test\+Answer} (string answer)
+\item 
+string \textbf{ get\+Test\+Answer} ()
+\item 
+void \textbf{ send} (string txt)
+\item 
+string \textbf{ receive} ()
+\end{DoxyCompactItemize}
+\subsection*{Öffentliche, statische Methoden}
+\begin{DoxyCompactItemize}
+\item 
+static \textbf{ Serial\+Connection} \& \textbf{ get\+Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Öffentliche Attribute}
+\begin{DoxyCompactItemize}
+\item 
+string \textbf{ test\+Command}
+\item 
+string \textbf{ test\+Answer}
+\end{DoxyCompactItemize}
+
+
+\subsection{Beschreibung der Konstruktoren und Destruktoren}
+\mbox{\label{class_serial_connection_ae73749bb08c2f53f467809cb6c0a3fc8}} 
+\index{Serial\+Connection@{Serial\+Connection}!````~Serial\+Connection@{$\sim$\+Serial\+Connection}}
+\index{````~Serial\+Connection@{$\sim$\+Serial\+Connection}!Serial\+Connection@{Serial\+Connection}}
+\subsubsection{$\sim$\+Serial\+Connection()}
+{\footnotesize\ttfamily Serial\+Connection\+::$\sim$\+Serial\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\subsection{Dokumentation der Elementfunktionen}
+\mbox{\label{class_serial_connection_a6b1e786b3d6cc46d744f780284f24402}} 
+\index{Serial\+Connection@{Serial\+Connection}!connect@{connect}}
+\index{connect@{connect}!Serial\+Connection@{Serial\+Connection}}
+\subsubsection{connect()}
+{\footnotesize\ttfamily void Serial\+Connection\+::connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\label{class_serial_connection_a395259938f38535125f070b8ac00719d}} 
+\index{Serial\+Connection@{Serial\+Connection}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!Serial\+Connection@{Serial\+Connection}}
+\subsubsection{disconnect()}
+{\footnotesize\ttfamily void Serial\+Connection\+::disconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\label{class_serial_connection_a85bda71650f96501c4142347d2fd45ea}} 
+\index{Serial\+Connection@{Serial\+Connection}!get\+Command\+Suffix@{get\+Command\+Suffix}}
+\index{get\+Command\+Suffix@{get\+Command\+Suffix}!Serial\+Connection@{Serial\+Connection}}
+\subsubsection{get\+Command\+Suffix()}
+{\footnotesize\ttfamily string Serial\+Connection\+::get\+Command\+Suffix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\label{class_serial_connection_ac98b98a509727eb43dd4e09a9bc47eb8}} 
+\index{Serial\+Connection@{Serial\+Connection}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!Serial\+Connection@{Serial\+Connection}}
+\subsubsection{get\+Instance()}
+{\footnotesize\ttfamily \textbf{ Serial\+Connection} \& Serial\+Connection\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\label{class_serial_connection_a2ecb1ba029fefbc9697262e9f9cb5e5b}} 
+\index{Serial\+Connection@{Serial\+Connection}!get\+Port@{get\+Port}}
+\index{get\+Port@{get\+Port}!Serial\+Connection@{Serial\+Connection}}
+\subsubsection{get\+Port()}
+{\footnotesize\ttfamily string Serial\+Connection\+::get\+Port (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\label{class_serial_connection_a9fb2b43e439ec8b3d00aa4be0c51bcc6}} 
+\index{Serial\+Connection@{Serial\+Connection}!get\+Test\+Answer@{get\+Test\+Answer}}
+\index{get\+Test\+Answer@{get\+Test\+Answer}!Serial\+Connection@{Serial\+Connection}}
+\subsubsection{get\+Test\+Answer()}
+{\footnotesize\ttfamily string Serial\+Connection\+::get\+Test\+Answer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\label{class_serial_connection_a254f0b760e29c3584a0e8b55601b4bc6}} 
+\index{Serial\+Connection@{Serial\+Connection}!get\+Test\+Command@{get\+Test\+Command}}
+\index{get\+Test\+Command@{get\+Test\+Command}!Serial\+Connection@{Serial\+Connection}}
+\subsubsection{get\+Test\+Command()}
+{\footnotesize\ttfamily string Serial\+Connection\+::get\+Test\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\label{class_serial_connection_a6419c43953bb392053479353420a1f8e}} 
+\index{Serial\+Connection@{Serial\+Connection}!receive@{receive}}
+\index{receive@{receive}!Serial\+Connection@{Serial\+Connection}}
+\subsubsection{receive()}
+{\footnotesize\ttfamily string Serial\+Connection\+::receive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_serial_connection_a6419c43953bb392053479353420a1f8e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_serial_connection_a31a09de5479fb612aac94ade315d6f0e}} 
+\index{Serial\+Connection@{Serial\+Connection}!send@{send}}
+\index{send@{send}!Serial\+Connection@{Serial\+Connection}}
+\subsubsection{send()}
+{\footnotesize\ttfamily void Serial\+Connection\+::send (\begin{DoxyParamCaption}\item[{string}]{txt }\end{DoxyParamCaption})}
+
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_serial_connection_a31a09de5479fb612aac94ade315d6f0e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_serial_connection_aee2098908b7fcdc959c4029f6cf02151}} 
+\index{Serial\+Connection@{Serial\+Connection}!set\+Command\+Suffix@{set\+Command\+Suffix}}
+\index{set\+Command\+Suffix@{set\+Command\+Suffix}!Serial\+Connection@{Serial\+Connection}}
+\subsubsection{set\+Command\+Suffix()}
+{\footnotesize\ttfamily void Serial\+Connection\+::set\+Command\+Suffix (\begin{DoxyParamCaption}\item[{string}]{suffix }\end{DoxyParamCaption})}
+
+\mbox{\label{class_serial_connection_af12096e43282f0857d05ad7f4c26e655}} 
+\index{Serial\+Connection@{Serial\+Connection}!set\+Port@{set\+Port}}
+\index{set\+Port@{set\+Port}!Serial\+Connection@{Serial\+Connection}}
+\subsubsection{set\+Port()}
+{\footnotesize\ttfamily void Serial\+Connection\+::set\+Port (\begin{DoxyParamCaption}\item[{string}]{port }\end{DoxyParamCaption})}
+
+\mbox{\label{class_serial_connection_aadcb81bf3f4f3e90676b5c9495ea497f}} 
+\index{Serial\+Connection@{Serial\+Connection}!set\+Test\+Answer@{set\+Test\+Answer}}
+\index{set\+Test\+Answer@{set\+Test\+Answer}!Serial\+Connection@{Serial\+Connection}}
+\subsubsection{set\+Test\+Answer()}
+{\footnotesize\ttfamily void Serial\+Connection\+::set\+Test\+Answer (\begin{DoxyParamCaption}\item[{string}]{answer }\end{DoxyParamCaption})}
+
+\mbox{\label{class_serial_connection_a9672748d2a2e36a6e4798a63fb91deff}} 
+\index{Serial\+Connection@{Serial\+Connection}!set\+Test\+Command@{set\+Test\+Command}}
+\index{set\+Test\+Command@{set\+Test\+Command}!Serial\+Connection@{Serial\+Connection}}
+\subsubsection{set\+Test\+Command()}
+{\footnotesize\ttfamily void Serial\+Connection\+::set\+Test\+Command (\begin{DoxyParamCaption}\item[{string}]{command }\end{DoxyParamCaption})}
+
+\mbox{\label{class_serial_connection_a8c19e483a0940911e56869d446a308c4}} 
+\index{Serial\+Connection@{Serial\+Connection}!test\+Connection@{test\+Connection}}
+\index{test\+Connection@{test\+Connection}!Serial\+Connection@{Serial\+Connection}}
+\subsubsection{test\+Connection()}
+{\footnotesize\ttfamily bool Serial\+Connection\+::test\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Dokumentation der Datenelemente}
+\mbox{\label{class_serial_connection_a2c9c4b1dbfbc044be2d7dcdcc7557d5b}} 
+\index{Serial\+Connection@{Serial\+Connection}!test\+Answer@{test\+Answer}}
+\index{test\+Answer@{test\+Answer}!Serial\+Connection@{Serial\+Connection}}
+\subsubsection{test\+Answer}
+{\footnotesize\ttfamily string Serial\+Connection\+::test\+Answer}
+
+\mbox{\label{class_serial_connection_afd79837648fd9e5b3bc2637112ee05b4}} 
+\index{Serial\+Connection@{Serial\+Connection}!test\+Command@{test\+Command}}
+\index{test\+Command@{test\+Command}!Serial\+Connection@{Serial\+Connection}}
+\subsubsection{test\+Command}
+{\footnotesize\ttfamily string Serial\+Connection\+::test\+Command}
+
+
+
+Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Dateien\+:\begin{DoxyCompactItemize}
+\item 
+/home/cjg8251/\+Desktop/\+Jura\+Coffee\+Memory/\textbf{ Serial\+Connection.\+hpp}\item 
+/home/cjg8251/\+Desktop/\+Jura\+Coffee\+Memory/\textbf{ Serial\+Connection.\+cpp}\end{DoxyCompactItemize}

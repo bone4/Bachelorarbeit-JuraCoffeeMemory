@@ -1,0 +1,205 @@
+\section{Storage Klassenreferenz}
+\label{class_storage}\index{Storage@{Storage}}
+
+
+{\ttfamily \#include $<$Storage.\+hpp$>$}
+
+
+
+Klassendiagramm für Storage\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Öffentliche Methoden}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Storage} ()
+\item 
+void \textbf{ set\+Params} (std\+::string command, int row\+\_\+length, int rows, std\+::string file\+Path)
+\item 
+virtual \textbf{ $\sim$\+Storage} ()
+\item 
+void \textbf{ print\+Raw\+Vector} ()
+\item 
+string \textbf{ get\+Raw\+Data} ()
+\item 
+void \textbf{ print\+Vector} (std\+::vector$<$ int $>$ const \&v)
+\item 
+void \textbf{ print\+Byte\+Vector} ()
+\item 
+void \textbf{ print\+Byte\+Vector\+Short} ()
+\item 
+void \textbf{ read\+Storage} ()
+\item 
+void \textbf{ read\+Storage} (int Position)
+\item 
+void \textbf{ hex\+String2int} (std\+::string src, std\+::vector$<$ int $>$ \&target)
+\item 
+int \textbf{ char2int} (char input)
+\item 
+void \textbf{ diff\+Bytes\+With} (\textbf{ Storage} $\ast$last, vector$<$ int $>$ exclude\+Bytes=vector$<$ int $>$(), bool write\+Into\+Json\+File=true, std\+::string comment=\char`\"{}\char`\"{})
+\end{DoxyCompactItemize}
+\subsection*{Öffentliche Attribute}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ string $>$ \textbf{ raw}
+\item 
+std\+::vector$<$ int $>$ \textbf{ bytes}
+\item 
+bool \textbf{ work\+\_\+offline}
+\end{DoxyCompactItemize}
+\subsection*{Geschützte Methoden}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ progress\+Bar} (int num, int end, std\+::string txt)
+\item 
+std\+::string \textbf{ remove\+Special\+Char\+From\+String} (std\+::string \&txt)
+\item 
+bool \textbf{ get\+Bit} (unsigned char byte, int position)
+\end{DoxyCompactItemize}
+
+
+\subsection{Beschreibung der Konstruktoren und Destruktoren}
+\mbox{\label{class_storage_a80ef6af5e4c9fd4424ae16e808d05291}} 
+\index{Storage@{Storage}!Storage@{Storage}}
+\index{Storage@{Storage}!Storage@{Storage}}
+\subsubsection{Storage()}
+{\footnotesize\ttfamily Storage\+::\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\label{class_storage_a73cf30f0a34250396f9eabee7dc5c93d}} 
+\index{Storage@{Storage}!````~Storage@{$\sim$\+Storage}}
+\index{````~Storage@{$\sim$\+Storage}!Storage@{Storage}}
+\subsubsection{$\sim$\+Storage()}
+{\footnotesize\ttfamily Storage\+::$\sim$\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\subsection{Dokumentation der Elementfunktionen}
+\mbox{\label{class_storage_af467ed6bef46d8d7f5286ae06d9f3289}} 
+\index{Storage@{Storage}!char2int@{char2int}}
+\index{char2int@{char2int}!Storage@{Storage}}
+\subsubsection{char2int()}
+{\footnotesize\ttfamily int Storage\+::char2int (\begin{DoxyParamCaption}\item[{char}]{input }\end{DoxyParamCaption})}
+
+\mbox{\label{class_storage_af785114f92fc0ace0eedf9847db00c44}} 
+\index{Storage@{Storage}!diff\+Bytes\+With@{diff\+Bytes\+With}}
+\index{diff\+Bytes\+With@{diff\+Bytes\+With}!Storage@{Storage}}
+\subsubsection{diff\+Bytes\+With()}
+{\footnotesize\ttfamily void Storage\+::diff\+Bytes\+With (\begin{DoxyParamCaption}\item[{\textbf{ Storage} $\ast$}]{last,  }\item[{vector$<$ int $>$}]{exclude\+Bytes = {\ttfamily vector$<$int$>$()},  }\item[{bool}]{write\+Into\+Json\+File = {\ttfamily true},  }\item[{std\+::string}]{comment = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage_af785114f92fc0ace0eedf9847db00c44_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_storage_aaaaec44a9862aef40bba754f49c2ee41}} 
+\index{Storage@{Storage}!get\+Bit@{get\+Bit}}
+\index{get\+Bit@{get\+Bit}!Storage@{Storage}}
+\subsubsection{get\+Bit()}
+{\footnotesize\ttfamily bool Storage\+::get\+Bit (\begin{DoxyParamCaption}\item[{unsigned char}]{byte,  }\item[{int}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\label{class_storage_af3ccaf7489cfef2e9cb610989dcd4817}} 
+\index{Storage@{Storage}!get\+Raw\+Data@{get\+Raw\+Data}}
+\index{get\+Raw\+Data@{get\+Raw\+Data}!Storage@{Storage}}
+\subsubsection{get\+Raw\+Data()}
+{\footnotesize\ttfamily string Storage\+::get\+Raw\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\label{class_storage_ae18375a7a591503e52e385db8e0233a5}} 
+\index{Storage@{Storage}!hex\+String2int@{hex\+String2int}}
+\index{hex\+String2int@{hex\+String2int}!Storage@{Storage}}
+\subsubsection{hex\+String2int()}
+{\footnotesize\ttfamily void Storage\+::hex\+String2int (\begin{DoxyParamCaption}\item[{std\+::string}]{src,  }\item[{std\+::vector$<$ int $>$ \&}]{target }\end{DoxyParamCaption})}
+
+\mbox{\label{class_storage_a9e306e4e378e00197d5d024b0421805b}} 
+\index{Storage@{Storage}!print\+Byte\+Vector@{print\+Byte\+Vector}}
+\index{print\+Byte\+Vector@{print\+Byte\+Vector}!Storage@{Storage}}
+\subsubsection{print\+Byte\+Vector()}
+{\footnotesize\ttfamily void Storage\+::print\+Byte\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\label{class_storage_af2c170f7521a99468e334c95a542f399}} 
+\index{Storage@{Storage}!print\+Byte\+Vector\+Short@{print\+Byte\+Vector\+Short}}
+\index{print\+Byte\+Vector\+Short@{print\+Byte\+Vector\+Short}!Storage@{Storage}}
+\subsubsection{print\+Byte\+Vector\+Short()}
+{\footnotesize\ttfamily void Storage\+::print\+Byte\+Vector\+Short (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\label{class_storage_a9c875a4c268b989f13aabf299ff6268e}} 
+\index{Storage@{Storage}!print\+Raw\+Vector@{print\+Raw\+Vector}}
+\index{print\+Raw\+Vector@{print\+Raw\+Vector}!Storage@{Storage}}
+\subsubsection{print\+Raw\+Vector()}
+{\footnotesize\ttfamily void Storage\+::print\+Raw\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\label{class_storage_ad053d05f06bfa7eb034457902bfcf840}} 
+\index{Storage@{Storage}!print\+Vector@{print\+Vector}}
+\index{print\+Vector@{print\+Vector}!Storage@{Storage}}
+\subsubsection{print\+Vector()}
+{\footnotesize\ttfamily void Storage\+::print\+Vector (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$ const \&}]{v }\end{DoxyParamCaption})}
+
+\mbox{\label{class_storage_a9952af852b2676ede3fa5b3cd0b1be63}} 
+\index{Storage@{Storage}!progress\+Bar@{progress\+Bar}}
+\index{progress\+Bar@{progress\+Bar}!Storage@{Storage}}
+\subsubsection{progress\+Bar()}
+{\footnotesize\ttfamily void Storage\+::progress\+Bar (\begin{DoxyParamCaption}\item[{int}]{num,  }\item[{int}]{end,  }\item[{std\+::string}]{txt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\label{class_storage_aff274782e2d75969248c380c1869bd0c}} 
+\index{Storage@{Storage}!read\+Storage@{read\+Storage}}
+\index{read\+Storage@{read\+Storage}!Storage@{Storage}}
+\subsubsection{read\+Storage()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Storage\+::read\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\label{class_storage_a6b8c995a4ee57633e7c612bdb1714fbb}} 
+\index{Storage@{Storage}!read\+Storage@{read\+Storage}}
+\index{read\+Storage@{read\+Storage}!Storage@{Storage}}
+\subsubsection{read\+Storage()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Storage\+::read\+Storage (\begin{DoxyParamCaption}\item[{int}]{Position }\end{DoxyParamCaption})}
+
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_storage_a6b8c995a4ee57633e7c612bdb1714fbb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{class_storage_ad0b9a18790e8a1c56b349c1997ba4315}} 
+\index{Storage@{Storage}!remove\+Special\+Char\+From\+String@{remove\+Special\+Char\+From\+String}}
+\index{remove\+Special\+Char\+From\+String@{remove\+Special\+Char\+From\+String}!Storage@{Storage}}
+\subsubsection{remove\+Special\+Char\+From\+String()}
+{\footnotesize\ttfamily string Storage\+::remove\+Special\+Char\+From\+String (\begin{DoxyParamCaption}\item[{std\+::string \&}]{txt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\label{class_storage_a061f74b18be706398d7d8070d234ad90}} 
+\index{Storage@{Storage}!set\+Params@{set\+Params}}
+\index{set\+Params@{set\+Params}!Storage@{Storage}}
+\subsubsection{set\+Params()}
+{\footnotesize\ttfamily void Storage\+::set\+Params (\begin{DoxyParamCaption}\item[{std\+::string}]{command,  }\item[{int}]{row\+\_\+length,  }\item[{int}]{rows,  }\item[{std\+::string}]{file\+Path }\end{DoxyParamCaption})}
+
+
+
+\subsection{Dokumentation der Datenelemente}
+\mbox{\label{class_storage_a5682d2e69bffe775bcda83a54759de0d}} 
+\index{Storage@{Storage}!bytes@{bytes}}
+\index{bytes@{bytes}!Storage@{Storage}}
+\subsubsection{bytes}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Storage\+::bytes}
+
+\mbox{\label{class_storage_a5c26b6c4b245e3deb8ef3a0da04e6f7b}} 
+\index{Storage@{Storage}!raw@{raw}}
+\index{raw@{raw}!Storage@{Storage}}
+\subsubsection{raw}
+{\footnotesize\ttfamily std\+::vector$<$string$>$ Storage\+::raw}
+
+\mbox{\label{class_storage_a76e6060150c2226088365af77fe90385}} 
+\index{Storage@{Storage}!work\+\_\+offline@{work\+\_\+offline}}
+\index{work\+\_\+offline@{work\+\_\+offline}!Storage@{Storage}}
+\subsubsection{work\+\_\+offline}
+{\footnotesize\ttfamily bool Storage\+::work\+\_\+offline}
+
+
+
+Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Dateien\+:\begin{DoxyCompactItemize}
+\item 
+/home/cjg8251/\+Desktop/\+Jura\+Coffee\+Memory/\textbf{ Storage.\+hpp}\item 
+/home/cjg8251/\+Desktop/\+Jura\+Coffee\+Memory/\textbf{ Storage.\+cpp}\end{DoxyCompactItemize}

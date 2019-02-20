@@ -1,0 +1,190 @@
+\section{/home/cjg8251/\+Desktop/\+Jura\+Coffee\+Memory/\+Jura\+Coffee\+Memory.cpp-\/\+Dateireferenz}
+\label{_jura_coffee_memory_8cpp}\index{/home/cjg8251/\+Desktop/\+Jura\+Coffee\+Memory/\+Jura\+Coffee\+Memory.\+cpp@{/home/cjg8251/\+Desktop/\+Jura\+Coffee\+Memory/\+Jura\+Coffee\+Memory.\+cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Storage.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}E\+E\+P\+R\+O\+M.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}R\+A\+M.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}E\+E\+P\+R\+O\+M\+\_\+\+Status.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}R\+A\+M\+\_\+\+Status.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Serial\+Connection.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Json\+File.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}color-\/definitions.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$experimental/filesystem$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+Include-\/\+Abhängigkeitsdiagramm für Jura\+Coffee\+Memory.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_jura_coffee_memory_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Makrodefinitionen}
+\begin{DoxyCompactItemize}
+\item 
+\#define \textbf{ O\+F\+F\+L\+I\+NE}~false
+\end{DoxyCompactItemize}
+\subsection*{Funktionen}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ eeprom} (string \&eeprom\+Path)
+\item 
+void \textbf{ ram} (string \&ram\+Path)
+\item 
+void \textbf{ Display\+Main\+Menu} ()
+\item 
+void \textbf{ Display\+Options\+Menu} (string \&device\+Path, string \&eeprom\+Path, string \&ram\+Path)
+\item 
+void \textbf{ Analyse\+File\+Dumps\+Menu} (string filename)
+\item 
+vector$<$ string $>$ \textbf{ Analyse\+Files\+List\+All} (string path)
+\item 
+void \textbf{ Analyse\+Files\+Menu} (string \&path)
+\item 
+void \textbf{ Options\+Menu} (string \&device\+Path, string \&eeprom\+Path, string \&ram\+Path)
+\item 
+void \textbf{ Main\+Menu} (string \&device\+Path, string \&path, string eeprom\+Path, string ram\+Path)
+\item 
+bool \textbf{ cmd\+Option\+Exists} (char $\ast$$\ast$begin, char $\ast$$\ast$end, const std\+::string \&option)
+\item 
+int \textbf{ main} (int argc, char $\ast$argv[$\,$])
+\end{DoxyCompactItemize}
+
+
+\subsection{Makro-\/\+Dokumentation}
+\mbox{\label{_jura_coffee_memory_8cpp_a9fc595816a36e47d2b583afa775b3d4c}} 
+\index{Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}!O\+F\+F\+L\+I\+NE@{O\+F\+F\+L\+I\+NE}}
+\index{O\+F\+F\+L\+I\+NE@{O\+F\+F\+L\+I\+NE}!Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}}
+\subsubsection{O\+F\+F\+L\+I\+NE}
+{\footnotesize\ttfamily \#define O\+F\+F\+L\+I\+NE~false}
+
+
+
+\subsection{Dokumentation der Funktionen}
+\mbox{\label{_jura_coffee_memory_8cpp_ab8bde046af6922695656d5315eb4850a}} 
+\index{Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}!Analyse\+File\+Dumps\+Menu@{Analyse\+File\+Dumps\+Menu}}
+\index{Analyse\+File\+Dumps\+Menu@{Analyse\+File\+Dumps\+Menu}!Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}}
+\subsubsection{Analyse\+File\+Dumps\+Menu()}
+{\footnotesize\ttfamily void Analyse\+File\+Dumps\+Menu (\begin{DoxyParamCaption}\item[{string}]{filename }\end{DoxyParamCaption})}
+
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_jura_coffee_memory_8cpp_ab8bde046af6922695656d5315eb4850a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{_jura_coffee_memory_8cpp_af65003482ad2efc684f1bf59133d1b71}} 
+\index{Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}!Analyse\+Files\+List\+All@{Analyse\+Files\+List\+All}}
+\index{Analyse\+Files\+List\+All@{Analyse\+Files\+List\+All}!Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}}
+\subsubsection{Analyse\+Files\+List\+All()}
+{\footnotesize\ttfamily vector$<$string$>$ Analyse\+Files\+List\+All (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})}
+
+\mbox{\label{_jura_coffee_memory_8cpp_a755b1b20dcd140974d1760d5d19efbae}} 
+\index{Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}!Analyse\+Files\+Menu@{Analyse\+Files\+Menu}}
+\index{Analyse\+Files\+Menu@{Analyse\+Files\+Menu}!Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}}
+\subsubsection{Analyse\+Files\+Menu()}
+{\footnotesize\ttfamily void Analyse\+Files\+Menu (\begin{DoxyParamCaption}\item[{string \&}]{path }\end{DoxyParamCaption})}
+
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_jura_coffee_memory_8cpp_a755b1b20dcd140974d1760d5d19efbae_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{_jura_coffee_memory_8cpp_a3e17e291195c7153863766f9374c14ab}} 
+\index{Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}!cmd\+Option\+Exists@{cmd\+Option\+Exists}}
+\index{cmd\+Option\+Exists@{cmd\+Option\+Exists}!Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}}
+\subsubsection{cmd\+Option\+Exists()}
+{\footnotesize\ttfamily bool cmd\+Option\+Exists (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{begin,  }\item[{char $\ast$$\ast$}]{end,  }\item[{const std\+::string \&}]{option }\end{DoxyParamCaption})}
+
+\mbox{\label{_jura_coffee_memory_8cpp_a9801ee1f612b606462a61b77cef5ac94}} 
+\index{Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}!Display\+Main\+Menu@{Display\+Main\+Menu}}
+\index{Display\+Main\+Menu@{Display\+Main\+Menu}!Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}}
+\subsubsection{Display\+Main\+Menu()}
+{\footnotesize\ttfamily void Display\+Main\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\label{_jura_coffee_memory_8cpp_a97c243c8048c19a393f1e73c92af4918}} 
+\index{Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}!Display\+Options\+Menu@{Display\+Options\+Menu}}
+\index{Display\+Options\+Menu@{Display\+Options\+Menu}!Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}}
+\subsubsection{Display\+Options\+Menu()}
+{\footnotesize\ttfamily void Display\+Options\+Menu (\begin{DoxyParamCaption}\item[{string \&}]{device\+Path,  }\item[{string \&}]{eeprom\+Path,  }\item[{string \&}]{ram\+Path }\end{DoxyParamCaption})}
+
+\mbox{\label{_jura_coffee_memory_8cpp_a7f8b7f6e1e79a9ca640e51eb5aea9127}} 
+\index{Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}!eeprom@{eeprom}}
+\index{eeprom@{eeprom}!Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}}
+\subsubsection{eeprom()}
+{\footnotesize\ttfamily void eeprom (\begin{DoxyParamCaption}\item[{string \&}]{eeprom\+Path }\end{DoxyParamCaption})}
+
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_jura_coffee_memory_8cpp_a7f8b7f6e1e79a9ca640e51eb5aea9127_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{_jura_coffee_memory_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}!main@{main}}
+\index{main@{main}!Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}}
+\subsubsection{main()}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv[$\,$] }\end{DoxyParamCaption})}
+
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_jura_coffee_memory_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{_jura_coffee_memory_8cpp_a738ac361f7823bd523c2b86533ed2b67}} 
+\index{Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}!Main\+Menu@{Main\+Menu}}
+\index{Main\+Menu@{Main\+Menu}!Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}}
+\subsubsection{Main\+Menu()}
+{\footnotesize\ttfamily void Main\+Menu (\begin{DoxyParamCaption}\item[{string \&}]{device\+Path,  }\item[{string \&}]{path,  }\item[{string}]{eeprom\+Path,  }\item[{string}]{ram\+Path }\end{DoxyParamCaption})}
+
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_jura_coffee_memory_8cpp_a738ac361f7823bd523c2b86533ed2b67_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{_jura_coffee_memory_8cpp_ae46c8e2155f07fd7da805fc23e7778ad}} 
+\index{Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}!Options\+Menu@{Options\+Menu}}
+\index{Options\+Menu@{Options\+Menu}!Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}}
+\subsubsection{Options\+Menu()}
+{\footnotesize\ttfamily void Options\+Menu (\begin{DoxyParamCaption}\item[{string \&}]{device\+Path,  }\item[{string \&}]{eeprom\+Path,  }\item[{string \&}]{ram\+Path }\end{DoxyParamCaption})}
+
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{_jura_coffee_memory_8cpp_ae46c8e2155f07fd7da805fc23e7778ad_cgraph}
+\end{center}
+\end{figure}
+\mbox{\label{_jura_coffee_memory_8cpp_affa74aeb23b81d2c3e06941867347bd8}} 
+\index{Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}!ram@{ram}}
+\index{ram@{ram}!Jura\+Coffee\+Memory.\+cpp@{Jura\+Coffee\+Memory.\+cpp}}
+\subsubsection{ram()}
+{\footnotesize\ttfamily void ram (\begin{DoxyParamCaption}\item[{string \&}]{ram\+Path }\end{DoxyParamCaption})}
+
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_jura_coffee_memory_8cpp_affa74aeb23b81d2c3e06941867347bd8_cgraph}
+\end{center}
+\end{figure}

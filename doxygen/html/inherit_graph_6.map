@@ -1,0 +1,7 @@
+<map id="Grafische Darstellung der Klassenhierarchie" name="Grafische Darstellung der Klassenhierarchie">
+<area shape="rect" id="node1" href="$class_storage.html" title="Storage" alt="" coords="5,81,72,108"/>
+<area shape="rect" id="node2" href="$class_e_e_p_r_o_m.html" title="EEPROM" alt="" coords="143,5,223,32"/>
+<area shape="rect" id="node3" href="$class_e_e_p_r_o_m___status.html" title="EEPROM_Status" alt="" coords="120,56,245,83"/>
+<area shape="rect" id="node4" href="$class_r_a_m.html" title="RAM" alt="" coords="157,107,209,133"/>
+<area shape="rect" id="node5" href="$class_r_a_m___status.html" title="RAM_Status" alt="" coords="134,157,231,184"/>
+</map>

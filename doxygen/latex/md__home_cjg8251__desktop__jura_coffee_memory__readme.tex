@@ -1,0 +1,115 @@
+This C++ project is designed to read and analyse the memory of a Jura Impressa S9 coffee maker.
+
+\subsection*{Requirements}
+
+libserial and libjsoncpp\+: 
+\begin{DoxyCode}
+sudo apt-get install libserial-dev libboost-all-dev libjsoncpp-dev
+\end{DoxyCode}
+
+
+with these linker flags to compile\+: 
+\begin{DoxyCode}
+-lserial -lpthread -ljsoncpp
+\end{DoxyCode}
+
+
+\subsection*{Usage}
+
+Run\+: 
+\begin{DoxyCode}
+make
+./JuraCoffeeMemory
+\end{DoxyCode}
+
+
+If you have problems to enable a serial connection, run the programm twice or try this\+: 
+\begin{DoxyCode}
+screen /dev/ttyACM0 9600
+exit
+\end{DoxyCode}
+ You can quit with $<$Ctrl$>$+D or kill the screen with $<$Ctrl$>$+A, k, y.
+
+Unfortunately this not the same as 
+\begin{DoxyCode}
+stty -F /dev/ttyACM0 9600 raw \(\backslash\)
+ignbrk -brkint -icrnl -imaxbel \(\backslash\)
+-opost -onlcr \(\backslash\)
+-isig -icanon -iexten -echo -echoe -echok -echoctl -echoke
+\end{DoxyCode}
+ it\textquotesingle{}s sometimes a bit magically. But with the used libserial library the data are reliably send and received.
+
+Call one of the following commands to get a J\+S\+ON string to stdout, send a J\+S\+ON string to update the \doxyref{E\+E\+P\+R\+OM}{S.}{class_e_e_p_r_o_m} or send a command to the coffee machine\+: 
+\begin{DoxyCode}
+./JuraCoffeeMemory ram
+./JuraCoffeeMemory eeprom
+./JuraCoffeeMemory eepromWrite
+./JuraCoffeeMemory command
+\end{DoxyCode}
+ The last two commands expect input from stdin.
+
+\subsubsection*{Return codes}
+
+\tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\PBS\raggedleft \textbf{ No. }&\textbf{ Message }&\textbf{ Recommended action  }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\PBS\raggedleft \textbf{ No. }&\textbf{ Message }&\textbf{ Recommended action  }\\\cline{1-3}
+\endhead
+\PBS\raggedleft 0 &Ok, every thing is fine &nothing \\\cline{1-3}
+\PBS\raggedleft 1 &J\+S\+ON string could not be processed &Check your input or the mentioned file. \\\cline{1-3}
+\PBS\raggedleft 2 &Alarm, no answer within 3 seconds. &Check your input using the commands file. Ignore this message if you tried a display test AN\+:03 \\\cline{1-3}
+\PBS\raggedleft 3 &Could not open serial port &Check the arduino device path and enter the actual one in the option menu (-\/$>$ 9 -\/$>$ 1) \\\cline{1-3}
+\PBS\raggedleft 4 &Could not configure serial port. &Run the arduino script inside the Arduino I\+DE and use the serial monitor to communicate with the coffee machine. \\\cline{1-3}
+\PBS\raggedleft 5 &The test command failed. &Enter the result of the test command \char`\"{}\+T\+Y\+:\char`\"{} in line 5 of \doxyref{Serial\+Connection.\+cpp}{S.}{_serial_connection_8cpp}, compile and run again. \\\cline{1-3}
+\PBS\raggedleft 6 &Information of 256 bytes \doxyref{R\+AM}{S.}{class_r_a_m} are needed. &Debug the answer of the coffee machine in \doxyref{R\+A\+M\+\_\+\+Status.\+cpp}{S.}{_r_a_m___status_8cpp} \\\cline{1-3}
+\PBS\raggedleft 7 &Unknown byte in R\+A\+M\+\_\+\+Status\+::get\+Entries\+R\+A\+M() &Enter only byte numbers between 0-\/255. Have a look on the thesis results and enter only known and existing positions. The valiable known\+\_\+bytes should have an entry at each position where the variable raw has queried non empty values. \\\cline{1-3}
+\PBS\raggedleft 8 &Information of 512 bytes \doxyref{E\+E\+P\+R\+OM}{S.}{class_e_e_p_r_o_m} are needed &Debug the answer of the coffee machine in \doxyref{E\+E\+P\+R\+O\+M\+\_\+\+Status.\+cpp}{S.}{_e_e_p_r_o_m___status_8cpp} \\\cline{1-3}
+\PBS\raggedleft 9 &Unknown byte in R\+A\+M\+\_\+\+Status\+::get\+Entries\+R\+A\+M() &see 7. \\\cline{1-3}
+\PBS\raggedleft 10 &J\+S\+ON parsing error. &Check your J\+S\+ON input on valid syntax. \\\cline{1-3}
+\PBS\raggedleft 11 &The answer of the coffe machine didn\textquotesingle{}t the expected one. &Debug the communication, fix a misspelled command or update the eypected answer in line 7 of \doxyref{E\+E\+P\+R\+O\+M\+\_\+\+Status.\+cpp}{S.}{_e_e_p_r_o_m___status_8cpp} \\\cline{1-3}
+\PBS\raggedleft 12 &Wrong byte position in the second field of E\+E\+P\+R\+O\+M\+\_\+\+Status\+::get\+Entries\+E\+E\+P\+R\+O\+M() &A word consists of two bytes. Enter only 0, 1 or both. \\\cline{1-3}
+\PBS\raggedleft 13 &The new \doxyref{E\+E\+P\+R\+OM}{S.}{class_e_e_p_r_o_m} value for a whole word is out of range. &The J\+S\+ON input value has to be between 0 and 65535 for a two bytes word. \\\cline{1-3}
+\PBS\raggedleft 14 &The new \doxyref{E\+E\+P\+R\+OM}{S.}{class_e_e_p_r_o_m} value for a single byte inside a word is out of range. &The J\+S\+ON input value has to be between 0 and 255. \\\cline{1-3}
+\PBS\raggedleft 15 &No valid input was made as command to the coffee machine. &Pass a valid input to stdin. \\\cline{1-3}
+\PBS\raggedleft 225 &Device file couldn\textquotesingle{}t be locked. &Check the connection to the arduino and terminate existing processes. \\\cline{1-3}
+\end{longtabu}
+
+
+\subsection*{Remarks}
+
+The Arduino file is used from {\tt E-\/17 Coffee\+Machine}.
+
+More usefull links\+: {\tt libserial Github}, {\tt libserial documentation}; {\tt libjsoncpp}; https\+://collaborating.tuhh.\+de/help/user/markdown.md \char`\"{}gitlab-\/markdown\char`\"{}, {\tt online-\/markdown}
+
+\subsubsection*{Command endings (important if you need the expacted length)}
+
+\tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ Arduino -\/$>$ Jura Coffee\+Machine }&\textbf{ Jura Coffee\+Machine -\/$>$ Arduino  }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ Arduino -\/$>$ Jura Coffee\+Machine }&\textbf{ Jura Coffee\+Machine -\/$>$ Arduino  }\\\cline{1-2}
+\endhead
+{\ttfamily TY\+:\textbackslash{}r\textbackslash{}n} &{\ttfamily ty\+:E1300 C\+A\+PU 3\textbackslash{}r} \\\cline{1-2}
+\end{longtabu}
+\tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ Char }&\textbf{ hex }&\textbf{ dez  }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ Char }&\textbf{ hex }&\textbf{ dez  }\\\cline{1-3}
+\endhead
+CR\+: {\ttfamily \textbackslash{}r} &0D &13 \\\cline{1-3}
+LF\+: {\ttfamily \textbackslash{}n} &0A &10 \\\cline{1-3}
+\end{longtabu}

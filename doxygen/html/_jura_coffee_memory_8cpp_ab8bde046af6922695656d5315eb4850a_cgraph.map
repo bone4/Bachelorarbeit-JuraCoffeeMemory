@@ -1,0 +1,11 @@
+<map id="AnalyseFileDumpsMenu" name="AnalyseFileDumpsMenu">
+<area shape="rect" id="node2" href="$class_json_file.html#a70ea731be6e00b083190c011e0ee4392" title="JsonFile::getInstance" alt="" coords="422,60,569,87"/>
+<area shape="rect" id="node3" href="$class_json_file.html#a0b7eb46810847ba22ea137a4ce4757ae" title="JsonFile::readJson" alt="" coords="619,149,751,176"/>
+<area shape="rect" id="node4" href="$class_json_file.html#a973aa4aba725db652ddb6edd26ff8527" title="JsonFile::getDumps" alt="" coords="225,73,364,100"/>
+<area shape="rect" id="node5" href="$class_storage.html#a061f74b18be706398d7d8070d234ad90" title="Storage::setParams" alt="" coords="225,124,364,151"/>
+<area shape="rect" id="node6" href="$class_storage.html#ae18375a7a591503e52e385db8e0233a5" title="Storage::hexString2int" alt="" coords="219,175,370,201"/>
+<area shape="rect" id="node7" href="$class_storage.html#af785114f92fc0ace0eedf9847db00c44" title="Storage::diffBytesWith" alt="" coords="217,225,372,252"/>
+<area shape="rect" id="node8" href="$class_json_file.html#a69c66d052ccb40a11396f537787a6343" title="JsonFile::logData" alt="" coords="433,251,557,277"/>
+<area shape="rect" id="node9" href="$class_json_file.html#a8361a5de646f07365b7baeae80f6d3eb" title="JsonFile::logRawData" alt="" coords="420,149,571,176"/>
+<area shape="rect" id="node10" href="$class_storage.html#af3ccaf7489cfef2e9cb610989dcd4817" title="Storage::getRawData" alt="" coords="421,200,569,227"/>
+</map>

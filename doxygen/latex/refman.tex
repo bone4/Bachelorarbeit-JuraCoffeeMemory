@@ -1,0 +1,174 @@
+\documentclass[twoside]{book}
+
+% Packages required by doxygen
+\usepackage{fixltx2e}
+\usepackage{calc}
+\usepackage{doxygen}
+\usepackage[export]{adjustbox} % also loads graphicx
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{makeidx}
+\usepackage{multicol}
+\usepackage{multirow}
+\PassOptionsToPackage{warn}{textcomp}
+\usepackage{textcomp}
+\usepackage[nointegrals]{wasysym}
+\usepackage[table]{xcolor}
+
+% NLS support packages
+\usepackage[ngerman]{babel}
+
+% Font selection
+\usepackage[T1]{fontenc}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\usepackage{amssymb}
+\usepackage{sectsty}
+\renewcommand{\familydefault}{\sfdefault}
+\allsectionsfont{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+\renewcommand{\DoxyLabelFont}{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+\newcommand{\+}{\discretionary{\mbox{\scriptsize$\hookleftarrow$}}{}{}}
+
+% Page & text layout
+\usepackage{geometry}
+\geometry{%
+  a4paper,%
+  top=2.5cm,%
+  bottom=2.5cm,%
+  left=2.5cm,%
+  right=2.5cm%
+}
+\tolerance=750
+\hfuzz=15pt
+\hbadness=750
+\setlength{\emergencystretch}{15pt}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{3ex plus 2ex minus 2ex}
+\makeatletter
+\renewcommand{\paragraph}{%
+  \@startsection{paragraph}{4}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@parafont%
+  }%
+}
+\renewcommand{\subparagraph}{%
+  \@startsection{subparagraph}{5}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@subparafont%
+  }%
+}
+\makeatother
+
+% Headers & footers
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhead[LE]{\fancyplain{}{\bfseries\thepage}}
+\fancyhead[CE]{\fancyplain{}{}}
+\fancyhead[RE]{\fancyplain{}{\bfseries\leftmark}}
+\fancyhead[LO]{\fancyplain{}{\bfseries\rightmark}}
+\fancyhead[CO]{\fancyplain{}{}}
+\fancyhead[RO]{\fancyplain{}{\bfseries\thepage}}
+\fancyfoot[LE]{\fancyplain{}{}}
+\fancyfoot[CE]{\fancyplain{}{}}
+\fancyfoot[RE]{\fancyplain{}{\bfseries\scriptsize Erzeugt von Doxygen }}
+\fancyfoot[LO]{\fancyplain{}{\bfseries\scriptsize Erzeugt von Doxygen }}
+\fancyfoot[CO]{\fancyplain{}{}}
+\fancyfoot[RO]{\fancyplain{}{}}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\chaptermark}[1]{%
+  \markboth{#1}{}%
+}
+\renewcommand{\sectionmark}[1]{%
+  \markright{\thesection\ #1}%
+}
+
+% Indices & bibliography
+\usepackage{natbib}
+\usepackage[titles]{tocloft}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{5}
+\makeindex
+
+% Custom commands
+\newcommand{\clearemptydoublepage}{%
+  \newpage{\pagestyle{empty}\cleardoublepage}%
+}
+
+\usepackage{caption}
+\captionsetup{labelsep=space,justification=centering,font={bf},singlelinecheck=off,skip=4pt,position=top}
+
+%===== C O N T E N T S =====
+
+\begin{document}
+
+% Titlepage & ToC
+\pagenumbering{alph}
+\begin{titlepage}
+\vspace*{7cm}
+\begin{center}%
+{\Large Jura\+Coffee\+Memory }\\
+\vspace*{1cm}
+{\large Erzeugt von Doxygen 1.8.13}\\
+\end{center}
+\end{titlepage}
+\clearemptydoublepage
+\pagenumbering{roman}
+\tableofcontents
+\clearemptydoublepage
+\pagenumbering{arabic}
+
+%--- Begin generated contents ---
+\chapter{Jura\+Coffee}
+\label{md__home_cjg8251__desktop__jura_coffee_memory__readme}
+\input{md__home_cjg8251__desktop__jura_coffee_memory__readme}
+\chapter{Hierarchie-\/\+Verzeichnis}
+\input{hierarchy}
+\chapter{Klassen-\/\+Verzeichnis}
+\input{annotated}
+\chapter{Datei-\/\+Verzeichnis}
+\input{files}
+\chapter{Klassen-\/\+Dokumentation}
+\input{structdata}
+\input{structdump}
+\input{class_e_e_p_r_o_m}
+\input{class_e_e_p_r_o_m___status}
+\input{struct_entry_e_e_p_r_o_m}
+\input{struct_entry_r_a_m}
+\input{class_json_file}
+\input{class_r_a_m}
+\input{class_r_a_m___status}
+\input{class_serial_connection}
+\input{class_storage}
+\chapter{Datei-\/\+Dokumentation}
+\input{color-definitions_8h}
+\input{_e_e_p_r_o_m_8cpp}
+\input{_e_e_p_r_o_m_8hpp}
+\input{_e_e_p_r_o_m___status_8cpp}
+\input{_e_e_p_r_o_m___status_8hpp}
+\input{_json_file_8cpp}
+\input{_json_file_8hpp}
+\input{_jura_coffee_memory_8cpp}
+\input{_r_a_m_8cpp}
+\input{_r_a_m_8hpp}
+\input{_r_a_m___status_8cpp}
+\input{_r_a_m___status_8hpp}
+\input{_readme_8md}
+\input{_serial_connection_8cpp}
+\input{_serial_connection_8hpp}
+\input{_storage_8cpp}
+\input{_storage_8hpp}
+%--- End generated contents ---
+
+% Index
+\backmatter
+\newpage
+\phantomsection
+\clearemptydoublepage
+\addcontentsline{toc}{chapter}{Index}
+\printindex
+
+\end{document}

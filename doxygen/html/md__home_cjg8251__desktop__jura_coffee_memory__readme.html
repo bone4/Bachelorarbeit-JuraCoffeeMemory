@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>JuraCoffeeMemory: JuraCoffee</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">JuraCoffeeMemory
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Suchen');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('md__home_cjg8251__desktop__jura_coffee_memory__readme.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">JuraCoffee </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>This C++ project is designed to read and analyse the memory of a Jura Impressa S9 coffee maker.</p>
+<h2>Requirements</h2>
+<p>libserial and libjsoncpp: </p><div class="fragment"><div class="line">sudo apt-get install libserial-dev libboost-all-dev libjsoncpp-dev</div></div><!-- fragment --><p>with these linker flags to compile: </p><div class="fragment"><div class="line">-lserial -lpthread -ljsoncpp</div></div><!-- fragment --><h2>Usage</h2>
+<p>Run: </p><div class="fragment"><div class="line">make</div><div class="line">./JuraCoffeeMemory</div></div><!-- fragment --><p>If you have problems to enable a serial connection, run the programm twice or try this: </p><div class="fragment"><div class="line">screen /dev/ttyACM0 9600</div><div class="line">exit</div></div><!-- fragment --><p> You can quit with &lt;Ctrl&gt;+D or kill the screen with &lt;Ctrl&gt;+A, k, y.</p>
+<p>Unfortunately this not the same as </p><div class="fragment"><div class="line">stty -F /dev/ttyACM0 9600 raw \</div><div class="line">ignbrk -brkint -icrnl -imaxbel \</div><div class="line">-opost -onlcr \</div><div class="line">-isig -icanon -iexten -echo -echoe -echok -echoctl -echoke</div></div><!-- fragment --><p> it's sometimes a bit magically. But with the used libserial library the data are reliably send and received.</p>
+<p>Call one of the following commands to get a JSON string to stdout, send a JSON string to update the <a class="el" href="class_e_e_p_r_o_m.html">EEPROM</a> or send a command to the coffee machine: </p><div class="fragment"><div class="line">./JuraCoffeeMemory ram</div><div class="line">./JuraCoffeeMemory eeprom</div><div class="line">./JuraCoffeeMemory eepromWrite</div><div class="line">./JuraCoffeeMemory command</div></div><!-- fragment --><p> The last two commands expect input from stdin.</p>
+<h3>Return codes</h3>
+<table class="doxtable">
+<tr>
+<th align="right">No. </th><th>Message </th><th>Recommended action  </th></tr>
+<tr>
+<td align="right">0 </td><td>Ok, every thing is fine </td><td>nothing </td></tr>
+<tr>
+<td align="right">1 </td><td>JSON string could not be processed </td><td>Check your input or the mentioned file. </td></tr>
+<tr>
+<td align="right">2 </td><td>Alarm, no answer within 3 seconds. </td><td>Check your input using the commands file. Ignore this message if you tried a display test AN:03 </td></tr>
+<tr>
+<td align="right">3 </td><td>Could not open serial port </td><td>Check the arduino device path and enter the actual one in the option menu (-&gt; 9 -&gt; 1) </td></tr>
+<tr>
+<td align="right">4 </td><td>Could not configure serial port. </td><td>Run the arduino script inside the Arduino IDE and use the serial monitor to communicate with the coffee machine. </td></tr>
+<tr>
+<td align="right">5 </td><td>The test command failed. </td><td>Enter the result of the test command "TY:" in line 5 of <a class="el" href="_serial_connection_8cpp.html">SerialConnection.cpp</a>, compile and run again. </td></tr>
+<tr>
+<td align="right">6 </td><td>Information of 256 bytes <a class="el" href="class_r_a_m.html">RAM</a> are needed. </td><td>Debug the answer of the coffee machine in <a class="el" href="_r_a_m___status_8cpp.html">RAM_Status.cpp</a> </td></tr>
+<tr>
+<td align="right">7 </td><td>Unknown byte in RAM_Status::getEntriesRAM() </td><td>Enter only byte numbers between 0-255. Have a look on the thesis results and enter only known and existing positions. The valiable known_bytes should have an entry at each position where the variable raw has queried non empty values. </td></tr>
+<tr>
+<td align="right">8 </td><td>Information of 512 bytes <a class="el" href="class_e_e_p_r_o_m.html">EEPROM</a> are needed </td><td>Debug the answer of the coffee machine in <a class="el" href="_e_e_p_r_o_m___status_8cpp.html">EEPROM_Status.cpp</a> </td></tr>
+<tr>
+<td align="right">9 </td><td>Unknown byte in RAM_Status::getEntriesRAM() </td><td>see 7. </td></tr>
+<tr>
+<td align="right">10 </td><td>JSON parsing error. </td><td>Check your JSON input on valid syntax. </td></tr>
+<tr>
+<td align="right">11 </td><td>The answer of the coffe machine didn't the expected one. </td><td>Debug the communication, fix a misspelled command or update the eypected answer in line 7 of <a class="el" href="_e_e_p_r_o_m___status_8cpp.html">EEPROM_Status.cpp</a> </td></tr>
+<tr>
+<td align="right">12 </td><td>Wrong byte position in the second field of EEPROM_Status::getEntriesEEPROM() </td><td>A word consists of two bytes. Enter only 0, 1 or both. </td></tr>
+<tr>
+<td align="right">13 </td><td>The new <a class="el" href="class_e_e_p_r_o_m.html">EEPROM</a> value for a whole word is out of range. </td><td>The JSON input value has to be between 0 and 65535 for a two bytes word. </td></tr>
+<tr>
+<td align="right">14 </td><td>The new <a class="el" href="class_e_e_p_r_o_m.html">EEPROM</a> value for a single byte inside a word is out of range. </td><td>The JSON input value has to be between 0 and 255. </td></tr>
+<tr>
+<td align="right">15 </td><td>No valid input was made as command to the coffee machine. </td><td>Pass a valid input to stdin. </td></tr>
+<tr>
+<td align="right">225 </td><td>Device file couldn't be locked. </td><td>Check the connection to the arduino and terminate existing processes. </td></tr>
+</table>
+<h2>Remarks</h2>
+<p>The Arduino file is used from <a href="https://collaborating.tuhh.de/e-17/General/CoffeeMachine/tree/master/arduino">E-17 CoffeeMachine</a>.</p>
+<p>More usefull links: <a href="https://github.com/crayzeewulf/libserial">libserial Github</a>, <a href="https://libserial.readthedocs.io/en/latest/index.html">libserial documentation</a>; <a href="https://en.wikibooks.org/wiki/JsonCpp">libjsoncpp</a>; https://collaborating.tuhh.de/help/user/markdown.md "gitlab-markdown", <a href="https://dillinger.io/">online-markdown</a></p>
+<h3>Command endings (important if you need the expacted length)</h3>
+<table class="doxtable">
+<tr>
+<th>Arduino -&gt; Jura CoffeeMachine </th><th>Jura CoffeeMachine -&gt; Arduino  </th></tr>
+<tr>
+<td><code>TY:\r\n</code> </td><td><code>ty:E1300 CAPU 3\r</code> </td></tr>
+</table>
+<table class="doxtable">
+<tr>
+<th>Char </th><th>hex </th><th>dez  </th></tr>
+<tr>
+<td>CR: <code>\r</code> </td><td>0D </td><td>13 </td></tr>
+<tr>
+<td>LF: <code>\n</code> </td><td>0A </td><td>10 </td></tr>
+</table>
+</div></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Erzeugt von
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

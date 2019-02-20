@@ -1,4 +1,4 @@
-*
+/*
 
 !arduino/
 !*.ino
@@ -6,6 +6,8 @@
 !data/
 !*.json
 !*.txt
+
+!doxygen
 
 !manual_jura/
 !*.pdf

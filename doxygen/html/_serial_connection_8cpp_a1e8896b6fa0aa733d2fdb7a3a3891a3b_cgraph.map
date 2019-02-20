@@ -1,0 +1,4 @@
+<map id="ALARMhandler" name="ALARMhandler">
+<area shape="rect" id="node2" href="$class_serial_connection.html#ac98b98a509727eb43dd4e09a9bc47eb8" title="SerialConnection::getInstance" alt="" coords="164,5,361,32"/>
+<area shape="rect" id="node3" href="$class_serial_connection.html#a2ecb1ba029fefbc9697262e9f9cb5e5b" title="SerialConnection::getPort" alt="" coords="177,56,348,83"/>
+</map>

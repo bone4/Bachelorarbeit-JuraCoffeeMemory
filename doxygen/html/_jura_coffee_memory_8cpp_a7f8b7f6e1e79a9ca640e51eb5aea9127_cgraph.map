@@ -1,0 +1,17 @@
+<map id="eeprom" name="eeprom">
+<area shape="rect" id="node2" href="$class_serial_connection.html#ac98b98a509727eb43dd4e09a9bc47eb8" title="SerialConnection::getInstance" alt="" coords="596,66,793,93"/>
+<area shape="rect" id="node3" href="$class_serial_connection.html#a6b1e786b3d6cc46d744f780284f24402" title="SerialConnection::connect" alt="" coords="127,66,302,93"/>
+<area shape="rect" id="node4" href="$class_storage.html#a9c875a4c268b989f13aabf299ff6268e" title="Storage::printRawVector" alt="" coords="132,117,297,144"/>
+<area shape="rect" id="node5" href="$class_serial_connection.html#a31a09de5479fb612aac94ade315d6f0e" title="SerialConnection::send" alt="" coords="136,168,293,194"/>
+<area shape="rect" id="node7" href="$class_serial_connection.html#a6419c43953bb392053479353420a1f8e" title="SerialConnection::receive" alt="" coords="129,218,300,245"/>
+<area shape="rect" id="node10" href="$class_storage.html#af785114f92fc0ace0eedf9847db00c44" title="Storage::diffBytesWith" alt="" coords="137,269,292,296"/>
+<area shape="rect" id="node16" href="$class_serial_connection.html#a395259938f38535125f070b8ac00719d" title="SerialConnection::disconnect" alt="" coords="119,320,311,346"/>
+<area shape="rect" id="node6" href="$class_storage.html#ad0b9a18790e8a1c56b349c1997ba4315" title="Storage::removeSpecialChar\lFromString" alt="" coords="359,102,548,143"/>
+<area shape="rect" id="node8" href="$_serial_connection_8cpp.html#a1e8896b6fa0aa733d2fdb7a3a3891a3b" title="ALARMhandler" alt="" coords="398,168,509,194"/>
+<area shape="rect" id="node9" href="$class_serial_connection.html#a2ecb1ba029fefbc9697262e9f9cb5e5b" title="SerialConnection::getPort" alt="" coords="609,168,780,194"/>
+<area shape="rect" id="node11" href="$class_json_file.html#a70ea731be6e00b083190c011e0ee4392" title="JsonFile::getInstance" alt="" coords="380,218,527,245"/>
+<area shape="rect" id="node12" href="$class_json_file.html#a69c66d052ccb40a11396f537787a6343" title="JsonFile::logData" alt="" coords="391,269,515,296"/>
+<area shape="rect" id="node14" href="$class_json_file.html#a8361a5de646f07365b7baeae80f6d3eb" title="JsonFile::logRawData" alt="" coords="378,320,529,346"/>
+<area shape="rect" id="node15" href="$class_storage.html#af3ccaf7489cfef2e9cb610989dcd4817" title="Storage::getRawData" alt="" coords="379,370,527,397"/>
+<area shape="rect" id="node13" href="$class_json_file.html#a0b7eb46810847ba22ea137a4ce4757ae" title="JsonFile::readJson" alt="" coords="629,294,761,321"/>
+</map>
