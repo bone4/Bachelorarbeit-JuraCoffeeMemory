@@ -16,7 +16,8 @@
 
 !result
 
-!tools/
+!tools/*.cpp
+!tools/*.txt
 
 !website/
 !website/favicon/
