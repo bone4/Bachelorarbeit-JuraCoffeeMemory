@@ -12,12 +12,19 @@ with these linker flags to compile:
 -lserial -lpthread -ljsoncpp
 ```
 
-A webserver and PHP for the website:
+A webserver and PHP for the website with permission to the website directory:
 ```sh
 sudo apt-get install php php-cli apache2
 nano /etc/apache2/sites-enabled/000-default.conf
 # Change: "DocumentRoot" to pathToThisProject/JuraCoffeeMemory/website/
+# Add: <Directory pathToThisProject/JuraCoffeeMemory/website/>Require all granted</Directory>
 service apache2 restart
+```
+
+Make sure that **your user** and **www-data** for the website are member of the group **dialout**. If not, you can add them by:
+```sh
+sudo usermod -aG dialout www-data
+sudo usermod -aG dialout YourUsername
 ```
 
 ## Usage
