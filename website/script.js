@@ -214,7 +214,8 @@ function changeEEPROM(elem) {
 		(key == "amount_ground_2") ||
 		(key == "amount_coffee_preparations_until_next_cleaning") ||
 		(key == "amount_rinsings_until_next_cleaning") ||
-		(key == "amount_water")) {
+		(key == "amount_water") ||
+		(key == "amount_calcified")) {
 		
 		$('#myModalOldValue').val( $(elem).attr("aria-valuenow") );
 	} else { // or normal values
