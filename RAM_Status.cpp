@@ -162,6 +162,7 @@ set<EntryRAM> RAM_Status::getEntriesRAM() {
     ret.insert(EntryRAM{ 15, {5}, "tea_portion"});               // Teeportion (in der Zubereitung)
     ret.insert(EntryRAM{ 15, {2,1}, "cup_illumination"});        // Tassenbeleuchtung
     ret.insert(EntryRAM{ 16, {7}, "clean_machine"});             // Gerät reinigen
+    ret.insert(EntryRAM{ 16, {6}, "decalcifying_machine"});      // Gerät entkalken (kein Filter eingesetzt, viel Wasser ist durchgelaufen)
     ret.insert(EntryRAM{ 16, {5}, "replacing_filter"});          // Filter wechseln (50 Liter erreicht)
     ret.insert(EntryRAM{ 23, {3}, "brew_step2_pumping_coffee"}); // Zubereitung Schritt 2, Zubereitung eines Kaffees, nach dem Bohnen mahlen
     ret.insert(EntryRAM{ 23, {1}, "rinsing_unit"});              // Maschine spült

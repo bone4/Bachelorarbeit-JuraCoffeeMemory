@@ -15,6 +15,13 @@
 	{
 		"value" : 7
 	},
+	"amount_calcified" : 
+	{
+		"default" : 0,
+		"max" : 794,
+		"min" : 0,
+		"value" : 979,
+	},
 	"amount_coffee_preparations_until_next_cleaning" : 
 	{
 		"default" : 0,

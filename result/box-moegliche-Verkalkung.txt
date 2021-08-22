@@ -1,0 +1,57 @@
+RAM
+Pos 0x10 16	value 64_10 = x1xxxxxx_2 Gerät verkalkt?!
+Pos 0x22 34	value 1_10 = xxxxxxx1_2 Gerät verkalkt?!
+(Pos 0x30 48	value 8_10 = xxxx1xxx_2)
+(Pos 0x5C 92	value 4_10 = xxxxx1xx_2)
+(Pos 0x6F 111	value 6_10 = xxxxx11x_2)
+(Pos 0x67 118	value 1_10 = xxxxxxx1_2)
+0x91 145
+
+EEPROM
+0x08 ?
+0x09 ?
+0x0D (sehr hoher Zählerstand)!			Treffer!
+0x10 (sehr hoher Zählerstand)!
+0x12 ?
+0x14 (sehr hoher Zählerstand)!
+0x15 (sehr hoher Zählerstand, wird bei Reinigung aber nicht zurückgesetzt)!
+0x17 ?
+0x1B (sehr hoher Zählerstand)
+(0x1C ?)
+0x1F (sehr hoher Zählerstand)
+0x2D ?
+0x30 (sehr hoher Zählerstand)
+0x32 (sehr hoher Zählerstand)!
+0x33 (sehr hoher Zählerstand)!
+0x3B (sehr hoher Zählerstand, aber geringer als E-17 ohne verkalkt Meldung)
+0x56
+0x59 (sehr hoher Zählerstand, aber geringer als E-17 ohne verkalkt Meldung)
+0x5B (sehr hoher Zählerstand, aber geringer als E-17 ohne verkalkt Meldung)
+0x5D
+0x5E (sehr hoher Zählerstand, aber geringer als E-17 ohne verkalkt Meldung)
+0x5F,0x60-0x6A (sehr hoher Zählerstand, aber resettete E-17 Maschine hat nur Nullen)
+0x74 ist Null statt acht, d.h. kein Filter => Verkalkung möglich?
+0x75 (extrem hoher Zählerstand)!
+0x7C-0x7F (sehr hoher Zählerstand)
+0xA3
+0xA9
+0xB1
+0xB4-0xB5 (sehr hoher Zählerstand, aber geringer als E-17 ohne verkalkt Meldung)
+0xB8
+0xC1
+0xE8,EA,EB,EC,EF,F1,F2,F3,F4,F5,F6,F8,F9,FA,FB,FC,FD,FE (teilweise hoher Zählerstand, aber resettete E-17 Maschine hat nur Nullen)
+sehr hoher Zählerstand entspricht > 255
+"!" zuerst testen
+
+EEPROM durch Reinigung zurück gesetzt:
+- 0x0F (Reinigungsankündigung)
+- 0x11 (Reinigungsankündigung)
+
+
+# Ergebnis:
+Position	0D
+Wert		031A_16 = 794_10 (alles OK)
+			031B_16 = 795_10 (verkalkt)
+	WE:0D,031
+
+alter Wert zum Wiederherstellen: WE:0D,03D3

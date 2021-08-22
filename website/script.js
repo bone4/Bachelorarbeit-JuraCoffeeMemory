@@ -125,7 +125,8 @@ function updateEEPROM(data) {
 			(key == "amount_ground_2") ||
 			(key == "amount_coffee_preparations_until_next_cleaning") ||
 			(key == "amount_rinsings_until_next_cleaning") ||
-			(key == "amount_water")) {
+			(key == "amount_water") ||
+			(key == "amount_calcified")) {
 			
 			var percentage = Math.round( (val-dataVal["min"]) / (dataVal["max"]-dataVal["min"]) * 100);
 			$("#"+key+"-bar").attr("style", "width: "+percentage+"%;  cursor: pointer;");
@@ -283,7 +284,8 @@ function writeEEPROM() {
 					(key == "amount_ground_2") ||
 					(key == "amount_coffee_preparations_until_next_cleaning") ||
 					(key == "amount_rinsings_until_next_cleaning") ||
-					(key == "amount_water")) {
+					(key == "amount_water") ||
+					(key == "amount_calcified")) {
 					
 					var percentage = Math.round( (value-lastEEPROMdump[key]["min"]) / (lastEEPROMdump[key]["max"]-lastEEPROMdump[key]["min"]) * 100);
 					$("#"+key+"-bar").attr("style", "width: "+percentage+"%;  cursor: pointer;");

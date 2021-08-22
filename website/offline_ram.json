@@ -5,6 +5,7 @@
 	"clean_machine" : false,
 	"coffee_is_made" : false,
 	"cup_illumination" : false,
+	"decalcifying_machine" : true,
 	"empty_drip_tray" : false,
 	"empty_grounds" : false,
 	"empty_grounds_reason_only_0x34_>_0x03C0" : false,

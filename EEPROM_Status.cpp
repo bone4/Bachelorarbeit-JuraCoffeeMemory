@@ -256,6 +256,10 @@ set<EntryEEPROM> EEPROM_Status::getEntriesEEPROM() {
     ret.insert(EntryEEPROM{  5, {0,1}, "amount_filter_replacements"});          // Zähler für jeden neu eingesetzten Filter
     ret.insert(EntryEEPROM{  6, {0,1}, "amount_pulver_coffees"});               // Zähler für alle Zubereitungen mit Pulver (egal ob 1 oder 2, Zähler wird immer inkrementiert)
     ret.insert(EntryEEPROM{  7, {0,1}, "amount_rinsings"});                     // Spülen Gesammtzähler (wird in der Reinigung nicht zurück auf 0 gesetzt)
+    ret.insert(EntryEEPROM{ 13, {0,1}, "amount_calcified"});					// Zähler für die Verkalkung der Maschine; (Meldung kommt nur, wenn kein Filter eingesetzt ist)
+    jsonObj["amount_calcified"]["min"] = 0;
+    jsonObj["amount_calcified"]["max"] = 794;
+    jsonObj["amount_calcified"]["default"] = 0;
     ret.insert(EntryEEPROM{ 14, {0,1}, "amount_ground_1"});                     // Zähler für Trester; (Schale min 8 Sekunden entnehmen setzt den Zähler auf 0 zurück); (0x000F = 15: Kaffee bereit; 0x0010 = 16: Trester leeren)
     jsonObj["amount_ground_1"]["min"] = 0;
     jsonObj["amount_ground_1"]["max"] = 15;
