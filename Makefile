@@ -1,5 +1,5 @@
 CC      = g++
-CFLAGS  = -Wall -Wextra
+CFLAGS  = -Wall -Wextra -I/usr/include/libserial/
 LDFLAGS = -lserial -lpthread -ljsoncpp -lstdc++fs
 
 OBJS = EEPROM.o EEPROM_Status.o JsonFile.o RAM.o RAM_Status.o SerialConnection.o Storage.o color-definitions.h

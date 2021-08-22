@@ -63,7 +63,7 @@ void SerialConnection::connect() {
     }
 
     // Configure the stream
-    serial_stream.SetBaudRate( LibSerial::SerialStreamBuf::BAUD_9600 );
+    serial_stream.SetBaudRate( LibSerial::BaudRate::BAUD_9600 );
 //    serial_stream.SetCharSize( LibSerial::SerialStreamBuf::CHAR_SIZE_8 );
 //    serial_stream.SetFlowControl( LibSerial::SerialStreamBuf::FLOW_CONTROL_NONE );
 //    serial_stream.SetNumOfStopBits(1);
