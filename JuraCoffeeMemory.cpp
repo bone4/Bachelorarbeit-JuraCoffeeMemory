@@ -1,3 +1,20 @@
+/*
+ * Copyright (c) 2019 Niklas Krüger <niklas.krueger@tuhh.de>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 #include <iostream>
 #include <cstdlib> // GetInput()
 #include <string>
@@ -124,6 +141,7 @@ void DisplayMainMenu() {
          << "8 - " << endl
          << "9 - Options" << endl
          << "0 - Analyse existing dumps" << endl
+         << "L / l / license - Show license" << endl
          << "Q / q / quit / exit - To leave" << endl
          << COLOR_reset
          << COLOR_FG_green << "Selection:" << COLOR_reset << " ";
@@ -137,6 +155,26 @@ void DisplayOptionsMenu(string& devicePath, string& eepromPath, string& ramPath)
          << "4 - Back" << endl
          << COLOR_reset
          << COLOR_FG_green "Enter the number or <Q> to quit:" << COLOR_reset << " ";
+}
+void DisplayLicense() {
+    system("clear");
+    cout << COLOR_BG_blue << "License" << COLOR_reset << endl
+         << "Copyright (c) 2019 Niklas Krüger <niklas.krueger@tuhh.de>" << endl
+         << "" << endl
+         << "This program is free software: you can redistribute it and/or modify" << endl
+         << "it under the terms of the GNU General Public License as published by" << endl
+         << "the Free Software Foundation, either version 3 of the License, or" << endl
+         << "(at your option) any later version." << endl
+         << "" << endl
+         << "This program is distributed in the hope that it will be useful," << endl
+         << "but WITHOUT ANY WARRANTY; without even the implied warranty of" << endl
+         << "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the" << endl
+         << "GNU General Public License for more details." << endl
+         << "" << endl
+         << "You should have received a copy of the GNU General Public License" << endl
+         << "along with this program.  If not, see <https://www.gnu.org/licenses/>." << endl
+         << "" << endl
+         << COLOR_FG_green << "Press enter to continue:" << COLOR_reset << " ";
 }
 void AnalyseFileDumpsMenu(string filename) {
     // load JSON file
@@ -351,6 +389,9 @@ void MainMenu(string& devicePath, string& path, string eepromPath, string ramPat
             OptionsMenu(devicePath, eepromPath, ramPath);
         } else if (choice == "0") { // Analyse existing dumps
             AnalyseFilesMenu(path);
+        } else if (choice == "L" || choice == "l" || choice == "license") {
+            DisplayLicense();
+            getline(cin, choice);
         }
     } while(choice!="Q" && choice!="q" && choice!="quit" && choice!="exit");
     cout << "Bye." << endl;
