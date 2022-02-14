@@ -110,5 +110,5 @@ Website: [Twitter Bootstrap](https://getbootstrap.com/); [jQuery](https://jquery
 | LF: ```\n``` | 0A  | 10  |
 
 ## DOI
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6068038.svg)](https://doi.org/10.5281/zenodo.6068038)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6068708.svg)](https://doi.org/10.5281/zenodo.6068708)
 
